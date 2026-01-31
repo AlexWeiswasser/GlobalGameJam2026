@@ -1108,8 +1108,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -750, y: 0}
-  m_SizeDelta: {x: 500, y: 600}
+  m_AnchoredPosition: {x: -750, y: 50}
+  m_SizeDelta: {x: 525, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1713731688
 MonoBehaviour:
@@ -1124,7 +1124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.78113204, g: 0.7626957, b: 0.417095, a: 1}
+  m_Color: {r: 0.4415095, g: 0.4415095, b: 0.4415095, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1140,7 +1140,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 2.5
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1713731689
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1452,7 +1452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4646282271349592144, guid: d9ec212feaa2aa3429f34dc1cd089b07, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 161
+      value: 212
       objectReference: {fileID: 0}
     - target: {fileID: 4646282271349592144, guid: d9ec212feaa2aa3429f34dc1cd089b07, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1549,7 +1549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1812315922864259876, guid: d496434860156e041a84c8142b8614f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 161
+      value: 212
       objectReference: {fileID: 0}
     - target: {fileID: 1812315922864259876, guid: d496434860156e041a84c8142b8614f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

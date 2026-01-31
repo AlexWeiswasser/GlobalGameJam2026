@@ -7,6 +7,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 {
     private Vector2 _startPosition;
     private Vector2 _imageSize;
+    private Vector2 _imageScale;
     private GameplayManager _gameplayManager;
     [SerializeField] private int maskNumber;
     private DummyScript _previousDummy;
@@ -16,6 +17,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         _gameplayManager = Camera.main.GetComponent<GameplayManager>();
         _startPosition = GetComponent<RectTransform>().anchoredPosition;
         _imageSize = GetComponent<RectTransform>().sizeDelta;
+        _imageScale = transform.localScale;
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -25,6 +27,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         Color color = GetComponent<Image>().color;
         color.a = 1;
         GetComponent<Image>().color = color;
+        transform.localScale = _imageScale;
         if (_previousDummy != null)
         {
             _previousDummy.SetMask(0);
@@ -71,6 +74,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             GetComponent<RectTransform>().anchoredPosition = new Vector2(Camera.main.WorldToScreenPoint(hit.collider.gameObject.transform.position).x - 960, Camera.main.WorldToScreenPoint(hit.collider.gameObject.transform.position).y - 540);
             Color color = GetComponent<Image>().color;
             color.a = 0;
+            transform.localScale = new Vector2(1,1);
             GetComponent<Image>().color = color;
             dummyScript.SetMask(maskNumber);
         }
@@ -84,6 +88,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             Debug.Log("Drag Unsuccessful");
             GetComponent<RectTransform>().anchoredPosition = _startPosition;
             GetComponent<RectTransform>().sizeDelta = _imageSize;
+            transform.localScale = _imageScale;
         }
     }
 }
