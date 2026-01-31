@@ -4,7 +4,6 @@ using UnityEngine.Rendering;
 public class NinteyScript : MonoBehaviour, IDummyFace
 {
 	private IMoveableFace firstFace = null;
-	private Vector3 vectorOfTransform = Vector3.zero;
 	private Vector3[] directions = new Vector3[]
 	{
 		new Vector3(-1, 0, 0),
@@ -42,20 +41,16 @@ public class NinteyScript : MonoBehaviour, IDummyFace
 				{
 					firstFace.AddPosToGrid();
 					firstFace = null;
-					vectorOfTransform = Vector2.zero;
 				}
 				else
-				{
-					vectorOfTransform = transform.position - firstFace.GetPosition();
-
+				{ 
 					if (CanMoveObject(transform.position + directions[arrayDirection - 1], grid))
 					{
-						firstFace.AddToPosition(vectorOfTransform);
+						firstFace.SetPosition(transform.position);
 					}
 					else
 					{
 						firstFace = null;
-						vectorOfTransform = Vector2.zero;
 					}
 				}
 			}
@@ -64,15 +59,13 @@ public class NinteyScript : MonoBehaviour, IDummyFace
 		{
 			if (firstFace != null)
 			{
-				firstFace.AddToPosition(directions[arrayDirection - 1]);
+				firstFace.AddToPosition(directions[arrayDirection - 1], true);
 				firstFace.AddPosToGrid();
 
 				firstFace = null;
-				vectorOfTransform = Vector2.zero;
 			}
 
 			firstFace = null;
-			vectorOfTransform = Vector3.zero;
 		}
 	}
 

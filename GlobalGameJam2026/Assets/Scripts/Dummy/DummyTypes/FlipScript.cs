@@ -46,7 +46,7 @@ public class FlipScript : MonoBehaviour, IDummyFace
 		{
 			if (firstFace != null)
 			{
-				firstFace.AddToPosition(vectorOfTransform);
+				firstFace.AddToPosition(vectorOfTransform, true);
 				firstFace.AddPosToGrid();
 
 				firstFace = null;

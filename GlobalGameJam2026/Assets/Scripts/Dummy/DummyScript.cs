@@ -168,9 +168,9 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		return transform.position;
 	}
 
-	public void AddToPosition(Vector3 addition)
+	public void AddToPosition(Vector3 addition, bool finalMove = false)
 	{
-		if (GetMask() == 3)
+		if (GetMask() == 3 && finalMove)
 		{
 			if (GetComponent<PrincessScript>().Slay(gridManager, transform.position + addition))
 			{
@@ -181,9 +181,9 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		transform.position += addition;
 	}
 
-	public void SetPosition(Vector3 pos)
+	public void SetPosition(Vector3 pos, bool finalMove = false)
 	{
-		if (GetMask() == 3)
+		if (GetMask() == 3 && finalMove)
 		{
 			if (GetComponent<PrincessScript>().Slay(gridManager, pos))
 			{
