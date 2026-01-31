@@ -10,8 +10,8 @@ public class GameplayManager : MonoBehaviour
 	private float segmentTime = 0;
 
 	// Grid Offset
-	[SerializeField] private int xOffset;
-	[SerializeField] private int yOffset;
+	private int xOffset = -3;
+	private int yOffset = -3;
 
 	// Dummy Caching
 	[SerializeField] private GameObject dummyPrefab;
@@ -20,7 +20,7 @@ public class GameplayManager : MonoBehaviour
 
 	// Dummy Order
 	List<GameObject> orderList = new List<GameObject>();
-	int currentDummy = 0;
+	private int currentDummy = 0;
 
 	// Script Caching
 	GridManager gridManager;
@@ -32,7 +32,7 @@ public class GameplayManager : MonoBehaviour
 		Pull,
 		Nintey,
 		Push,
-		Clock
+		Clock // Don't try this one yet
 	}
 
 	[Serializable]
@@ -133,12 +133,21 @@ public class GameplayManager : MonoBehaviour
 	}
 	
 	private void ActivateDummies(int currentAction)
-	{ 
-		for(int i = 0; i < dummies.Length; i++)
+	{
+		if (currentDummy < orderList.Count)
 		{
-			if (dummies[i].TryGetComponent<IDummyFace>(out IDummyFace dummyInterface))
+			if (orderList[currentDummy].TryGetComponent<IDummyFace>(out IDummyFace dummyInterface))
 			{
 				dummyInterface.DummyAction(currentAction, gridManager);
+			}
+
+			if (currentAction == 3)
+			{
+				currentDummy++;
+				if (currentDummy >= orderList.Count)
+				{
+					currentDummy = 0;
+				}
 			}
 		}
 	}

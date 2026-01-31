@@ -5,6 +5,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 	// Dummy Data
 	private bool locked = false;
 	private int orderPos = -1;
+	private Vector2 gridPos;
 
 	// Caching
 	private GridManager gridManager;
