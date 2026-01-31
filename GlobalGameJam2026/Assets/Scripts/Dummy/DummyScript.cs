@@ -47,20 +47,25 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 					break;
 				case 3: // Flip
                     Destroy(GetComponent<FlipScript>());
-					// This is temporary
-                    gameObject.GetComponent<SpriteRenderer>().color = Color.white;
                     break;
 
             }
+
+			// Turn puppet back to no mask
+            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         }
+
+        RemoveFromOrder();
 
         _maskValue = type;
 
         switch (type)
         {
             case 1: // Prince
+                gameObject.GetComponent<SpriteRenderer>().color = Color.lightBlue;
                 break;
             case 2: // Princess
+                gameObject.GetComponent<SpriteRenderer>().color = Color.pink;
                 break;
             case 3: // Flip
                 gameObject.AddComponent<FlipScript>();
@@ -70,6 +75,10 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 			default:
 				break;
         }
+		if (type != 0)
+		{
+			AddToOrder();
+		}
     }
 
 	public int GetMask()

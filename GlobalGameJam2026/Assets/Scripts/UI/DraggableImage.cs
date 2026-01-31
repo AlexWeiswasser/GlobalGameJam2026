@@ -7,6 +7,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 {
     private Vector2 _startPosition;
     private Vector2 _imageSize;
+    [SerializeField] private GameplayManager _gameplayManager;
     [SerializeField] private int maskNumber;
     private DummyScript _previousDummy;
 
@@ -17,6 +18,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (_gameplayManager.IsDancing()) return;
         // Return Image Size to Normal
         GetComponent<RectTransform>().sizeDelta = _imageSize;
         Color color = GetComponent<Image>().color;
@@ -30,11 +32,13 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (_gameplayManager.IsDancing()) return;
         GetComponent<RectTransform>().anchoredPosition = new Vector2(Mouse.current.position.ReadValue().x - 960, Mouse.current.position.ReadValue().y - 540);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (_gameplayManager.IsDancing()) return;
         bool successful = false;
 
         Ray ray = Camera.main.ScreenPointToRay(new Vector2(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y));
