@@ -706,6 +706,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1722387884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1722387886}
+  - component: {fileID: 1722387885}
+  m_Layer: 0
+  m_Name: MusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1722387885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722387884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bdb8855cb2562143806488122a586f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicManager
+  mixer: {fileID: 0}
+  _Music:
+  - {fileID: 8300000, guid: 6bce1275788691d4fa157a0aff36b100, type: 3}
+  - {fileID: 8300000, guid: 7e61c87d360d07646b89d2704aae1c58, type: 3}
+  - {fileID: 8300000, guid: f8fa8b6d60d47144dbda2948f3252648, type: 3}
+  - {fileID: 8300000, guid: d9a1c7f6230629a4e84304e5542188a4, type: 3}
+  - {fileID: 8300000, guid: 7a7f66f0f0838814da80edae9f75731e, type: 3}
+  - {fileID: 8300000, guid: 8ff844f97e2791244b252668bbc7c611, type: 3}
+  - {fileID: 8300000, guid: 7f9e9e6807697a146b12cd4131a1cc9b, type: 3}
+  - {fileID: 8300000, guid: 08acfbfa99d03d4418ff2131f984d872, type: 3}
+  - {fileID: 8300000, guid: 886b87ee28918744bbc69b2c4f55efb4, type: 3}
+  - {fileID: 8300000, guid: 696e08dab2584e741abecf01386b988d, type: 3}
+  - {fileID: 8300000, guid: c5700f4b7bba19e42a7c357f703c6a38, type: 3}
+--- !u!4 &1722387886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722387884}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1826431527 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8164872991602427813, guid: e0ee2b0c6cc013647944b5921f0aa3ea, type: 3}
@@ -822,3 +879,4 @@ SceneRoots:
   - {fileID: 1693233008}
   - {fileID: 1035264975}
   - {fileID: 5459020930023141514}
+  - {fileID: 1722387886}
