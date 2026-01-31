@@ -8,6 +8,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     private Vector2 _startPosition;
     private Vector2 _imageSize;
     [SerializeField] private int maskNumber;
+    private DummyScript _previousDummy;
 
     private void Start()
     {
@@ -21,6 +22,10 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         Color color = GetComponent<Image>().color;
         color.a = 1;
         GetComponent<Image>().color = color;
+        if (_previousDummy != null)
+        {
+            _previousDummy.SetMask(0);
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -31,7 +36,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public void OnEndDrag(PointerEventData eventData)
     {
         bool successful = false;
-        // Create a ray from the main camera through the current mouse position
+
         Ray ray = Camera.main.ScreenPointToRay(new Vector2(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y));
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
@@ -51,16 +56,26 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         if (successful)
         {
             Debug.Log("Drag Successful");
+            hit.collider.gameObject.TryGetComponent<DummyScript>(out DummyScript dummyScript);
+            if (_previousDummy != null)
+            {
+                _previousDummy.SetMask(0);
+            }
+            _previousDummy = dummyScript;
             GetComponent<RectTransform>().sizeDelta = new Vector2(110, 110);
             GetComponent<RectTransform>().anchoredPosition = new Vector2(Camera.main.WorldToScreenPoint(hit.collider.gameObject.transform.position).x - 960, Camera.main.WorldToScreenPoint(hit.collider.gameObject.transform.position).y - 540);
             Color color = GetComponent<Image>().color;
             color.a = 0;
             GetComponent<Image>().color = color;
-            hit.collider.gameObject.TryGetComponent<DummyScript>(out DummyScript dummyScript);
             dummyScript.SetMask(maskNumber);
         }
         else
         {
+            if (_previousDummy != null)
+            {
+                _previousDummy.SetMask(0);
+            }
+            _previousDummy = null;
             Debug.Log("Drag Unsuccessful");
             GetComponent<RectTransform>().anchoredPosition = _startPosition;
             GetComponent<RectTransform>().sizeDelta = _imageSize;
