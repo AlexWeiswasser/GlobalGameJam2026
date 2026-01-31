@@ -4,7 +4,7 @@ public class VertScript : MonoBehaviour, IDummyFace
 {
 	private IMoveableFace myFace;
 	private IMoveableFace firstFace = null;
-	private Vector3 vectorOfTransform = Vector2.zero;
+	private Vector3 vectorOfTransform = Vector3.zero;
 	private bool up = true;
 
 	public void DummyAction(int actionNum, GridManager grid)
@@ -45,7 +45,7 @@ public class VertScript : MonoBehaviour, IDummyFace
 			}
 		}
 		else if (actionNum == 2)
-		{
+		{ 
 			if (up)
 			{
 				Vector2 newLocation = transform.position + new Vector3(0, 1);
@@ -71,36 +71,49 @@ public class VertScript : MonoBehaviour, IDummyFace
 		{
 			if (firstFace != null)
 			{
-				if (up)
+				if (firstFace.GetOrder() >= 99) // Can't move the prince or table!
 				{
-					Vector2 newLocation = firstFace.GetPosition() + new Vector3(0, 1);
-					if (CanMoveObject(newLocation, grid))
-					{
-						firstFace.SetPosition(newLocation);
-						firstFace.AddPosToGrid();
-					}
-					else
-					{
-						firstFace.AddPosToGrid();
-					}
+					firstFace.AddPosToGrid();
+					firstFace = null;
+					vectorOfTransform = Vector2.zero;
 				}
 				else
 				{
-					Vector2 newLocation = firstFace.GetPosition() + new Vector3(0, -1);
-					if (CanMoveObject(newLocation, grid))
+					if (up)
 					{
-						firstFace.SetPosition(newLocation);
-						firstFace.AddPosToGrid();
+						Vector2 newLocation = firstFace.GetPosition() + new Vector3(0, 1);
+						if (CanMoveObject(newLocation, grid))
+						{
+							firstFace.SetPosition(newLocation);
+							firstFace.AddPosToGrid();
+						}
+						else
+						{
+							firstFace.AddPosToGrid();
+						}
 					}
 					else
 					{
-						firstFace.AddPosToGrid();
+						Vector2 newLocation = firstFace.GetPosition() + new Vector3(0, -1);
+						if (CanMoveObject(newLocation, grid))
+						{
+							firstFace.SetPosition(newLocation);
+							firstFace.AddPosToGrid();
+						}
+						else
+						{
+							firstFace.AddPosToGrid();
+						}
 					}
-				}
 
-				firstFace = null;
-				vectorOfTransform = Vector2.zero;
+					firstFace = null;
+					vectorOfTransform = Vector2.zero;
+				}
 			}
+
+			firstFace = null;
+			vectorOfTransform = Vector3.zero;
+			up = true;
 		}
 	}
 

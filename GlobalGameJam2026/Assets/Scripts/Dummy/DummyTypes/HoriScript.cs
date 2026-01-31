@@ -9,7 +9,7 @@ public class HoriScript : MonoBehaviour, IDummyFace
 
 	public void DummyAction(int actionNum, GridManager grid)
 	{
-		if(TryGetComponent<IMoveableFace>(out IMoveableFace moveFace))
+		if (TryGetComponent<IMoveableFace>(out IMoveableFace moveFace))
 		{
 			myFace = moveFace;
 		}
@@ -27,7 +27,7 @@ public class HoriScript : MonoBehaviour, IDummyFace
 				firstFace.RemoveGridPos();
 			}
 
-			if(right)
+			if (right)
 			{
 				Vector2 newLocation = transform.position + new Vector3(1, 0);
 				if (!CanMoveSelf(newLocation, grid))
@@ -46,10 +46,10 @@ public class HoriScript : MonoBehaviour, IDummyFace
 		}
 		else if (actionNum == 2)
 		{
-			if(right)
+			if (right)
 			{
 				Vector2 newLocation = transform.position + new Vector3(1, 0);
-				if(CanMoveSelf(newLocation, grid))
+				if (CanMoveSelf(newLocation, grid))
 				{
 					myFace.RemoveGridPos();
 					transform.position = newLocation;
@@ -59,7 +59,7 @@ public class HoriScript : MonoBehaviour, IDummyFace
 			else
 			{
 				Vector2 newLocation = transform.position + new Vector3(-1, 0);
-				if(CanMoveSelf(newLocation, grid))
+				if (CanMoveSelf(newLocation, grid))
 				{
 					myFace.RemoveGridPos();
 					transform.position = newLocation;
@@ -71,36 +71,49 @@ public class HoriScript : MonoBehaviour, IDummyFace
 		{
 			if (firstFace != null)
 			{
-				if (right)
+				if (firstFace.GetOrder() >= 99) // Can't move the prince or table!
 				{
-					Vector2 newLocation = firstFace.GetPosition() + new Vector3(1, 0);
-					if (CanMoveObject(newLocation, grid))
-					{
-						firstFace.SetPosition(newLocation);
-						firstFace.AddPosToGrid();
-					}
-					else
-					{
-						firstFace.AddPosToGrid();
-					}
+					firstFace.AddPosToGrid();
+					firstFace = null;
+					vectorOfTransform = Vector2.zero;
 				}
 				else
 				{
-					Vector2 newLocation = firstFace.GetPosition() + new Vector3(-1, 0);
-					if (CanMoveObject(newLocation, grid))
+					if (right)
 					{
-						firstFace.SetPosition(newLocation);
-						firstFace.AddPosToGrid();
+						Vector2 newLocation = firstFace.GetPosition() + new Vector3(1, 0);
+						if (CanMoveObject(newLocation, grid))
+						{
+							firstFace.SetPosition(newLocation);
+							firstFace.AddPosToGrid();
+						}
+						else
+						{
+							firstFace.AddPosToGrid();
+						}
 					}
 					else
 					{
-						firstFace.AddPosToGrid();
+						Vector2 newLocation = firstFace.GetPosition() + new Vector3(-1, 0);
+						if (CanMoveObject(newLocation, grid))
+						{
+							firstFace.SetPosition(newLocation);
+							firstFace.AddPosToGrid();
+						}
+						else
+						{
+							firstFace.AddPosToGrid();
+						}
 					}
-				}
 
-				firstFace = null;
-				vectorOfTransform = Vector2.zero;
+					firstFace = null;
+					vectorOfTransform = Vector2.zero;
+				}
 			}
+
+			firstFace = null;
+			vectorOfTransform = Vector2.zero;
+			right = true;
 		}
 	}
 

@@ -51,16 +51,15 @@ public class GridManager : MonoBehaviour
 	public IMoveableFace CheckCross(Vector2 pos)
 	{
 		IMoveableFace moveableFace = null;
-		GameObject temp = null;
 
-		temp = CheckPosition(pos + new Vector2(1, 0));
-		moveableFace = WhosOnFirst(temp, moveableFace);
-		temp = CheckPosition(pos + new Vector2(-1, 0));
-		moveableFace = WhosOnFirst(temp, moveableFace);
-		temp = CheckPosition(pos + new Vector2(0, 1));
-		moveableFace = WhosOnFirst(temp, moveableFace);
-		temp = CheckPosition(pos + new Vector2(0, -1));
-		moveableFace = WhosOnFirst(temp, moveableFace);
+		GameObject[] temps = new GameObject[4];
+
+		temps[0] = CheckPosition(pos + new Vector2(1, 0));
+		temps[1] = CheckPosition(pos + new Vector2(-1, 0));
+		temps[2] = CheckPosition(pos + new Vector2(0, 1));
+		temps[3] = CheckPosition(pos + new Vector2(0, -1));
+
+		moveableFace = WhosOnFirst(temps);
 
 		return moveableFace;
 	}
@@ -68,12 +67,13 @@ public class GridManager : MonoBehaviour
 	public IMoveableFace CheckVert(Vector2 pos)
 	{
 		IMoveableFace moveableFace = null;
-		GameObject temp = null;
 
-		temp = CheckPosition(pos + new Vector2(0, 1));
-		moveableFace = WhosOnFirst(temp, moveableFace);
-		temp = CheckPosition(pos + new Vector2(0, -1));
-		moveableFace = WhosOnFirst(temp, moveableFace);
+		GameObject[] temps = new GameObject[4];
+
+		temps[0] = CheckPosition(pos + new Vector2(0, 1));
+		temps[1] = CheckPosition(pos + new Vector2(0, -1));
+
+		moveableFace = WhosOnFirst(temps);
 
 		return moveableFace;
 	}
@@ -81,57 +81,42 @@ public class GridManager : MonoBehaviour
 	public IMoveableFace CheckHori(Vector2 pos)
 	{
 		IMoveableFace moveableFace = null;
-		GameObject temp = null;
 
-		temp = CheckPosition(pos + new Vector2(1, 0));
-		moveableFace = WhosOnFirst(temp, moveableFace);
-		temp = CheckPosition(pos + new Vector2(-1, 0));
-		moveableFace = WhosOnFirst(temp, moveableFace);
+		GameObject[] temps = new GameObject[4];
+
+		temps[0] = CheckPosition(pos + new Vector2(1, 0));
+		temps[1] = CheckPosition(pos + new Vector2(-1, 0));
+
+		moveableFace = WhosOnFirst(temps);
 
 		return moveableFace;
 	}
 
-	private IMoveableFace WhosOnFirst(GameObject temp, IMoveableFace moveableFace)
+	private IMoveableFace WhosOnFirst(GameObject[] possibleObjects)
 	{
-		if (temp != null)
+		IMoveableFace moveableFace = null;
+
+		for(int i = 0; i < possibleObjects.Length; i++)
 		{
-			if (temp.TryGetComponent<IMoveableFace>(out IMoveableFace currentFace))
+			if (possibleObjects[i] != null)
 			{
-				if (moveableFace != null)
+				if (possibleObjects[i].TryGetComponent<IMoveableFace>(out IMoveableFace tempFace))
 				{
-					if (currentFace.GetOrder() < moveableFace.GetOrder())
+					if (moveableFace == null)
 					{
-						return currentFace;
+						moveableFace = tempFace;
 					}
 					else
 					{
-						return moveableFace;
+						if (tempFace.GetOrder() < moveableFace.GetOrder())
+						{
+							moveableFace = tempFace;
+						}
 					}
 				}
-				else
-				{
-					return currentFace;
-				}
-			}
-			else
-			{
-				if (moveableFace != null)
-				{
-					return moveableFace;
-				}
-				else
-				{
-					return null;
-				}
 			}
 		}
-		if (moveableFace != null)
-		{
-			return moveableFace;
-		}
-		else
-		{
-			return null;
-		}
+
+		return moveableFace;
 	}
 }

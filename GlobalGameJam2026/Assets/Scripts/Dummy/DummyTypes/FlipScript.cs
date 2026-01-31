@@ -3,7 +3,7 @@ using UnityEngine;
 public class FlipScript : MonoBehaviour, IDummyFace
 {
 	private IMoveableFace firstFace = null;
-	private Vector3 vectorOfTransform = Vector2.zero;
+	private Vector3 vectorOfTransform = Vector3.zero;
 
 	public void DummyAction(int actionNum, GridManager grid)
 	{
@@ -20,22 +20,25 @@ public class FlipScript : MonoBehaviour, IDummyFace
 		{
 			if (firstFace != null)
 			{
-				if(firstFace.GetMask() == 1) // Can't move the prince!
+				if (firstFace.GetOrder() >= 99) // Can't move the prince or table!
 				{
+					firstFace.AddPosToGrid();
 					firstFace = null;
 					vectorOfTransform = Vector2.zero;
-				}
-
-				vectorOfTransform = transform.position - firstFace.GetPosition();
-
-				if (CanMoveObject(firstFace.GetPosition() + vectorOfTransform + vectorOfTransform, grid))
-				{
-					firstFace.AddToPosition(vectorOfTransform);
 				}
 				else
 				{
-					firstFace = null;
-					vectorOfTransform = Vector2.zero;
+					vectorOfTransform = transform.position - firstFace.GetPosition();
+
+					if (CanMoveObject(firstFace.GetPosition() + vectorOfTransform + vectorOfTransform, grid))
+					{
+						firstFace.AddToPosition(vectorOfTransform);
+					}
+					else
+					{
+						firstFace = null;
+						vectorOfTransform = Vector2.zero;
+					}
 				}
 			}
 		}
@@ -49,6 +52,9 @@ public class FlipScript : MonoBehaviour, IDummyFace
 				firstFace = null;
 				vectorOfTransform = Vector2.zero;
 			}
+
+			firstFace = null;
+			vectorOfTransform = Vector3.zero;
 		}
 	}
 
@@ -56,7 +62,10 @@ public class FlipScript : MonoBehaviour, IDummyFace
 	{
 		if (firstFace.GetMask() != 2) // If not princess, check the position square of what you're moving to
 		{
-			if (grid.CheckPosition(spaceToCheck) != null) return false;
+			if (grid.CheckPosition(spaceToCheck) != null)
+			{
+				return false;
+			}
 		}
 		return (!grid.CheckForWall(spaceToCheck));
 	}
