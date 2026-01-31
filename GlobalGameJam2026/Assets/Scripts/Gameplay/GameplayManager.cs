@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,13 +10,39 @@ public class GameplayManager : MonoBehaviour
 
 	// Dummy Caching
 	[SerializeField] private GameObject dummyPrefab;
-	[SerializeField] private Vector2[] dummyArray;
+	[SerializeField] private Dummy[] dummyArray;
 	private GameObject[] dummies;
+
+	private enum DummyTypes
+	{
+		None,
+		Flip,
+		Pull,
+		Nintey,
+		Push
+	}
+
+	[Serializable]
+	private struct Dummy
+	{
+		public Vector2 position;
+		public DummyTypes type;
+	}
+
+	private void Awake()
+	{
+		CreateDummies();
+	}
 
 	private void Start()
 	{
-		segmentTime = segmentTime / 3;
+		segmentTime = turnSpeed / 3;
 
+		StartNewTurn();
+	}
+
+	private void StartNewTurn()
+	{
 		StartCoroutine(DoTurn());
 	}
 
@@ -33,7 +60,7 @@ public class GameplayManager : MonoBehaviour
 		ActivateDummies(3);
 		yield return new WaitForSeconds(segmentTime);
 
-		StartCoroutine(DoTurn());
+		StartNewTurn();
 	}
 
 	private void CreateDummies()
@@ -43,9 +70,9 @@ public class GameplayManager : MonoBehaviour
 		for(int i = 0; i < dummyArray.Length; i++)
 		{
 			dummies[i] = Instantiate(dummyPrefab, transform.position, Quaternion.identity);
-			if(TryGetComponent<DummyScript>(out DummyScript dummyScript))
+			if(dummies[i].TryGetComponent<DummyScript>(out DummyScript dummyScript))
 			{
-				dummyScript.LockToGrid(dummyArray[i]);
+				dummyScript.Init(dummyArray[i].position, (int)dummyArray[i].type);
 			}
 		}
 	}
