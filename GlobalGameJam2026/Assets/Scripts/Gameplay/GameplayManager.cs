@@ -19,7 +19,7 @@ public class GameplayManager : MonoBehaviour
 	private GameObject[] dummies;
 
 	// Dummy Order
-	List<GameObject> orderList = new List<GameObject>();
+	private List<GameObject> orderList = new List<GameObject>();
 	private int currentDummy = 0;
 
 	// Script Caching
@@ -54,6 +54,7 @@ public class GameplayManager : MonoBehaviour
 
 	private void StartNewTurn()
 	{
+		ShowOrderList();
 		StartCoroutine(DoTurn());
 	}
 
@@ -89,11 +90,11 @@ public class GameplayManager : MonoBehaviour
 			{
 				if ((int)dummyArray[i].type <= 0)
 				{
-					dummyScript.Init(offsetPosition, gridManager);
+					dummyScript.Init(offsetPosition, gridManager, this);
 				}
 				else
 				{
-					dummyScript.Init(offsetPosition, gridManager, (int)dummyArray[i].type, orderTracker);
+					dummyScript.Init(offsetPosition, gridManager, this, (int)dummyArray[i].type, orderTracker);
 					orderTracker++;
 				}
 			}
@@ -149,6 +150,24 @@ public class GameplayManager : MonoBehaviour
 					currentDummy = 0;
 				}
 			}
+		}
+	}
+
+	public void AddToOrderList(GameObject addition)
+	{
+		orderList.Add(addition);
+	}
+
+	public void RemoveFromOrderList(GameObject addition)
+	{
+		orderList.Remove(addition);
+	}
+
+	private void ShowOrderList()
+	{
+		for (int i = 0; i < orderList.Count; i++)
+		{
+			Debug.Log($"Number {i} in the order list is {orderList[i]}");
 		}
 	}
 }
