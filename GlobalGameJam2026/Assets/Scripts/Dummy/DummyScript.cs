@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DummyScript : MonoBehaviour, IMoveableFace
@@ -5,6 +6,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 	// Dummy Data
 	private bool locked = false;
 	private Vector2 gridPos;
+	private int _maskValue = 0;
 
 	// Caching
 	private GameplayManager gameplayManager;
@@ -25,13 +27,53 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		{
 			locked = true;
 
+<<<<<<< HEAD
 			switch (type)
 			{
 				case 1:
 					gameObject.AddComponent<FlipScript>();
 					break;
 			}
+=======
+			SetMask(type);
+
+			orderPos = order;
+>>>>>>> a42d993ed731d60196643350f352bfa9440077b6
 		}
+	}
+
+	public bool IsValidMaskTarget()
+	{
+		return !locked && (_maskValue == 0);
+	}
+
+	public void SetMask(int type)
+	{
+		if (_maskValue != 0)
+		{
+            switch (_maskValue)
+            {
+                case 1:
+                    Destroy(GetComponent<FlipScript>());
+                    break;
+            }
+        }
+
+        _maskValue = type;
+
+        switch (type)
+        {
+            case 1:
+                gameObject.AddComponent<FlipScript>();
+                break;
+			default:
+				break;
+        }
+    }
+
+	public int GetMask()
+	{
+		return _maskValue;
 	}
 
 	public int GetOrder()

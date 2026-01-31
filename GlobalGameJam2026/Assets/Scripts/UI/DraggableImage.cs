@@ -7,6 +7,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 {
     private Vector2 _startPosition;
     private Vector2 _imageSize;
+    [SerializeField] private int maskNumber;
 
     private void Start()
     {
@@ -37,9 +38,15 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         if (hit.collider != null)
         {
+            hit.collider.gameObject.TryGetComponent<DummyScript>(out DummyScript dummyScript);
+            if (dummyScript != null)
+            {
+                if (dummyScript.GetMask() == 0)
+                {
+                    successful = true;
+                }
+            }
             Debug.Log("Hit 2D object: " + hit.collider.name);
-
-            successful = true;
         }
         if (successful)
         {
@@ -49,6 +56,8 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             Color color = GetComponent<Image>().color;
             color.a = 0;
             GetComponent<Image>().color = color;
+            hit.collider.gameObject.TryGetComponent<DummyScript>(out DummyScript dummyScript);
+            dummyScript.SetMask(maskNumber);
         }
         else
         {
