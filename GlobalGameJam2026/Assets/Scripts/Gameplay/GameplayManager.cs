@@ -52,8 +52,11 @@ public class GameplayManager : MonoBehaviour
 		BeginDummyOrder();
 
 		segmentTime = turnSpeed / 3;
+	}
 
-		StartNewTurn();
+	public void BeginDance()
+	{
+
 	}
 
 	private void StartNewTurn()
