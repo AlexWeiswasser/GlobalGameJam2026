@@ -16,32 +16,40 @@ public class HoriScript : MonoBehaviour, IDummyFace
 			{
 				firstFace.RemoveGridPos();
 			}
+
+			if(right)
+			{
+				Vector2 newLocation = transform.position + new Vector3(1, 0);
+				if (!CanMoveSelf(newLocation, grid))
+				{
+					right = false;
+				}
+			}
+			else
+			{
+				Vector2 newLocation = transform.position + new Vector3(-1, 0);
+				if (!CanMoveSelf(newLocation, grid))
+				{
+					right = true;
+				}
+			}
 		}
 		else if (actionNum == 2)
 		{
 			if(right)
 			{
-				
+				Vector2 newLocation = transform.position + new Vector3(1, 0);
+				if(CanMoveSelf(newLocation, grid))
+				{
+					transform.position = newLocation;
+				}
 			}
-
-			if (firstFace != null)
+			else
 			{
-				if (firstFace.GetMask() == 1) // Can't move the prince!
+				Vector2 newLocation = transform.position + new Vector3(-1, 0);
+				if(CanMoveSelf(newLocation, grid))
 				{
-					firstFace = null;
-					vectorOfTransform = Vector2.zero;
-				}
-
-				vectorOfTransform = transform.position - firstFace.GetPosition();
-
-				if (CanMoveObject(firstFace.GetPosition() + vectorOfTransform + vectorOfTransform, grid))
-				{
-					firstFace = null;
-					vectorOfTransform = Vector2.zero;
-				}
-				else
-				{
-					firstFace.AddToPosition(vectorOfTransform);
+					transform.position = newLocation;
 				}
 			}
 		}
@@ -49,8 +57,32 @@ public class HoriScript : MonoBehaviour, IDummyFace
 		{
 			if (firstFace != null)
 			{
-				firstFace.AddToPosition(vectorOfTransform);
-				firstFace.AddPosToGrid();
+				if (right)
+				{
+					Vector2 newLocation = firstFace.GetPosition() + new Vector3(1, 0);
+					if (CanMoveObject(newLocation, grid))
+					{
+						firstFace.SetPosition(newLocation);
+						firstFace.AddPosToGrid();
+					}
+					else
+					{
+						firstFace.AddPosToGrid();
+					}
+				}
+				else
+				{
+					Vector2 newLocation = firstFace.GetPosition() + new Vector3(-1, 0);
+					if (CanMoveObject(newLocation, grid))
+					{
+						firstFace.SetPosition(newLocation);
+						firstFace.AddPosToGrid();
+					}
+					else
+					{
+						firstFace.AddPosToGrid();
+					}
+				}
 
 				firstFace = null;
 				vectorOfTransform = Vector2.zero;
@@ -69,11 +101,20 @@ public class HoriScript : MonoBehaviour, IDummyFace
 
 	private bool CanMoveSelf(Vector2 spaceToCheck, GridManager grid)
 	{
-		if(grid.CheckPosition(spaceToCheck))
+		GameObject possibleCollision = null;
+		if(possibleCollision = grid.CheckPosition(spaceToCheck))
 		{
-
+			if(possibleCollision != null)
+			{
+				if(possibleCollision.TryGetComponent<IMoveableFace>(out IMoveableFace moveableFace))
+				{
+					if(moveableFace.GetMask() != 2)
+					{
+						return false; 
+					}
+				}
+			}
 		}
-
 		return (grid.CheckForWall(spaceToCheck));
 	}
 }
