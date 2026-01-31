@@ -44,6 +44,8 @@ public class DummyScript : MonoBehaviour, IMoveableFace
             {
                 case 1:
                     Destroy(GetComponent<FlipScript>());
+					// This is temporary
+                    gameObject.GetComponent<SpriteRenderer>().color = Color.white;
                     break;
             }
         }
@@ -54,6 +56,8 @@ public class DummyScript : MonoBehaviour, IMoveableFace
         {
             case 1:
                 gameObject.AddComponent<FlipScript>();
+                // This is temporary
+                gameObject.GetComponent<SpriteRenderer>().color = Color.red;
                 break;
 			default:
 				break;
