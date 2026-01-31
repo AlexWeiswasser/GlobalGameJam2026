@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameplayManager : MonoBehaviour
@@ -30,13 +31,10 @@ public class GameplayManager : MonoBehaviour
 		public DummyTypes type;
 	}
 
-	private void Awake()
-	{
-		CreateDummies();
-	}
-
 	private void Start()
 	{
+		CreateDummies();
+
 		segmentTime = turnSpeed / 3;
 
 		StartNewTurn();
@@ -67,19 +65,21 @@ public class GameplayManager : MonoBehaviour
 	private void CreateDummies()
 	{
 		dummies = new GameObject[dummyArray.Length];
+		int orderTracker = 0;
 
 		for(int i = 0; i < dummyArray.Length; i++)
 		{
 			dummies[i] = Instantiate(dummyPrefab, transform.position, Quaternion.identity);
 			if(dummies[i].TryGetComponent<DummyScript>(out DummyScript dummyScript))
 			{
-				dummyScript.Init(dummyArray[i].position, (int)dummyArray[i].type);
+				dummyScript.Init(dummyArray[i].position, (int)dummyArray[i].type, orderTracker);
+				orderTracker++;
 			}
 		}
 	}
 
 	private void ActivateDummies(int currentAction)
-	{
+	{ 
 		for(int i = 0; i < dummies.Length; i++)
 		{
 			if (dummies[i].TryGetComponent<IDummyFace>(out IDummyFace dummyInterface))
@@ -88,5 +88,4 @@ public class GameplayManager : MonoBehaviour
 			}
 		}
 	}
-
 }

@@ -8,18 +8,15 @@ public class GridManager : MonoBehaviour
     {
         return gridArray[(int)pos.x][(int)pos.y];
     }
-	public GameObject CheckPosition(int x, int y)
-	{
-		return gridArray[x][y];
-	}
 
     public void ClearPos(Vector2 pos)
     {
 		gridArray[(int)pos.x][(int)pos.y] = null;
 	}
 
-    public void AddToPosition()
-    {
-
-    }
+	public void AddToGrid(GameObject addition)
+	{
+        Vector2 pos = addition.transform.position;
+		gridArray[(int)pos.x][(int)pos.y] = addition;
+	}
 }
