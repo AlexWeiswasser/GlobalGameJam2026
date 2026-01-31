@@ -78,7 +78,6 @@ public class DummyScript : MonoBehaviour, IMoveableFace
         }
 		if (type != 0)
 		{
-			Debug.Log(type);
 			AddToOrder();
 		}
     }
