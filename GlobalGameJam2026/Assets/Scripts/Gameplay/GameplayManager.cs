@@ -27,6 +27,7 @@ public class GameplayManager : MonoBehaviour
 
 	// Game Running States
 	private bool _isDancing;
+	private int _measureCount;
 
 	// Dummy Sprites
 	[SerializeField] private DummySprites sprites;
@@ -67,6 +68,7 @@ public class GameplayManager : MonoBehaviour
 
 	private void StartNewTurn()
 	{
+		_measureCount++;
 		//ShowOrderList();
 		StartCoroutine(DoTurn());
 	}
@@ -128,7 +130,7 @@ public class GameplayManager : MonoBehaviour
 			if (orderList[currentDummy].TryGetComponent<IDummyFace>(out IDummyFace dummyInterface))
 			{
 				dummyInterface.DummyAction(currentAction, gridManager);
-				ChangeSpriteOfAnimation(currentAction - 1, orderList[currentDummy]);
+				//ChangeSpriteOfAnimation(currentAction - 1, orderList[currentDummy]);
 			}
 
 			if (currentAction == 3)
@@ -140,6 +142,19 @@ public class GameplayManager : MonoBehaviour
 				}
 			}
 		}
+
+		for (int i = 0; i < dummies.Length; i++)
+		{
+			if (dummies[i].GetComponent<DummyScript>().GetMask() == 0)
+			{
+                ChangeSpriteOfAnimation(currentAction - 1, dummies[i]);
+            }
+		}
+
+		for (int i = 0; i < orderList.Count;i++)
+		{
+            ChangeSpriteOfAnimation(currentAction - 1, orderList[i]);
+        }
 	}
 
 	public void AddToOrderList(GameObject addition)
