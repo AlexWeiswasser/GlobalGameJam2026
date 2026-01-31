@@ -17,11 +17,19 @@ public class GridManager : MonoBehaviour
 		gridArray = new GameObject[(int)size.x, (int)size.y];
 	}
 
+	public bool CheckWall(Vector2 pos)
+	{
+		pos += offset;
+
+		if (pos.x >= size.x || pos.y >= size.y || pos.x < 0 || pos.y < 0) return true;
+		return false;
+	}
+
 	public GameObject CheckPosition(Vector2 pos)
     {
 		pos += offset;
 
-		if(pos.x >= size.x || pos.y >= size.y || pos.x < 0 || pos.y < 0) return null;
+		if (pos.x >= size.x || pos.y >= size.y || pos.x < 0 || pos.y < 0) return null;
         return gridArray[(int)pos.x, (int)pos.y];
     }
 

@@ -28,7 +28,17 @@ public class FlipScript : MonoBehaviour, IDummyFace
 			if (firstInOrder != null)
 			{
 				vectorOfTransform = transform.position - firstInOrder.transform.position;
-				firstInOrder.transform.position += vectorOfTransform;
+
+				if (FilledSpaceCheck(firstInOrder.transform.position + vectorOfTransform + vectorOfTransform, grid))
+				{
+					firstInOrder = null;
+					firstFace = null;
+					vectorOfTransform = Vector2.zero;
+				}
+				else
+				{
+					firstInOrder.transform.position += vectorOfTransform;
+				}
 			}
 		}
 		else if (actionNum == 3)
@@ -74,5 +84,11 @@ public class FlipScript : MonoBehaviour, IDummyFace
 				}
 			}
 		}
+	}
+
+	private bool FilledSpaceCheck(Vector2 spaceToCheck, GridManager grid)
+	{
+		if (grid.CheckPosition(spaceToCheck) != null) return true;
+		return (grid.CheckWall(spaceToCheck));
 	}
 }
