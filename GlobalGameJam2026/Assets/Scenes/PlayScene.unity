@@ -367,11 +367,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73271d8b00f0b8b41a4aa554a3a5c481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  xOffset: 0
+  yOffset: 0
   dummyPrefab: {fileID: 1897718507018726683, guid: 80a458a494a660e41910fddc674b7211, type: 3}
   dummyArray:
-  - position: {x: 1, y: 1}
+  - position: {x: 4, y: 4}
     type: 0
-  - position: {x: 1, y: 0}
+  - position: {x: 3, y: 4}
+    type: 1
+  - position: {x: 2, y: 3}
     type: 1
 --- !u!114 &519420034
 MonoBehaviour:

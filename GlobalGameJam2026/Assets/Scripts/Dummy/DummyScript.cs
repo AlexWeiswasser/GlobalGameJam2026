@@ -16,6 +16,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		transform.position = posVector;
 
 		gridManager = grid;
+		UpdatePositionOnGrid();
 
 		if (type > 0)
 		{

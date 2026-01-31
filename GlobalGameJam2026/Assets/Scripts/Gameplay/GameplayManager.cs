@@ -20,6 +20,7 @@ public class GameplayManager : MonoBehaviour
 
 	// Dummy Order
 	List<GameObject> orderList = new List<GameObject>();
+	int currentDummy = 0;
 
 	// Script Caching
 	GridManager gridManager;

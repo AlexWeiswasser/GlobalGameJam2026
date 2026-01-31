@@ -13,68 +13,16 @@ public class FlipScript : MonoBehaviour, IDummyFace
 	{
 		if (actionNum == 1)
 		{
-			for (int i = -1; i < 1; i++)
-			{
-				Vector2 checkPos = transform.position;
-				checkPos.x += i;
-
-				if(grid.CheckPosition(checkPos) == null)
-				{
-					continue;
-				}
-				GameObject possibleObject = grid.CheckPosition(checkPos);
-				if (possibleObject != null)
-				{
-					if (possibleObject.TryGetComponent<IMoveableFace>(out IMoveableFace moveable))
-					{
-						if (firstInOrder == null)
-						{
-							firstInOrder = possibleObject;
-							firstFace = moveable;
-						}
-						else
-						{
-							if (moveable.GetOrder() > firstFace.GetOrder())
-							{
-								firstInOrder = possibleObject;
-								firstFace = moveable;
-							}
-						}
-					}
-				}
-			}
-
-			for (int i = -1; i < 1; i++)
-			{
-				Vector2 checkPos = transform.position;
-				checkPos.y += i;
-
-				GameObject possibleObject = grid.CheckPosition(checkPos);
-				if (possibleObject != null)
-				{
-					if (possibleObject.TryGetComponent<IMoveableFace>(out IMoveableFace moveable))
-					{
-						if (firstInOrder == null)
-						{
-							firstInOrder = possibleObject;
-							firstFace = moveable;
-						}
-						else
-						{
-							if (moveable.GetOrder() > firstFace.GetOrder())
-							{
-								firstInOrder = possibleObject;
-								firstFace = moveable;
-							}
-						}
-					}
-				}
-			}
+			AreaChecker(new Vector2(1, 0), grid);
+			AreaChecker(new Vector2(-1, 0), grid);
+			AreaChecker(new Vector2(0, 1), grid);
+			AreaChecker(new Vector2(0, -1), grid);
 		}
 		else if (actionNum == 2)
 		{
 			if (firstInOrder != null)
 			{
+				Debug.Log(firstInOrder);
 				vectorOfTransform = transform.position - firstInOrder.transform.position;
 				firstInOrder.transform.position += vectorOfTransform;
 			}
@@ -88,6 +36,37 @@ public class FlipScript : MonoBehaviour, IDummyFace
 				firstInOrder = null;
 				firstFace = null;
 				vectorOfTransform = Vector2.zero;
+			}
+		}
+	}
+
+	private void AreaChecker(Vector2 addition, GridManager grid)
+	{
+		Vector2 checkPos = transform.position;
+		checkPos += addition;
+
+		if (grid.CheckPosition(checkPos) == null)
+		{
+			return;
+		}
+		GameObject possibleObject = grid.CheckPosition(checkPos);
+		if (possibleObject != null)
+		{
+			if (possibleObject.TryGetComponent<IMoveableFace>(out IMoveableFace moveable))
+			{
+				if (firstInOrder == null)
+				{
+					firstInOrder = possibleObject;
+					firstFace = moveable;
+				}
+				else
+				{
+					if (moveable.GetOrder() > firstFace.GetOrder())
+					{
+						firstInOrder = possibleObject;
+						firstFace = moveable;
+					}
+				}
 			}
 		}
 	}
