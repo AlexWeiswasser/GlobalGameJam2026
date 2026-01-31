@@ -11,12 +11,20 @@ public class SceneLoaderScript : MonoBehaviour
 
     private Coroutine _loadSceneCoroutine;
 
+    private bool _isLocked = true;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _openTrigger = Animator.StringToHash("OpenScene");
         _closeTrigger = Animator.StringToHash("CloseScene");
         _loadSceneCoroutine = null;
+        _isLocked = true;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(UnlockOnStart());
     }
 
     public void PlayCloseAnimation()
@@ -31,8 +39,9 @@ public class SceneLoaderScript : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        if (_loadSceneCoroutine == null)
+        if (_loadSceneCoroutine == null && !_isLocked)
         {
+            Debug.Log("Loading");
             _loadSceneCoroutine = StartCoroutine(SceneLoader(sceneName));
         }
     }
@@ -40,7 +49,14 @@ public class SceneLoaderScript : MonoBehaviour
     private IEnumerator SceneLoader(string sceneName)
     {
         PlayCloseAnimation();
-        yield return new WaitForSecondsRealtime(ANIMATION_TIME);
+        yield return new WaitForSeconds(ANIMATION_TIME);
         SceneManager.LoadScene(sceneName);
+    }
+
+    private IEnumerator UnlockOnStart()
+    {
+        yield return new WaitForSeconds(ANIMATION_TIME);
+        Debug.Log("Unlock");
+        _isLocked = false;
     }
 }
