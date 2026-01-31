@@ -19,7 +19,8 @@ public class GameplayManager : MonoBehaviour
 		Flip,
 		Pull,
 		Nintey,
-		Push
+		Push,
+		Clock
 	}
 
 	[Serializable]
