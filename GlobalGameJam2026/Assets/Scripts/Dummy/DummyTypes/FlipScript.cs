@@ -1,6 +1,3 @@
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FlipScript : MonoBehaviour, IDummyFace
@@ -31,7 +28,7 @@ public class FlipScript : MonoBehaviour, IDummyFace
 
 				vectorOfTransform = transform.position - firstFace.GetPosition();
 
-				if (FilledSpaceCheck(firstFace.GetPosition() + vectorOfTransform + vectorOfTransform, grid))
+				if (CanMoveObject(firstFace.GetPosition() + vectorOfTransform + vectorOfTransform, grid))
 				{
 					firstFace = null;
 					vectorOfTransform = Vector2.zero;
@@ -55,7 +52,7 @@ public class FlipScript : MonoBehaviour, IDummyFace
 		}
 	}
 
-	private bool FilledSpaceCheck(Vector2 spaceToCheck, GridManager grid)
+	private bool CanMoveObject(Vector2 spaceToCheck, GridManager grid)
 	{
 		if (firstFace.GetMask() != 2) // If not princess, check the position square of what you're moving to
 		{
