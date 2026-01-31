@@ -41,7 +41,6 @@ public class SceneLoaderScript : MonoBehaviour
     {
         if (_loadSceneCoroutine == null && !_isLocked)
         {
-            Debug.Log("Loading");
             _loadSceneCoroutine = StartCoroutine(SceneLoader(sceneName));
         }
     }
@@ -56,7 +55,6 @@ public class SceneLoaderScript : MonoBehaviour
     private IEnumerator UnlockOnStart()
     {
         yield return new WaitForSeconds(ANIMATION_TIME);
-        Debug.Log("Unlock");
         _isLocked = false;
     }
 }
