@@ -680,6 +680,7 @@ MonoBehaviour:
     type: 0
   - position: {x: 2, y: 5}
     type: 0
+  sprites: {fileID: 11400000, guid: 35ec38235b064644484952180901e623, type: 2}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0

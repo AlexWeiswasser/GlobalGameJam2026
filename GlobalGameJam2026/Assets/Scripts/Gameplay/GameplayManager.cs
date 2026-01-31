@@ -28,6 +28,9 @@ public class GameplayManager : MonoBehaviour
 	// Game Running States
 	private bool _isDancing;
 
+	// Dummy Sprites
+	[SerializeField] private DummySprites sprites;
+
 	private enum DummyTypes
 	{
 		None,
@@ -125,6 +128,7 @@ public class GameplayManager : MonoBehaviour
 			if (orderList[currentDummy].TryGetComponent<IDummyFace>(out IDummyFace dummyInterface))
 			{
 				dummyInterface.DummyAction(currentAction, gridManager);
+				ChangeSpriteOfAnimation(currentAction - 1, orderList[currentDummy]);
 			}
 
 			if (currentAction == 3)
@@ -161,6 +165,11 @@ public class GameplayManager : MonoBehaviour
 	public bool InOrderList(GameObject dummy)
 	{
 		return orderList.Contains(dummy);
+	}
+
+	private void ChangeSpriteOfAnimation(int index, GameObject dummy)
+	{
+		dummy.GetComponent<SpriteRenderer>().sprite = sprites.sprites[dummy.GetComponent<DummyScript>().GetMask()].sprite[index];
 	}
 
 	private void ShowOrderList()
