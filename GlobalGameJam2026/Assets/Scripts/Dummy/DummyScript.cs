@@ -49,7 +49,12 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 				case 2: // Princess
 					break;
 				case 3: // Flip
-					Destroy(GetComponent<FlipScript>());
+					if(TryGetComponent<FlipScript>(out FlipScript fScript))
+						Destroy(fScript);
+					break;
+				case 4:
+					if (TryGetComponent<HoriScript>(out HoriScript hScript))
+						Destroy(hScript); 
 					break;
 
 			}
@@ -78,10 +83,15 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 				// This is temporary
 				gameObject.GetComponent<SpriteRenderer>().color = Color.red;
 				break;
+			case 4:
+				gameObject.AddComponent<HoriScript>();
+				// This is temporary
+				gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+				break;
 			default:
 				break;
 		}
-		if (type != 0)
+		if (type > 2)
 		{
 			AddToOrder();
 		}
@@ -95,7 +105,18 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 
 	public int GetOrder()
 	{
-		return gameplayManager.ReturnOrder(gameObject);
+		if (GetMask() == 1)
+		{
+			return -99;
+		}
+		else if (GetMask() == 2)
+		{
+			return 99;
+		}
+		else
+		{
+			return gameplayManager.ReturnOrder(gameObject);
+		}
 	}
 
 	public void RemoveGridPos()
@@ -140,12 +161,10 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 
 	public void UpdateOrderIndicator()
 	{
-        if (GetOrder() == -1)
+        if (GetOrder() == -99 || GetOrder() == 99 || GetOrder() == -1)
         {
 			return;
         }
         transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _orderIndicatorSprites[GetOrder() + 1];
-		//Debug.Log(gameObject.name + " set to " + (GetOrder() + 1));
     }
-
 }

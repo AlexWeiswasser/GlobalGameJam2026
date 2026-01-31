@@ -50,8 +50,6 @@ public class GridManager : MonoBehaviour
 
 	public IMoveableFace CheckCross(Vector2 pos)
 	{
-		Debug.Log("check cross");
-
 		IMoveableFace moveableFace = null;
 		GameObject temp = null;
 

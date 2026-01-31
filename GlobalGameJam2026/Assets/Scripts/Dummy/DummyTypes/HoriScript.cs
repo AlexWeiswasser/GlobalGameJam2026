@@ -2,12 +2,22 @@ using UnityEngine;
 
 public class HoriScript : MonoBehaviour, IDummyFace
 {
+	private IMoveableFace myFace;
 	private IMoveableFace firstFace = null;
 	private Vector3 vectorOfTransform = Vector2.zero;
 	private bool right = true; 
 
 	public void DummyAction(int actionNum, GridManager grid)
 	{
+		if(TryGetComponent<IMoveableFace>(out IMoveableFace moveFace))
+		{
+			myFace = moveFace;
+		}
+		else
+		{
+			return;
+		}
+
 		if (actionNum == 1)
 		{
 			firstFace = grid.CheckVert(transform.position);
@@ -41,7 +51,9 @@ public class HoriScript : MonoBehaviour, IDummyFace
 				Vector2 newLocation = transform.position + new Vector3(1, 0);
 				if(CanMoveSelf(newLocation, grid))
 				{
+					myFace.RemoveGridPos();
 					transform.position = newLocation;
+					myFace.AddPosToGrid();
 				}
 			}
 			else
@@ -49,7 +61,9 @@ public class HoriScript : MonoBehaviour, IDummyFace
 				Vector2 newLocation = transform.position + new Vector3(-1, 0);
 				if(CanMoveSelf(newLocation, grid))
 				{
+					myFace.RemoveGridPos();
 					transform.position = newLocation;
+					myFace.AddPosToGrid();
 				}
 			}
 		}
@@ -96,25 +110,23 @@ public class HoriScript : MonoBehaviour, IDummyFace
 		{
 			if (grid.CheckPosition(spaceToCheck) != null) return true;
 		}
-		return (grid.CheckForWall(spaceToCheck));
+		return (!grid.CheckForWall(spaceToCheck));
 	}
 
 	private bool CanMoveSelf(Vector2 spaceToCheck, GridManager grid)
 	{
 		GameObject possibleCollision = null;
-		if(possibleCollision = grid.CheckPosition(spaceToCheck))
+		possibleCollision = grid.CheckPosition(spaceToCheck);
+		if(possibleCollision != null)
 		{
-			if(possibleCollision != null)
+			if(possibleCollision.TryGetComponent<IMoveableFace>(out IMoveableFace moveableFace))
 			{
-				if(possibleCollision.TryGetComponent<IMoveableFace>(out IMoveableFace moveableFace))
+				if(moveableFace.GetMask() != 2)
 				{
-					if(moveableFace.GetMask() != 2)
-					{
-						return false; 
-					}
+					return false; 
 				}
 			}
 		}
-		return (grid.CheckForWall(spaceToCheck));
+		return (!grid.CheckForWall(spaceToCheck));
 	}
 }

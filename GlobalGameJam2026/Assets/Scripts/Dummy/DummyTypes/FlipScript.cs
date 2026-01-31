@@ -30,12 +30,12 @@ public class FlipScript : MonoBehaviour, IDummyFace
 
 				if (CanMoveObject(firstFace.GetPosition() + vectorOfTransform + vectorOfTransform, grid))
 				{
-					firstFace = null;
-					vectorOfTransform = Vector2.zero;
+					firstFace.AddToPosition(vectorOfTransform);
 				}
 				else
 				{
-					firstFace.AddToPosition(vectorOfTransform);
+					firstFace = null;
+					vectorOfTransform = Vector2.zero;
 				}
 			}
 		}
@@ -58,6 +58,6 @@ public class FlipScript : MonoBehaviour, IDummyFace
 		{
 			if (grid.CheckPosition(spaceToCheck) != null) return true;
 		}
-		return (grid.CheckForWall(spaceToCheck));
+		return (!grid.CheckForWall(spaceToCheck));
 	}
 }
