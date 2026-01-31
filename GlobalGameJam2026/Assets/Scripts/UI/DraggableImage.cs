@@ -7,12 +7,13 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 {
     private Vector2 _startPosition;
     private Vector2 _imageSize;
-    [SerializeField] private GameplayManager _gameplayManager;
+    private GameplayManager _gameplayManager;
     [SerializeField] private int maskNumber;
     private DummyScript _previousDummy;
 
     private void Start()
     {
+        _gameplayManager = Camera.main.GetComponent<GameplayManager>();
         _startPosition = GetComponent<RectTransform>().anchoredPosition;
         _imageSize = GetComponent<RectTransform>().sizeDelta;
     }
