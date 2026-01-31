@@ -52,7 +52,6 @@ public class GameplayManager : MonoBehaviour
 	private void Start()
 	{
 		CreateDummies();
-		//BeginDummyOrder();
 
 		segmentTime = turnSpeed / 3;
 	}
@@ -104,6 +103,7 @@ public class GameplayManager : MonoBehaviour
 		}
 	}
 
+	// Unused because SetMask adds to order
 	private void BeginDummyOrder()
 	{
 		for (int i = 0; i < dummies.Length; i++)
@@ -152,8 +152,7 @@ public class GameplayManager : MonoBehaviour
 	{
 		for (int i = 0; i < orderList.Count; i++)
 		{
-			Debug.Log($"Number {i} in the order list is {orderList[i]}");
-			Debug.Log(orderList[i].name);
+			Debug.Log($"Number {i} in the order list is {orderList[i].name}");
 		}
 	}
 
