@@ -18,7 +18,10 @@ public class FlipScript : MonoBehaviour, IDummyFace
 			AreaChecker(new Vector2(0, 1), grid);
 			AreaChecker(new Vector2(0, -1), grid);
 
-			Debug.Log(GetComponent<DummyScript>().GetOrder() + " is the order and the first in order is " + firstInOrder);
+			if (firstInOrder != null)
+			{
+				firstFace.RemoveGridPos();
+			}
 		}
 		else if (actionNum == 2)
 		{
@@ -33,7 +36,7 @@ public class FlipScript : MonoBehaviour, IDummyFace
 			if (firstInOrder != null)
 			{
 				firstInOrder.transform.position += vectorOfTransform;
-				firstFace.UpdatePositionOnGrid();
+				firstFace.AddGridPos();
 
 				firstInOrder = null;
 				firstFace = null;

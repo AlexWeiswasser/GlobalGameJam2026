@@ -9,6 +9,14 @@ public class PlayerScript : MonoBehaviour, IMoveableFace
 	// Caching
 	private GridManager gridManager;
 
+	private void Start()
+	{
+		if (Camera.main.TryGetComponent<GridManager>(out GridManager grid))
+		{
+			gridManager = grid;
+		}
+	}
+
 	private void Update()
 	{
 		SetMousePosition();
@@ -26,9 +34,18 @@ public class PlayerScript : MonoBehaviour, IMoveableFace
 
 	public void UpdatePositionOnGrid()
 	{
-		if(Camera.main.TryGetComponent<GridManager>(out GridManager gridManager))
+		gridManager.ClearPos((Vector2)transform.position);
+		gridManager.AddToGrid(gameObject);
+	}
+	public void RemoveGridPos()
+	{
+		gridManager.ClearPos((Vector2)transform.position);
+	}
+
+	public void AddGridPos()
+	{
+		if (Camera.main.TryGetComponent<GridManager>(out GridManager gridManager))
 		{
-			gridManager.ClearPos((Vector2)transform.position);
 			gridManager.AddToGrid(gameObject);
 		}
 	}

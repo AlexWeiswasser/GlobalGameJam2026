@@ -17,7 +17,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		transform.position = posVector;
 
 		gridManager = grid;
-		UpdatePositionOnGrid();
+		AddGridPos();
 
 		if (type > 0)
 		{
@@ -39,9 +39,13 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		return orderPos;
 	}
 
-	public void UpdatePositionOnGrid()
+	public void RemoveGridPos()
 	{
 		gridManager.ClearPos((Vector2)transform.position);
+	}
+
+	public void AddGridPos()
+	{
 		gridManager.AddToGrid(gameObject);
 	}
 }
