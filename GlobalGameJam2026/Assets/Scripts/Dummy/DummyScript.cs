@@ -59,7 +59,11 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 
         switch (type)
         {
-            case 1:
+            case 1: // Prince
+                break;
+            case 2: // Princess
+                break;
+            case 3: // Flip
                 gameObject.AddComponent<FlipScript>();
                 // This is temporary
                 gameObject.GetComponent<SpriteRenderer>().color = Color.red;
