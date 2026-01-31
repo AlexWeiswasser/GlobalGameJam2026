@@ -632,10 +632,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   dummyPrefab: {fileID: 1897718507018726683, guid: 80a458a494a660e41910fddc674b7211, type: 3}
   dummyArray:
-  - position: {x: 4, y: 4}
-    type: 5
-  - position: {x: 3, y: 4}
-    type: 3
+  - position: {x: 2, y: 2}
+    type: 0
+  - position: {x: 2, y: 3}
+    type: 4
+  - position: {x: 3, y: 2}
+    type: 0
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
