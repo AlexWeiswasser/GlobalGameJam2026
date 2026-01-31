@@ -29,7 +29,7 @@ public class PlayerScript : MonoBehaviour, IMoveableFace
 
 	public int GetOrder()
 	{
-		return 99;
+		return -99;
 	}
 
 	public void UpdatePositionOnGrid()

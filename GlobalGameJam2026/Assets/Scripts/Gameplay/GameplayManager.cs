@@ -28,6 +28,8 @@ public class GameplayManager : MonoBehaviour
 	private enum DummyTypes
 	{
 		None,
+		Prince,
+		Princess,
 		Flip,
 		Pull,
 		Nintey,
@@ -87,14 +89,7 @@ public class GameplayManager : MonoBehaviour
 			dummies[i] = Instantiate(dummyPrefab, transform.position, Quaternion.identity);
 			if (dummies[i].TryGetComponent<DummyScript>(out DummyScript dummyScript))
 			{
-				if ((int)dummyArray[i].type <= 0)
-				{
-					dummyScript.Init(offsetPosition, gridManager, this);
-				}
-				else
-				{
-					dummyScript.Init(offsetPosition, gridManager, this, (int)dummyArray[i].type);
-				}
+				dummyScript.Init(offsetPosition, gridManager, this, (int)dummyArray[i].type);
 			}
 		}
 	}
@@ -105,27 +100,9 @@ public class GameplayManager : MonoBehaviour
 		{
 			if (dummies[i].TryGetComponent<DummyScript>(out DummyScript dummyScript))
 			{
-				if (dummyScript.GetOrder() > -1)
+				if (dummyScript.GetMask() > 1)
 				{
-					if (orderList.Count == 0)
-					{
-						orderList.Add(dummies[i]);
-					}
-					else
-					{
-						for (int j = 0; j < orderList.Count; j++)
-						{
-							if (orderList[j].TryGetComponent<DummyScript>(out DummyScript comparisonDummyScript))
-							{
-								if (dummyScript.GetOrder() < comparisonDummyScript.GetOrder())
-								{
-									orderList.Insert(j, dummies[i]);
-									return;
-								}
-							}
-						}
-						orderList.Add(dummies[i]);
-					}
+					orderList.Add(dummies[i]);
 				}
 			}
 		}
