@@ -178,4 +178,9 @@ public class GameplayManager : MonoBehaviour
 			Debug.Log($"Number {i} in the order list is {orderList[i]}");
 		}
 	}
+
+	public int ReturnOrder(GameObject orderObject)
+	{
+		return orderList.IndexOf(orderObject);
+	}
 }
