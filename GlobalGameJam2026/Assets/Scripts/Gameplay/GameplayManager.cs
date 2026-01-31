@@ -141,12 +141,20 @@ public class GameplayManager : MonoBehaviour
 	public void AddToOrderList(GameObject addition)
 	{
 		orderList.Add(addition);
-	}
+    }
 
 	public void RemoveFromOrderList(GameObject addition)
 	{
 		orderList.Remove(addition);
-	}
+    }
+
+	public void UpdateAllOrderIndicators()
+	{
+        for (int i = 0; i <= orderList.Count; i++)
+        {
+            dummies[i].GetComponent<DummyScript>().UpdateOrderIndicator();
+        }
+    }
 
 	private void ShowOrderList()
 	{

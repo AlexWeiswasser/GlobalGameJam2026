@@ -11,8 +11,11 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 	private GameplayManager gameplayManager;
 	private GridManager gridManager;
 
+	// Sprites
+	[SerializeField] private Sprite[] _orderIndicatorSprites;
+
 	public void Init(Vector2 pos, GridManager grid, GameplayManager game, int type = 0)
-    {
+	{
 		Vector3 posVector = pos;
 		posVector.z = 0;
 		transform.position = posVector;
@@ -39,46 +42,47 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 	{
 		if (_maskValue != 0)
 		{
-            switch (_maskValue)
-            {
-                case 1: // Prince
+			switch (_maskValue)
+			{
+				case 1: // Prince
 					break;
 				case 2: // Princess
 					break;
 				case 3: // Flip
-                    Destroy(GetComponent<FlipScript>());
-                    break;
+					Destroy(GetComponent<FlipScript>());
+					break;
 
-            }
+			}
 
 			// Turn puppet back to no mask
-            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-        }
+			gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+		}
 
-        RemoveFromOrder();
+		RemoveFromOrder();
 
-        _maskValue = type;
+		_maskValue = type;
 
-        switch (type)
-        {
-            case 1: // Prince
-                gameObject.GetComponent<SpriteRenderer>().color = Color.lightBlue;
-                break;
-            case 2: // Princess
-                gameObject.GetComponent<SpriteRenderer>().color = Color.pink;
-                break;
-            case 3: // Flip
-                gameObject.AddComponent<FlipScript>();
-                // This is temporary
-                gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-                break;
+		switch (type)
+		{
+			case 1: // Prince
+				gameObject.GetComponent<SpriteRenderer>().color = Color.lightBlue;
+				break;
+			case 2: // Princess
+				gameObject.GetComponent<SpriteRenderer>().color = Color.pink;
+				break;
+			case 3: // Flip
+				gameObject.AddComponent<FlipScript>();
+				// This is temporary
+				gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+				break;
 			default:
 				break;
-        }
+		}
 		if (type != 0)
 		{
 			AddToOrder();
 		}
+        gameplayManager.UpdateAllOrderIndicators();
     }
 
 	public int GetMask()
@@ -104,11 +108,16 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 	public void AddToOrder()
 	{
 		gameplayManager.AddToOrderList(gameObject);
+		UpdateOrderIndicator();
+		transform.GetChild(0).gameObject.SetActive(true);
 	}
 
 	public void RemoveFromOrder()
 	{
 		gameplayManager.RemoveFromOrderList(gameObject);
+		gameplayManager.UpdateAllOrderIndicators();
+		transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = null;
+		transform.GetChild(0).gameObject.SetActive(false);
 	}
 
 	public Vector3 GetPosition()
@@ -125,4 +134,15 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 	{
 		transform.position = pos;
 	}
+
+	public void UpdateOrderIndicator()
+	{
+        if (GetOrder() == -1)
+        {
+			return;
+        }
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _orderIndicatorSprites[GetOrder() + 1];
+		//Debug.Log(gameObject.name + " set to " + (GetOrder() + 1));
+    }
+
 }
