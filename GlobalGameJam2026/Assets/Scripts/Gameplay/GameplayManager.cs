@@ -25,6 +25,9 @@ public class GameplayManager : MonoBehaviour
 	// Script Caching
 	GridManager gridManager;
 
+	// Game Running States
+	private bool _isDancing;
+
 	private enum DummyTypes
 	{
 		None,
@@ -49,19 +52,20 @@ public class GameplayManager : MonoBehaviour
 	private void Start()
 	{
 		CreateDummies();
-		BeginDummyOrder();
+		//BeginDummyOrder();
 
 		segmentTime = turnSpeed / 3;
 	}
 
 	public void BeginDance()
 	{
-
+		_isDancing = true;
+		StartNewTurn();
 	}
 
 	private void StartNewTurn()
 	{
-		//ShowOrderList();
+		ShowOrderList();
 		StartCoroutine(DoTurn());
 	}
 
@@ -92,6 +96,7 @@ public class GameplayManager : MonoBehaviour
 			Vector2 offsetPosition = new Vector2(dummyArray[i].position.x + xOffset, dummyArray[i].position.y + yOffset);
 
 			dummies[i] = Instantiate(dummyPrefab, transform.position, Quaternion.identity);
+			dummies[i].name = "Dummy" + i;
 			if (dummies[i].TryGetComponent<DummyScript>(out DummyScript dummyScript))
 			{
 				dummyScript.Init(offsetPosition, gridManager, this, (int)dummyArray[i].type);
@@ -148,11 +153,17 @@ public class GameplayManager : MonoBehaviour
 		for (int i = 0; i < orderList.Count; i++)
 		{
 			Debug.Log($"Number {i} in the order list is {orderList[i]}");
+			Debug.Log(orderList[i].name);
 		}
 	}
 
 	public int ReturnOrder(GameObject orderObject)
 	{
 		return orderList.IndexOf(orderObject);
+	}
+
+	public bool IsDancing()
+	{
+		return _isDancing;
 	}
 }

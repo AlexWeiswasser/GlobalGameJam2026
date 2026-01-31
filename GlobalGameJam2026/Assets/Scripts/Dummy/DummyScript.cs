@@ -56,6 +56,8 @@ public class DummyScript : MonoBehaviour, IMoveableFace
             gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         }
 
+        RemoveFromOrder();
+
         _maskValue = type;
 
         switch (type)
@@ -74,6 +76,11 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 			default:
 				break;
         }
+		if (type != 0)
+		{
+			Debug.Log(type);
+			AddToOrder();
+		}
     }
 
 	public int GetMask()
