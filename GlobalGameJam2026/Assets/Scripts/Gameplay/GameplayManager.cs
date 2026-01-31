@@ -130,7 +130,6 @@ public class GameplayManager : MonoBehaviour
 			if (orderList[currentDummy].TryGetComponent<IDummyFace>(out IDummyFace dummyInterface))
 			{
 				dummyInterface.DummyAction(currentAction, gridManager);
-				//ChangeSpriteOfAnimation(currentAction - 1, orderList[currentDummy]);
 			}
 
 			if (currentAction == 3)
@@ -147,13 +146,13 @@ public class GameplayManager : MonoBehaviour
 		{
 			if (dummies[i].GetComponent<DummyScript>().GetMask() == 0)
 			{
-                ChangeSpriteOfAnimation(currentAction - 1, dummies[i]);
+                ChangeSpriteOfAnimation((currentAction - 1) * ((_measureCount + 1) % 2), dummies[i]);
             }
 		}
 
 		for (int i = 0; i < orderList.Count;i++)
 		{
-            ChangeSpriteOfAnimation(currentAction - 1, orderList[i]);
+            ChangeSpriteOfAnimation((currentAction - 1) * ((_measureCount + 1) % 2), orderList[i]);
         }
 	}
 
