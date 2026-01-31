@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "MouseActions",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "f3a462d1-a32e-41cd-bfda-2c436afd2e43",
+            "actions": [
+                {
+                    "name": "LeftClick",
+                    "type": "Button",
+                    "id": "23c7f269-ef98-4e3d-b5c0-d4dcbfc4e708",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7c80e4a2-e927-4945-90d4-760f456df86c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
