@@ -79,7 +79,6 @@ public class GameplayManager : MonoBehaviour
 	{
 		gridManager = GetComponent<GridManager>();
 		dummies = new GameObject[dummyArray.Length];
-		int orderTracker = 0;
 
 		for (int i = 0; i < dummyArray.Length; i++)
 		{
@@ -94,8 +93,7 @@ public class GameplayManager : MonoBehaviour
 				}
 				else
 				{
-					dummyScript.Init(offsetPosition, gridManager, this, (int)dummyArray[i].type, orderTracker);
-					orderTracker++;
+					dummyScript.Init(offsetPosition, gridManager, this, (int)dummyArray[i].type);
 				}
 			}
 		}
@@ -161,14 +159,6 @@ public class GameplayManager : MonoBehaviour
 	public void RemoveFromOrderList(GameObject addition)
 	{
 		orderList.Remove(addition);
-
-		for(int i = 0; i < orderList.Count; i++)
-		{
-			if (orderList[i].TryGetComponent<DummyScript>(out DummyScript dummyScript))
-			{
-				dummyScript.SetOrder(i);
-			}
-		}
 	}
 
 	private void ShowOrderList()
