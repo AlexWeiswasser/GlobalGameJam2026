@@ -58,7 +58,10 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 			gameObject.GetComponent<SpriteRenderer>().color = Color.white;
 		}
 
-		RemoveFromOrder();
+		if (gameplayManager.InOrderList(this.gameObject))
+		{
+            RemoveFromOrder();
+        }
 
 		_maskValue = type;
 

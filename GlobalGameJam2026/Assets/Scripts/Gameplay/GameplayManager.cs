@@ -150,11 +150,18 @@ public class GameplayManager : MonoBehaviour
 
 	public void UpdateAllOrderIndicators()
 	{
-        for (int i = 0; i <= orderList.Count; i++)
+		if (dummies.Length < 1) return;
+        for (int i = 0; i < dummies.Length; i++)
         {
-            dummies[i].GetComponent<DummyScript>().UpdateOrderIndicator();
+			if (dummies[i] != null)
+				dummies[i].GetComponent<DummyScript>().UpdateOrderIndicator();
         }
     }
+
+	public bool InOrderList(GameObject dummy)
+	{
+		return orderList.Contains(dummy);
+	}
 
 	private void ShowOrderList()
 	{
