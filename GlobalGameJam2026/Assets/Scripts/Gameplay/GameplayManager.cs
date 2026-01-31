@@ -9,6 +9,10 @@ public class GameplayManager : MonoBehaviour
 	private float turnSpeed = 1.5f;
 	private float segmentTime = 0;
 
+	// Grid Offset
+	[SerializeField] private int xOffset;
+	[SerializeField] private int yOffset;
+
 	// Dummy Caching
 	[SerializeField] private GameObject dummyPrefab;
 	[SerializeField] private Dummy[] dummyArray;
@@ -72,10 +76,11 @@ public class GameplayManager : MonoBehaviour
 			dummies[i] = Instantiate(dummyPrefab, transform.position, Quaternion.identity);
 			if(dummies[i].TryGetComponent<DummyScript>(out DummyScript dummyScript))
 			{
-				dummyScript.Init(dummyArray[i].position, (int)dummyArray[i].type, orderTracker);
+				Vector2 offsetPosition = new Vector2(dummyArray[i].position.x + xOffset, dummyArray[i].position.y + yOffset);
+				dummyScript.Init(offsetPosition, (int)dummyArray[i].type);
 				orderTracker++;
-			}
-		}
+            }
+        }
 	}
 
 	private void ActivateDummies(int currentAction)
