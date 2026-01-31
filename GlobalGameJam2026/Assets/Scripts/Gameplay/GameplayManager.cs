@@ -146,13 +146,13 @@ public class GameplayManager : MonoBehaviour
 		{
 			if (dummies[i].GetComponent<DummyScript>().GetMask() == 0)
 			{
-                ChangeSpriteOfAnimation((currentAction - 1) * ((_measureCount + 1) % 2), dummies[i]);
+                ChangeSpriteOfAnimation((currentAction - 1) + (3 * ((_measureCount + 1) % 2)), dummies[i]);
             }
 		}
 
 		for (int i = 0; i < orderList.Count;i++)
 		{
-            ChangeSpriteOfAnimation((currentAction - 1) * ((_measureCount + 1) % 2), orderList[i]);
+            ChangeSpriteOfAnimation((currentAction - 1) + (3 * ((_measureCount + 1) % 2)), orderList[i]);
         }
 	}
 
