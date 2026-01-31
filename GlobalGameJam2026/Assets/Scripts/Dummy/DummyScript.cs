@@ -52,11 +52,14 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 					if(TryGetComponent<FlipScript>(out FlipScript fScript))
 						Destroy(fScript);
 					break;
-				case 4:
+				case 4: // Hori
 					if (TryGetComponent<HoriScript>(out HoriScript hScript))
 						Destroy(hScript); 
 					break;
-
+				case 5: // Vert
+					if (TryGetComponent<VertScript>(out VertScript vScript))
+						Destroy(vScript);
+					break;
 			}
 
 			// Turn puppet back to no mask
@@ -87,6 +90,11 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 				gameObject.AddComponent<HoriScript>();
 				// This is temporary
 				gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+				break;
+			case 5:
+				gameObject.AddComponent<VertScript>();
+				// This is temporary
+				gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
 				break;
 			default:
 				break;

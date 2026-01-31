@@ -633,9 +633,9 @@ MonoBehaviour:
   dummyPrefab: {fileID: 1897718507018726683, guid: 80a458a494a660e41910fddc674b7211, type: 3}
   dummyArray:
   - position: {x: 4, y: 4}
-    type: 4
-  - position: {x: 4, y: 3}
-    type: 4
+    type: 5
+  - position: {x: 3, y: 4}
+    type: 3
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -991,7 +991,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6d9a33a8af1d844bad323ba1d6eed87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableImage
-  _gameplayManager: {fileID: 0}
   maskNumber: 1
 --- !u!1 &1629084355
 GameObject:
