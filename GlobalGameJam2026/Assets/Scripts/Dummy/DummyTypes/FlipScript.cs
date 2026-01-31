@@ -56,7 +56,7 @@ public class FlipScript : MonoBehaviour, IDummyFace
 	{
 		if (firstFace.GetMask() != 2) // If not princess, check the position square of what you're moving to
 		{
-			if (grid.CheckPosition(spaceToCheck) != null) return true;
+			if (grid.CheckPosition(spaceToCheck) != null) return false;
 		}
 		return (!grid.CheckForWall(spaceToCheck));
 	}
