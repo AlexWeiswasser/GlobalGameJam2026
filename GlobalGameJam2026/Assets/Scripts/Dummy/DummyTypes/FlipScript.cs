@@ -32,10 +32,11 @@ public class FlipScript : MonoBehaviour, IDummyFace
 
 					if (CanMoveObject(firstFace.GetPosition() + vectorOfTransform + vectorOfTransform, grid))
 					{
-						firstFace.AddToPosition(vectorOfTransform);
+						firstFace.SetPosition(transform.position);
 					}
 					else
 					{
+						firstFace.AddPosToGrid();
 						firstFace = null;
 						vectorOfTransform = Vector2.zero;
 					}

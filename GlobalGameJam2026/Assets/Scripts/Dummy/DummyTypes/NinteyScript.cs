@@ -52,6 +52,7 @@ public class NinteyScript : MonoBehaviour, IDummyFace
 					}
 					else
 					{
+						firstFace.AddPosToGrid();
 						firstFace = null;
 					}
 				}
