@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DummyScript : MonoBehaviour, IMoveableFace
@@ -19,7 +18,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		transform.position = posVector;
 
 		gridManager = grid;
-		AddGridPos();
+		AddPosToGrid();
 
 		gameplayManager = game;
 
@@ -88,7 +87,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		gridManager.ClearPos((Vector2)transform.position);
 	}
 
-	public void AddGridPos()
+	public void AddPosToGrid()
 	{
 		gridManager.AddToGrid(gameObject);
 	}
@@ -101,5 +100,20 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 	public void RemoveFromOrder()
 	{
 		gameplayManager.RemoveFromOrderList(gameObject);
+	}
+
+	public Vector3 GetPosition()
+	{
+		return transform.position;
+	}
+
+	public void AddToPosition(Vector3 addition)
+	{
+		transform.position += addition;
+	}
+
+	public void SetPosition(Vector3 pos)
+	{
+		transform.position = pos;
 	}
 }

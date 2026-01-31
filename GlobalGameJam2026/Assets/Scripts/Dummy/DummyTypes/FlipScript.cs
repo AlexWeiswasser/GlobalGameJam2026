@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class FlipScript : MonoBehaviour, IDummyFace
 {
-	private GameObject firstInOrder = null;
 	private IMoveableFace firstFace = null;
 	private Vector3 vectorOfTransform = Vector2.zero;
 
@@ -13,82 +12,55 @@ public class FlipScript : MonoBehaviour, IDummyFace
 	{
 		if (actionNum == 1)
 		{
-			AreaChecker(new Vector2(1, 0), grid);
-			AreaChecker(new Vector2(-1, 0), grid);
-			AreaChecker(new Vector2(0, 1), grid);
-			AreaChecker(new Vector2(0, -1), grid);
+			firstFace = grid.CheckCross(transform.position);
 
-			if (firstInOrder != null)
+			if (firstFace != null)
 			{
 				firstFace.RemoveGridPos();
 			}
 		}
 		else if (actionNum == 2)
 		{
-			if (firstInOrder != null)
+			if (firstFace != null)
 			{
-				vectorOfTransform = transform.position - firstInOrder.transform.position;
-
-				if (FilledSpaceCheck(firstInOrder.transform.position + vectorOfTransform + vectorOfTransform, grid))
+				if(firstFace.GetMask() == 1) // Can't move the prince!
 				{
-					firstInOrder = null;
+					firstFace = null;
+					vectorOfTransform = Vector2.zero;
+				}
+
+				vectorOfTransform = transform.position - firstFace.GetPosition();
+
+				if (FilledSpaceCheck(firstFace.GetPosition() + vectorOfTransform + vectorOfTransform, grid))
+				{
 					firstFace = null;
 					vectorOfTransform = Vector2.zero;
 				}
 				else
 				{
-					firstInOrder.transform.position += vectorOfTransform;
+					firstFace.AddToPosition(vectorOfTransform);
 				}
 			}
 		}
 		else if (actionNum == 3)
 		{
-			if (firstInOrder != null)
+			if (firstFace != null)
 			{
-				firstInOrder.transform.position += vectorOfTransform;
-				firstFace.AddGridPos();
+				firstFace.AddToPosition(vectorOfTransform);
+				firstFace.AddPosToGrid();
 
-				firstInOrder = null;
 				firstFace = null;
 				vectorOfTransform = Vector2.zero;
 			}
 		}
 	}
 
-	private void AreaChecker(Vector2 addition, GridManager grid)
-	{
-		Vector2 checkPos = transform.position;
-		checkPos += addition;
-
-		if (grid.CheckPosition(checkPos) == null)
-		{
-			return;
-		}
-		GameObject possibleObject = grid.CheckPosition(checkPos);
-		if (possibleObject != null)
-		{
-			if (possibleObject.TryGetComponent<IMoveableFace>(out IMoveableFace moveable))
-			{
-				if (firstInOrder == null)
-				{
-					firstInOrder = possibleObject;
-					firstFace = moveable;
-				}
-				else
-				{
-					if (moveable.GetOrder() < firstFace.GetOrder())
-					{
-						firstInOrder = possibleObject;
-						firstFace = moveable;
-					}
-				}
-			}
-		}
-	}
-
 	private bool FilledSpaceCheck(Vector2 spaceToCheck, GridManager grid)
 	{
-		if (grid.CheckPosition(spaceToCheck) != null) return true;
-		return (grid.CheckWall(spaceToCheck));
+		if (firstFace.GetMask() != 2) // If not princess, check the position square of what you're moving to
+		{
+			if (grid.CheckPosition(spaceToCheck) != null) return true;
+		}
+		return (grid.CheckForWall(spaceToCheck));
 	}
 }
