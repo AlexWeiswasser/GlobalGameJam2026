@@ -59,6 +59,7 @@ public class LevelButtonScript : MonoBehaviour
     private void LoadThatScene()
     {
         LevelManager.Instance.levelWeAreLoading = _levelData.sceneName;
+        LevelManager.Instance.currentLevelID = _levelData.levelID;
         _sceneLoaderScript.LoadScene("Menu_Inbetween");
     }
 }

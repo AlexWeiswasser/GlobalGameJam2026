@@ -5,6 +5,7 @@ public class GridManager : MonoBehaviour
 {
 	// Grid Size
 	[SerializeField] private Vector2 size;
+	[SerializeField] private GridSizeChanger gridObject;
 
 	// The grid itself
     private GameObject[,] gridArray;
@@ -15,6 +16,7 @@ public class GridManager : MonoBehaviour
 	private void Awake()
 	{
 		gridArray = new GameObject[(int)size.x, (int)size.y];
+		gridObject.ChangeGridSize((int)size.x, (int)size.y);
 	}
 
 	public bool CheckForWall(Vector2 pos)

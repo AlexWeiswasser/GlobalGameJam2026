@@ -11,7 +11,8 @@ public class PrincessScript : MonoBehaviour
 			{
 				if (moveFace.GetMask() == 1)
 				{
-					Debug.Log("You win!!!!111!!!");
+					GameObject.Find("WinCanvas").GetComponent<Animator>().SetTrigger("Win");
+					LevelManager.Instance.CompletedLevel(LevelManager.Instance.currentLevelID);
 				}
 				else
 				{
