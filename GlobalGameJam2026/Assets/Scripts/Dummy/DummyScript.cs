@@ -48,17 +48,19 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 			{
 				case 1: // Prince
 					break;
-				case 2: // Princess
+				case 2: // Table
 					break;
-				case 3: // Flip
-					if(TryGetComponent<FlipScript>(out FlipScript fScript))
-						Destroy(fScript);
+				case 3: // Princess
 					break;
-				case 4: // Hori
-					if (TryGetComponent<HoriScript>(out HoriScript hScript))
-						Destroy(hScript); 
+				case 4: // Flip
+					if(TryGetComponent<FlipScript>(out FlipScript flipScript))			
+						Destroy(flipScript);
 					break;
-				case 5: // Vert
+				case 5: // Hori
+					if (TryGetComponent<HoriScript>(out HoriScript horiScript))
+						Destroy(horiScript);
+					break;
+				case 6: // Vert
 					if (TryGetComponent<VertScript>(out VertScript vScript))
 						Destroy(vScript);
 					break;
@@ -80,28 +82,26 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 			case 1: // Prince
 				gameObject.GetComponent<SpriteRenderer>().color = Color.lightBlue;
 				break;
-			case 2: // Princess
+			case 2: // Table
+				gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+				break;
+			case 3: // Princess
 				gameObject.GetComponent<SpriteRenderer>().color = Color.pink;
 				break;
-			case 3: // Flip
+			case 4: // Flip
 				gameObject.AddComponent<FlipScript>();
-				// This is temporary
 				gameObject.GetComponent<SpriteRenderer>().color = Color.red;
 				break;
-			case 4:
+			case 5: // Hori
 				gameObject.AddComponent<HoriScript>();
-				// This is temporary
 				gameObject.GetComponent<SpriteRenderer>().color = Color.green;
 				break;
-			case 5:
+			case 6: // Vert
 				gameObject.AddComponent<VertScript>();
-				// This is temporary
 				gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
 				break;
-			default:
-				break;
 		}
-		if (type > 2)
+		if (type > 3)
 		{
 			AddToOrder();
 		}
@@ -115,11 +115,11 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 
 	public int GetOrder()
 	{
-		if (GetMask() == 1)
+		if (GetMask() == 3)
 		{
 			return -99;
 		}
-		else if (GetMask() == 2)
+		else if (GetMask() < 3)
 		{
 			return 99;
 		}
@@ -171,10 +171,10 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 
 	public void UpdateOrderIndicator()
 	{
-        if (GetOrder() == -99 || GetOrder() == 99 || GetOrder() == -1)
-        {
+		if(GetOrder() == 99 || GetOrder() == -99 || GetOrder() == -1)
+		{
 			return;
-        }
-        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _orderIndicatorSprites[GetOrder() + 1];
-    }
+		}
+		transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _orderIndicatorSprites[GetOrder() + 1];
+	}
 }
