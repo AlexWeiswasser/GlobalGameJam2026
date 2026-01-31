@@ -113,13 +113,12 @@ public class HoriScript : MonoBehaviour, IDummyFace
 
 			firstFace = null;
 			vectorOfTransform = Vector2.zero;
-			right = true;
 		}
 	}
 
 	private bool CanMoveObject(Vector2 spaceToCheck, GridManager grid)
 	{
-		if (firstFace.GetMask() != 2) // If not princess, check the position square of what you're moving to
+		if (firstFace.GetMask() != 3) // If not princess, check the position square of what you're moving to
 		{
 			if (grid.CheckPosition(spaceToCheck) != null) return false;
 		}

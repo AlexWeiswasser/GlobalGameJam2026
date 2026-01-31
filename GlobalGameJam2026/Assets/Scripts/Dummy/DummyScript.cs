@@ -64,6 +64,10 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 					if (TryGetComponent<VertScript>(out VertScript vScript))
 						Destroy(vScript);
 					break;
+				case 7: // Nintey
+					if (TryGetComponent<NinteyScript>(out NinteyScript nScript))
+						Destroy(nScript);
+					break;
 			}
 
 			// Turn puppet back to no mask
@@ -86,6 +90,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 				gameObject.GetComponent<SpriteRenderer>().color = Color.black;
 				break;
 			case 3: // Princess
+				gameObject.AddComponent<PrincessScript>();
 				gameObject.GetComponent<SpriteRenderer>().color = Color.pink;
 				break;
 			case 4: // Flip
@@ -99,6 +104,10 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 			case 6: // Vert
 				gameObject.AddComponent<VertScript>();
 				gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+				break;
+			case 7: // Nintey
+				gameObject.AddComponent<NinteyScript>();
+				gameObject.GetComponent<SpriteRenderer>().color = Color.orange;
 				break;
 		}
 		if (type > 3)
@@ -161,11 +170,27 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 
 	public void AddToPosition(Vector3 addition)
 	{
+		if (GetMask() == 3)
+		{
+			if (GetComponent<PrincessScript>().Slay(gridManager, transform.position + addition))
+			{
+				return;
+			}
+		}
+
 		transform.position += addition;
 	}
 
 	public void SetPosition(Vector3 pos)
 	{
+		if (GetMask() == 3)
+		{
+			if (GetComponent<PrincessScript>().Slay(gridManager, pos))
+			{
+				return;
+			}
+		}
+
 		transform.position = pos;
 	}
 

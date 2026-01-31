@@ -41,9 +41,9 @@ public class GameplayManager : MonoBehaviour
 		Flip,
 		Hori,
 		Vert,
+		Nintey,
 		Pull,
 		Push,
-		Nintey,
 		Clock // Don't try this one yet
 	}
 

@@ -632,18 +632,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   dummyPrefab: {fileID: 1897718507018726683, guid: 80a458a494a660e41910fddc674b7211, type: 3}
   dummyArray:
-  - position: {x: 0, y: 6}
-    type: 6
-  - position: {x: 0, y: 5}
-    type: 5
-  - position: {x: 2, y: 2}
-    type: 2
-  - position: {x: 1, y: 1}
-    type: 4
-  - position: {x: 3, y: 5}
-    type: 4
-  - position: {x: 2, y: 21}
-    type: 5
+  - position: {x: 1, y: 3}
+    type: 3
+  - position: {x: 2, y: 3}
+    type: 7
   sprites: {fileID: 11400000, guid: 35ec38235b064644484952180901e623, type: 2}
 --- !u!114 &519420034
 MonoBehaviour:
