@@ -43,8 +43,10 @@ public class NinteyScript : MonoBehaviour, IDummyFace
 					firstFace = null;
 				}
 				else
-				{ 
-					if (CanMoveObject(transform.position + directions[arrayDirection - 1], grid))
+				{
+					int angle = arrayDirection - 1;
+					if (angle < 0) angle = 3;
+					if (CanMoveObject(transform.position + directions[angle], grid))
 					{
 						firstFace.SetPosition(transform.position);
 					}
@@ -59,7 +61,9 @@ public class NinteyScript : MonoBehaviour, IDummyFace
 		{
 			if (firstFace != null)
 			{
-				firstFace.AddToPosition(directions[arrayDirection - 1], true);
+				int angle = arrayDirection - 1;
+				if (angle < 0) angle = 3;
+				firstFace.AddToPosition(directions[angle], true);
 				firstFace.AddPosToGrid();
 
 				firstFace = null;
