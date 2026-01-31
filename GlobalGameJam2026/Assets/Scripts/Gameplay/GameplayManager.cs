@@ -32,10 +32,11 @@ public class GameplayManager : MonoBehaviour
 	// Dummy Sprites
 	[SerializeField] private DummySprites sprites;
 
-	private enum DummyTypes
+	public enum DummyTypes
 	{
 		None,
 		Prince,
+		Table,
 		Princess,
 		Flip,
 		Hori,
