@@ -57,8 +57,13 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		gridManager.AddToGrid(gameObject);
 	}
 
-	private void AddToOrder()
+	public void AddToOrder()
 	{
+		gameplayManager.AddToOrderList(gameObject);
+	}
 
+	public void RemoveFromOrder()
+	{
+		gameplayManager.RemoveFromOrderList(gameObject);
 	}
 }

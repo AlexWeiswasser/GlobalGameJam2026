@@ -161,6 +161,14 @@ public class GameplayManager : MonoBehaviour
 	public void RemoveFromOrderList(GameObject addition)
 	{
 		orderList.Remove(addition);
+
+		for(int i = 0; i < orderList.Count; i++)
+		{
+			if (orderList[i].TryGetComponent<DummyScript>(out DummyScript dummyScript))
+			{
+				dummyScript.SetOrder(i);
+			}
+		}
 	}
 
 	private void ShowOrderList()
