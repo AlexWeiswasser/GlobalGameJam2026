@@ -50,116 +50,90 @@ public class GridManager : MonoBehaviour
 
 	public IMoveableFace CheckCross(Vector2 pos)
 	{
-		pos += offset;
+		Debug.Log("check cross");
 
-		IMoveableFace moveableObject = null;
+		IMoveableFace moveableFace = null;
 		GameObject temp = null;
 
 		temp = CheckPosition(pos + new Vector2(1, 0));
-		if(temp != null) 
-		{
-			if (temp.TryGetComponent<IMoveableFace>(out IMoveableFace moveableFace))
-			{
-				moveableObject = moveableFace;
-			}
-		}
+		moveableFace = WhosOnFirst(temp, moveableFace);
 		temp = CheckPosition(pos + new Vector2(-1, 0));
-		if (temp != null)
-		{
-			if (temp.TryGetComponent<IMoveableFace>(out IMoveableFace moveableFace))
-			{
-				if (moveableFace.GetOrder() < moveableObject.GetOrder())
-				{
-					moveableObject = moveableFace;
-				}
-			}
-		}
-		temp = CheckPosition(pos + new Vector2(1, 0));
-		if (temp != null)
-		{
-			if (temp.TryGetComponent<IMoveableFace>(out IMoveableFace moveableFace))
-			{
-				if (moveableFace.GetOrder() < moveableObject.GetOrder())
-				{
-					moveableObject = moveableFace;
-				}
-			}
-		}
-		temp = CheckPosition(pos + new Vector2(1, 0));
-		if (temp != null)
-		{
-			if (temp.TryGetComponent<IMoveableFace>(out IMoveableFace moveableFace))
-			{
-				if (moveableFace.GetOrder() < moveableObject.GetOrder())
-				{
-					moveableObject = moveableFace;
-				}
-			}
-		}
+		moveableFace = WhosOnFirst(temp, moveableFace);
+		temp = CheckPosition(pos + new Vector2(0, 1));
+		moveableFace = WhosOnFirst(temp, moveableFace);
+		temp = CheckPosition(pos + new Vector2(0, -1));
+		moveableFace = WhosOnFirst(temp, moveableFace);
 
-		return moveableObject;
+		return moveableFace;
 	}
 
 	public IMoveableFace CheckVert(Vector2 pos)
 	{
-		pos += offset;
-
-		IMoveableFace moveableObject = null;
+		IMoveableFace moveableFace = null;
 		GameObject temp = null;
 
-		temp = CheckPosition(pos + new Vector2(1, 0));
-		if (temp != null)
-		{
-			if (temp.TryGetComponent<IMoveableFace>(out IMoveableFace moveableFace))
-			{
-				moveableObject = moveableFace;
-			}
-		}
-		temp = CheckPosition(pos + new Vector2(-1, 0));
-		if (temp != null)
-		{
-			if (temp.TryGetComponent<IMoveableFace>(out IMoveableFace moveableFace))
-			{
-				if (moveableFace.GetOrder() < moveableObject.GetOrder())
-				{
-					moveableObject = moveableFace;
-				}
-			}
-		}
+		temp = CheckPosition(pos + new Vector2(0, 1));
+		moveableFace = WhosOnFirst(temp, moveableFace);
+		temp = CheckPosition(pos + new Vector2(0, -1));
+		moveableFace = WhosOnFirst(temp, moveableFace);
 
-		return moveableObject;
+		return moveableFace;
 	}
 
 	public IMoveableFace CheckHori(Vector2 pos)
 	{
-		pos += offset;
-
-		IMoveableFace moveableObject = null;
+		IMoveableFace moveableFace = null;
 		GameObject temp = null;
 
 		temp = CheckPosition(pos + new Vector2(1, 0));
-		if (temp != null)
-		{
-			if (temp.TryGetComponent<IMoveableFace>(out IMoveableFace moveableFace))
-			{
-				if (moveableFace.GetOrder() < moveableObject.GetOrder())
-				{
-					moveableObject = moveableFace;
-				}
-			}
-		}
-		temp = CheckPosition(pos + new Vector2(1, 0));
-		if (temp != null)
-		{
-			if (temp.TryGetComponent<IMoveableFace>(out IMoveableFace moveableFace))
-			{
-				if (moveableFace.GetOrder() < moveableObject.GetOrder())
-				{
-					moveableObject = moveableFace;
-				}
-			}
-		}
+		moveableFace = WhosOnFirst(temp, moveableFace);
+		temp = CheckPosition(pos + new Vector2(-1, 0));
+		moveableFace = WhosOnFirst(temp, moveableFace);
 
-		return moveableObject;
+		return moveableFace;
+	}
+
+	private IMoveableFace WhosOnFirst(GameObject temp, IMoveableFace moveableFace)
+	{
+		if (temp != null)
+		{
+			if (temp.TryGetComponent<IMoveableFace>(out IMoveableFace currentFace))
+			{
+				if (moveableFace != null)
+				{
+					if (currentFace.GetOrder() < moveableFace.GetOrder())
+					{
+						return currentFace;
+					}
+					else
+					{
+						return moveableFace;
+					}
+				}
+				else
+				{
+					return currentFace;
+				}
+			}
+			else
+			{
+				if (moveableFace != null)
+				{
+					return moveableFace;
+				}
+				else
+				{
+					return null;
+				}
+			}
+		}
+		if (moveableFace != null)
+		{
+			return moveableFace;
+		}
+		else
+		{
+			return null;
+		}
 	}
 }
