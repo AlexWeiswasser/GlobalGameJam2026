@@ -31,9 +31,11 @@ public class GameplayManager : MonoBehaviour
 		Prince,
 		Princess,
 		Flip,
+		Hori,
+		Vert,
 		Pull,
-		Nintey,
 		Push,
+		Nintey,
 		Clock // Don't try this one yet
 	}
 
