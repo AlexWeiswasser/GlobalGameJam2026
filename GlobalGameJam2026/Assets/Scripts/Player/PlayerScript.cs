@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
+	// Player Data
 	private Vector2 mousePos;
 
 	private void Update()
@@ -17,7 +18,9 @@ public class PlayerScript : MonoBehaviour
 
 	public void OnLeftClick(InputAction.CallbackContext context)
 	{
-		if(context.performed)
-			Debug.Log("clicked");
+		if (context.performed)
+		{
+			// Do click things here
+		}
 	}
 }
