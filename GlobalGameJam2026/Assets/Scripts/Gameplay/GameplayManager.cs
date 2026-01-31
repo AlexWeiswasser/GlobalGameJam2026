@@ -14,6 +14,12 @@ public class GameplayManager : MonoBehaviour
 	[SerializeField] private Dummy[] dummyArray;
 	private GameObject[] dummies;
 
+	// Dummy Order
+	List<GameObject> orderList = new List<GameObject>();
+
+	// Script Caching
+	GridManager gridManager;
+
 	private enum DummyTypes
 	{
 		None,
@@ -34,6 +40,7 @@ public class GameplayManager : MonoBehaviour
 	private void Start()
 	{
 		CreateDummies();
+		BeginDummyOrder();
 
 		segmentTime = turnSpeed / 3;
 
@@ -64,6 +71,7 @@ public class GameplayManager : MonoBehaviour
 
 	private void CreateDummies()
 	{
+		gridManager = GetComponent<GridManager>();
 		dummies = new GameObject[dummyArray.Length];
 		int orderTracker = 0;
 
@@ -72,19 +80,58 @@ public class GameplayManager : MonoBehaviour
 			dummies[i] = Instantiate(dummyPrefab, transform.position, Quaternion.identity);
 			if(dummies[i].TryGetComponent<DummyScript>(out DummyScript dummyScript))
 			{
-				dummyScript.Init(dummyArray[i].position, (int)dummyArray[i].type, orderTracker);
-				orderTracker++;
+				if ((int)dummyArray[i].type <= 0)
+				{
+					dummyScript.Init(dummyArray[i].position, gridManager);
+				}
+				else
+				{
+					dummyScript.Init(dummyArray[i].position, gridManager, (int)dummyArray[i].type, orderTracker);
+					orderTracker++;
+				}
 			}
 		}
 	}
 
+	private void BeginDummyOrder()
+	{
+		for (int i = 0; i < dummies.Length; i++)
+		{
+			if (dummies[i].TryGetComponent<DummyScript>(out DummyScript dummyScript))
+			{
+				if (dummyScript.GetOrder() > -1)
+				{
+					if (orderList.Count == 0)
+					{
+						orderList.Add(dummies[i]);
+					}
+					else
+					{
+						for (int j = 0; j < orderList.Count; j++)
+						{
+							if (orderList[j].TryGetComponent<DummyScript>(out DummyScript comparisonDummyScript))
+							{
+								if (dummyScript.GetOrder() < comparisonDummyScript.GetOrder())
+								{
+									orderList.Insert(j, dummies[i]);
+									return;
+								}
+							}
+						}
+						orderList.Add(dummies[i]);
+					}
+				}
+			}
+		}
+	}
+	
 	private void ActivateDummies(int currentAction)
 	{ 
 		for(int i = 0; i < dummies.Length; i++)
 		{
 			if (dummies[i].TryGetComponent<IDummyFace>(out IDummyFace dummyInterface))
 			{
-				dummyInterface.DummyAction(currentAction);
+				dummyInterface.DummyAction(currentAction, gridManager);
 			}
 		}
 	}

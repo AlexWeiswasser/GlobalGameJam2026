@@ -1,4 +1,4 @@
 public interface IDummyFace
 {
-    void DummyAction(int actionNum);
+    public void DummyAction(int actionNum, GridManager grid);
 }

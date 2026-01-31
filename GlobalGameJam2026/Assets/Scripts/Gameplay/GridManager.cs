@@ -1,22 +1,35 @@
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class GridManager : MonoBehaviour
 {
-    private GameObject[][] gridArray;
+	// Grid Size
+	[SerializeField] private Vector2 size;
 
-    public GameObject CheckPosition(Vector2 pos)
+	// The grid itself
+    private GameObject[,] gridArray;
+
+	private void Awake()
+	{
+		gridArray = new GameObject[(int)size.x, (int)size.y];
+	}
+
+	public GameObject CheckPosition(Vector2 pos)
     {
-        return gridArray[(int)pos.x][(int)pos.y];
+		if(pos.x >= size.x || pos.y >= size.y) return null;
+        return gridArray[(int)pos.x, (int)pos.y];
     }
 
     public void ClearPos(Vector2 pos)
     {
-		gridArray[(int)pos.x][(int)pos.y] = null;
+		if (pos.x >= size.x || pos.y >= size.y) return;
+		gridArray[(int)pos.x, (int)pos.y] = null;
 	}
 
 	public void AddToGrid(GameObject addition)
 	{
-        Vector2 pos = addition.transform.position;
-		gridArray[(int)pos.x][(int)pos.y] = addition;
+		if (addition.transform.position.x >= size.x || addition.transform.position.y >= size.y) return;
+		Vector2 pos = addition.transform.position;
+		gridArray[(int)pos.x, (int)pos.y] = addition;
 	}
 }
