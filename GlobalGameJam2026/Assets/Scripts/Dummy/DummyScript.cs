@@ -27,18 +27,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		{
 			locked = true;
 
-<<<<<<< HEAD
-			switch (type)
-			{
-				case 1:
-					gameObject.AddComponent<FlipScript>();
-					break;
-			}
-=======
 			SetMask(type);
-
-			orderPos = order;
->>>>>>> a42d993ed731d60196643350f352bfa9440077b6
 		}
 	}
 
