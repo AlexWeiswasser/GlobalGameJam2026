@@ -58,7 +58,7 @@ public class GameplayManager : MonoBehaviour
 
 	private void StartNewTurn()
 	{
-		ShowOrderList();
+		//ShowOrderList();
 		StartCoroutine(DoTurn());
 	}
 

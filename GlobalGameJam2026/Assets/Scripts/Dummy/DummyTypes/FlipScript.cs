@@ -76,7 +76,7 @@ public class FlipScript : MonoBehaviour, IDummyFace
 				}
 				else
 				{
-					if (moveable.GetOrder() > firstFace.GetOrder())
+					if (moveable.GetOrder() < firstFace.GetOrder())
 					{
 						firstInOrder = possibleObject;
 						firstFace = moveable;
