@@ -283,6 +283,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f4f6af7015db82047a1d831c914c92d1, type: 3}
   - {fileID: 8300000, guid: e9b69513e17b40044bf222b62bfc95be, type: 3}
   - {fileID: 8300000, guid: f01138ee0973bfe4f8f04ed5331087a3, type: 3}
+  princessOof: {fileID: 8300000, guid: afe66accca8525e4381f56de1771a978, type: 3}
+  recordScratch: {fileID: 8300000, guid: 9a33521fcd61e1941b33e12bd1499df8, type: 3}
 --- !u!1 &8062482446469599826
 GameObject:
   m_ObjectHideFlags: 0
