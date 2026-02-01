@@ -240,12 +240,12 @@ public class GameplayManager : MonoBehaviour
 			if (orderList[currentDummy].TryGetComponent<IDummyFace>(out IDummyFace dummyInterface))
 			{
 				dummyInterface.DummyAction(currentAction, gridManager);
-				orderList[currentDummy].transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.yellow;
+				orderList[currentDummy].transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = Color.yellow;
             }
 
 			if (currentAction == 3)
 			{
-                orderList[currentDummy].transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.white;
+                orderList[currentDummy].transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = Color.white;
                 currentDummy++;
 				if (currentDummy >= orderList.Count)
 				{
