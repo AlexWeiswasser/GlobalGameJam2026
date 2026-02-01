@@ -48,9 +48,18 @@ public class LineScript : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         float timeToWait = 1f / _lineParts.Count;
+        int i = 0;
         foreach (GameObject part in _lineParts)
         {
-            part.SetActive(true);
+            if(i <= _levelIGoTo.requiredLevelCompletions)
+            {
+                part.SetActive(true);
+            }
+            else
+            {
+                part.SetActive(false);
+            }
+            i++;
             yield return new WaitForSeconds(timeToWait);
         }
     }
