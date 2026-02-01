@@ -297,7 +297,7 @@ public class GameplayManager : MonoBehaviour
 		return orderList.Contains(dummy);
 	}
 
-	private void ChangeSpriteOfAnimation(int index, GameObject dummy, bool idle)
+	public void ChangeSpriteOfAnimation(int index, GameObject dummy, bool idle)
 	{
 		if (idle)
 		{

@@ -14,28 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DummySprites
   sprites:
   - sprite:
-    - {fileID: -335088288387712857, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
+    - {fileID: 234189154208601328, guid: e9a772efaf77748489fbeb04986cd6c8, type: 3}
   - sprite:
     - {fileID: 5724168595349758334, guid: 7830a6dbc4f70904fadcc00818b1974f, type: 3}
   - sprite:
-    - {fileID: -335088288387712857, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
+    - {fileID: 497600754102043572, guid: 06b228b43460d6446b3884bf78cce3cb, type: 3}
   - sprite:
     - {fileID: 1902788136624674735, guid: 7561e0741c1b3ea4995db610d8f3f422, type: 3}
   - sprite:
-    - {fileID: -335088288387712857, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
+    - {fileID: 1565698615107758941, guid: e26093ced126d204bbe4921e8f953573, type: 3}
   - sprite:
-    - {fileID: -335088288387712857, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
+    - {fileID: -3741385760702265478, guid: b507e94026d05a143859c1cb7fa90b4d, type: 3}
   - sprite:
-    - {fileID: -335088288387712857, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
+    - {fileID: 822231865153881279, guid: 2ef53972a7c0b07409280910ac530d41, type: 3}
   - sprite:
-    - {fileID: -335088288387712857, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
+    - {fileID: 234189154208601328, guid: e9a772efaf77748489fbeb04986cd6c8, type: 3}
   - sprite:
-    - {fileID: -335088288387712857, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
+    - {fileID: 234189154208601328, guid: e9a772efaf77748489fbeb04986cd6c8, type: 3}
   - sprite:
-    - {fileID: -335088288387712857, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
+    - {fileID: 234189154208601328, guid: e9a772efaf77748489fbeb04986cd6c8, type: 3}
   - sprite:
-    - {fileID: -335088288387712857, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
+    - {fileID: 234189154208601328, guid: e9a772efaf77748489fbeb04986cd6c8, type: 3}
   - sprite:
-    - {fileID: -335088288387712857, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
+    - {fileID: 234189154208601328, guid: e9a772efaf77748489fbeb04986cd6c8, type: 3}
   - sprite:
-    - {fileID: -335088288387712857, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
+    - {fileID: 234189154208601328, guid: e9a772efaf77748489fbeb04986cd6c8, type: 3}
