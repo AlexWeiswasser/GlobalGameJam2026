@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4242677156435411142}
   - component: {fileID: 224807062700105413}
   m_Layer: 5
-  m_Name: ClockMask
+  m_Name: XMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

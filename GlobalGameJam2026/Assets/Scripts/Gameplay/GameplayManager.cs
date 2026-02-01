@@ -18,9 +18,17 @@ public class GameplayManager : MonoBehaviour
 	[SerializeField] private Dummy[] dummyArray;
 	private GameObject[] dummies;
 
+	// Mask Caching
+	[SerializeField] private MaskChoice[] maskChoices;
+	[SerializeField] private Vector2[] maskPositions;
+	[SerializeField] private GameObject[] maskPrefabs;
+
 	// Dummy Order
 	private List<GameObject> orderList = new List<GameObject>();
 	private int currentDummy = 0;
+
+	// Other Caching
+	private Canvas canvas;
 
 	// Script Caching
 	GridManager gridManager;
@@ -54,8 +62,18 @@ public class GameplayManager : MonoBehaviour
 		public DummyTypes type;
 	}
 
+	[Serializable]
+	private struct MaskChoice
+	{
+		public DummyTypes type;
+		public int amount;
+	}
+
 	private void Start()
 	{
+		canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+
+		SpawnMasks();
 		CreateDummies();
 
 		segmentTime = turnSpeed / 3;
@@ -114,6 +132,25 @@ public class GameplayManager : MonoBehaviour
 		yield return new WaitForSeconds(segmentTime);
 
 		StartNewTurn();
+	}
+
+	private void SpawnMasks()
+	{
+		int currentMaskSpot = 0;
+
+		for(int i = 0; i < maskChoices.Length; i++)
+		{
+			for (int j = 0; j < maskChoices[i].amount; j++)
+			{
+				GameObject newMask = Instantiate(maskPrefabs[(int)maskChoices[i].type - 4], Vector3.zero, Quaternion.identity);
+				if(newMask.TryGetComponent<RectTransform>(out RectTransform rTrans))
+				{
+					newMask.transform.SetParent(canvas.transform, false);
+					//rTrans.position = maskPositions[currentMaskSpot];
+				}
+				currentMaskSpot++;
+			}
+		}
 	}
 
 	private void CreateDummies()

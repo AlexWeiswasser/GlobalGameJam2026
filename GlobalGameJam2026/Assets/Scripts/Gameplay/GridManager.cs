@@ -6,7 +6,7 @@ public class GridManager : MonoBehaviour
 {
 	// Grid Size
 	[SerializeField] private Vector2 size;
-	[SerializeField] private GridSizeChanger gridObject;
+	private GridSizeChanger gridObject;
 
 	// The grid itself
     private GameObject[,] gridArray;
@@ -16,6 +16,8 @@ public class GridManager : MonoBehaviour
 
 	private void Awake()
 	{
+		gridObject = GameObject.Find("Grid").GetComponent<GridSizeChanger>();
+
 		gridArray = new GameObject[(int)size.x, (int)size.y];
 		gridObject.ChangeGridSize((int)size.x, (int)size.y);
 	}
