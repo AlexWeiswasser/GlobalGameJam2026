@@ -24,7 +24,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		gridManager = grid;
 		AddPosToGrid();
 
-		gameplayManager = game;
+        gameplayManager = game;
 
 		if (type > 0)
 		{

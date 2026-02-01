@@ -39,6 +39,9 @@ public class GameplayManager : MonoBehaviour
 	private int _measureCount;
 	private Coroutine danceCo = null;
 
+	// Zoomed in Camera
+	[SerializeField] public GameObject zoomedCamera;
+
 	// Dummy Sprites
 	[SerializeField] private DummySprites danceSprites;
 	[SerializeField] private DummySprites idleSprites;

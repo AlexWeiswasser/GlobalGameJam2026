@@ -595,8 +595,8 @@ RectTransform:
   m_Children:
   - {fileID: 391770669386034839}
   - {fileID: 5989145214730297773}
-  - {fileID: 5284671173838692911}
   - {fileID: 6572924368878694484}
+  - {fileID: 5284671173838692911}
   m_Father: {fileID: 7748472770338342189}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1966,6 +1966,10 @@ PrefabInstance:
       propertyPath: winCanvas
       value: 
       objectReference: {fileID: 1306576437198084956}
+    - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
+      propertyPath: zoomedCamera
+      value: 
+      objectReference: {fileID: 6858132982553208035}
     - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
       propertyPath: dummyArray.Array.size
       value: 3

@@ -11,10 +11,12 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     private GameplayManager _gameplayManager;
     [SerializeField] private int maskNumber;
     private DummyScript _previousDummy;
+    private Camera _zoomedCamera;
 
     private void Start()
     {
         _gameplayManager = Camera.main.GetComponent<GameplayManager>();
+        _zoomedCamera = _gameplayManager.zoomedCamera.GetComponent<Camera>();
         _startPosition = GetComponent<RectTransform>().anchoredPosition;
         _imageSize = GetComponent<RectTransform>().sizeDelta;
         _imageScale = transform.localScale;
@@ -46,8 +48,8 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         if (_gameplayManager.IsDancing()) return;
         bool successful = false;
 
-        Ray ray = Camera.main.ScreenPointToRay(new Vector2(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y));
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Ray ray = _zoomedCamera.ScreenPointToRay(new Vector2(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y));
+        Vector2 mousePos = _zoomedCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
 
         if (hit.collider != null)
@@ -69,8 +71,8 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                 _previousDummy.SetMask(0);
             }
             _previousDummy = dummyScript;
-            GetComponent<RectTransform>().sizeDelta = new Vector2(110, 110);
-            GetComponent<RectTransform>().anchoredPosition = new Vector2(Camera.main.WorldToScreenPoint(hit.collider.gameObject.transform.position).x - 960, Camera.main.WorldToScreenPoint(hit.collider.gameObject.transform.position).y - 540);
+            GetComponent<RectTransform>().sizeDelta = new Vector2(160, 160);
+            GetComponent<RectTransform>().anchoredPosition = new Vector2(_zoomedCamera.WorldToScreenPoint(hit.collider.gameObject.transform.position).x - 960, _zoomedCamera.WorldToScreenPoint(hit.collider.gameObject.transform.position).y - 540);
             Color color = GetComponent<Image>().color;
             color.a = 0;
             transform.localScale = new Vector2(1,1);
