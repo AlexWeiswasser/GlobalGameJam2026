@@ -285,6 +285,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f01138ee0973bfe4f8f04ed5331087a3, type: 3}
   princessOof: {fileID: 8300000, guid: afe66accca8525e4381f56de1771a978, type: 3}
   recordScratch: {fileID: 8300000, guid: 9a33521fcd61e1941b33e12bd1499df8, type: 3}
+  princeReached: {fileID: 8300000, guid: c30f6c14e1e0d8f47a8519abaf705058, type: 3}
+  placeMask: {fileID: 8300000, guid: a2687cb3038e61247bedc67d61c076d8, type: 3}
+  removeMask: {fileID: 8300000, guid: 046edbb239582b24999e9c386fcb4213, type: 3}
 --- !u!1 &8062482446469599826
 GameObject:
   m_ObjectHideFlags: 0

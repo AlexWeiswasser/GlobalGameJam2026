@@ -20,6 +20,8 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 	[SerializeField] private AudioClip princessOof;
 	[SerializeField] private AudioClip recordScratch;
 	[SerializeField] private AudioClip princeReached;
+	[SerializeField] private AudioClip placeMask;
+	[SerializeField] private AudioClip removeMask;
 
 	public void Init(Vector2 pos, GridManager grid, GameplayManager game, int type = 0)
 	{
@@ -43,7 +45,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 				transform.GetChild(1).gameObject.SetActive(true);
 			}
 
-			SetMask(type);
+			SetMask(type, false);
 		}
 	}
 
@@ -72,8 +74,21 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		return !locked && (_maskValue == 0);
 	}
 
-	public void SetMask(int type)
+	public void SetMask(int type, bool playSound = true)
 	{
+		if (playSound)
+		{
+			if (type == 0)
+			{
+				MusicManager.Instance.PlaySound(removeMask);
+			}
+			else
+			{
+				MusicManager.Instance.PlaySound(placeMask);
+			}
+		}
+
+
 		if (_maskValue != 0)
 		{
 			switch (_maskValue)
