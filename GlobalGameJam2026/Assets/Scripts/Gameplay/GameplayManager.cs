@@ -28,6 +28,7 @@ public class GameplayManager : MonoBehaviour
 	// Game Running States
 	private bool _isDancing;
 	private int _measureCount;
+	private Coroutine danceCo = null;
 
 	// Dummy Sprites
 	[SerializeField] private DummySprites sprites;
@@ -60,6 +61,32 @@ public class GameplayManager : MonoBehaviour
 		segmentTime = turnSpeed / 3;
 	}
 
+	public void ResetDance()
+	{
+		_isDancing = false;
+		if (danceCo != null)
+		{
+			StopCoroutine(danceCo);
+			danceCo = null;
+		}
+
+		for(int i = 0; i < dummies.Length; i++)
+		{
+			Vector2 offsetPosition = new Vector2(dummyArray[i].position.x + xOffset, dummyArray[i].position.y + yOffset);
+			if (dummies[i].TryGetComponent<IDummyFace>(out IDummyFace dummyFace))
+			{
+				dummyFace.SetBackToStart(offsetPosition);
+			}
+			else if (dummies[i].TryGetComponent<DummyScript>(out DummyScript dummyScript))
+			{
+				dummyScript.SetToStart(offsetPosition);
+			}
+		}
+
+		_measureCount = 0;
+		currentDummy = 0;
+	}
+
 	public void BeginDance()
 	{
 		_isDancing = true;
@@ -69,7 +96,7 @@ public class GameplayManager : MonoBehaviour
 	private void StartNewTurn()
 	{
 		_measureCount++;
-		StartCoroutine(DoTurn());
+		danceCo = StartCoroutine(DoTurn());
 	}
 
 	private IEnumerator DoTurn()

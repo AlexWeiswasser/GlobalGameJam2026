@@ -23,4 +23,14 @@ public class PrincessScript : MonoBehaviour
 		}
 		return false; 
 	}
+
+	public void SetBackToStart(Vector3 pos)
+	{
+		if (TryGetComponent<IMoveableFace>(out IMoveableFace moveFace))
+		{
+			moveFace.RemoveGridPos();
+			transform.position = pos;
+			moveFace.AddPosToGrid();
+		}
+	}
 }

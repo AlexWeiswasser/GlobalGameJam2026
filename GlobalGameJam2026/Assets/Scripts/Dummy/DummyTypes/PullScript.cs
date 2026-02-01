@@ -65,4 +65,16 @@ public class PullScript : MonoBehaviour, IDummyFace
 		}
 		return (!grid.CheckForWall(spaceToCheck));
 	}
+
+	public void SetBackToStart(Vector3 pos)
+	{
+		firstFace = null;
+
+		if (TryGetComponent<IMoveableFace>(out IMoveableFace moveFace))
+		{
+			moveFace.RemoveGridPos();
+			transform.position = pos;
+			moveFace.AddPosToGrid();
+		}
+	}
 }

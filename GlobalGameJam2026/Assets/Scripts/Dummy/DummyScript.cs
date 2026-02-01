@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class DummyScript : MonoBehaviour, IMoveableFace
 {
@@ -183,6 +184,13 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 	public Vector3 GetPosition()
 	{
 		return transform.position;
+	}
+
+	public void SetToStart(Vector3 pos)
+	{
+		RemoveGridPos();
+		transform.position = pos;
+		AddPosToGrid();
 	}
 
 	public void AddToPosition(Vector3 addition, bool finalMove = false)
