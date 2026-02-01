@@ -68,6 +68,10 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 					if (TryGetComponent<NinteyScript>(out NinteyScript nScript))
 						Destroy(nScript);
 					break;
+				case 8: // Pull
+					if (TryGetComponent<PullScript>(out PullScript pScript))
+						Destroy(pScript);
+					break;
 			}
 
 			// Turn puppet back to no mask
@@ -91,7 +95,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 				break;
 			case 3: // Princess
 				gameObject.AddComponent<PrincessScript>();
-				gameObject.GetComponent<SpriteRenderer>().color = Color.pink;
+				gameObject.GetComponent<SpriteRenderer>().color = Color.lightPink;
 				break;
 			case 4: // Flip
 				gameObject.AddComponent<FlipScript>();
@@ -108,6 +112,10 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 			case 7: // Nintey
 				gameObject.AddComponent<NinteyScript>();
 				gameObject.GetComponent<SpriteRenderer>().color = Color.orange;
+				break;
+			case 8: // Pull
+				gameObject.AddComponent<PullScript>();
+				gameObject.GetComponent<SpriteRenderer>().color = Color.deepPink;
 				break;
 		}
 		if (type > 3)

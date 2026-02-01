@@ -43,8 +43,6 @@ public class GameplayManager : MonoBehaviour
 		Vert,
 		Nintey,
 		Pull,
-		Push,
-		Clock // Don't try this one yet
 	}
 
 	[Serializable]
