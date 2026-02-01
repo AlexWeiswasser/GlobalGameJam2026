@@ -51,7 +51,8 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 			switch (_maskValue)
 			{
 				case 1: // Prince
-					break;
+                    GetComponent<SpriteRenderer>().sortingOrder = 0;
+                    break;
 				case 2: // Table
 					break;
 				case 3: // Princess
@@ -97,13 +98,14 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		switch (type)
 		{
 			case 1: // Prince
-				//gameObject.GetComponent<SpriteRenderer>().color = Color.lightBlue;
-				break;
+                    //gameObject.GetComponent<SpriteRenderer>().color = Color.lightBlue;
+                GetComponent<SpriteRenderer>().sortingOrder = 1;
+                break;
 			case 2: // Table
 				gameObject.GetComponent<SpriteRenderer>().color = Color.black;
 				break;
 			case 3: // Princess
-                GetComponent<SpriteRenderer>().sortingOrder = 1;
+                GetComponent<SpriteRenderer>().sortingOrder = 2;
                 gameObject.AddComponent<PrincessScript>();
 				//gameObject.GetComponent<SpriteRenderer>().color = Color.lightPink;
 				break;
