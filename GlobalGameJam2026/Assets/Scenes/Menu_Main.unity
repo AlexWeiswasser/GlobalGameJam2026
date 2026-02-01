@@ -1006,6 +1006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
   _Music:
+  - {fileID: 8300000, guid: c39d158161589d34d98763edc867c876, type: 3}
   - {fileID: 8300000, guid: 6bce1275788691d4fa157a0aff36b100, type: 3}
   - {fileID: 8300000, guid: 7e61c87d360d07646b89d2704aae1c58, type: 3}
   - {fileID: 8300000, guid: f8fa8b6d60d47144dbda2948f3252648, type: 3}
