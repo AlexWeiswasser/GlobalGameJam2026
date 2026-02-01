@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class PrincessScript : MonoBehaviour
 {
-	[SerializeField] private AudioClip princessCrash;
-	[SerializeField] private AudioClip recordScratch;
-
 	public bool Slay(GridManager grid, Vector2 pos)
 	{
 		GameObject possibleCollision = grid.CheckPosition(pos);
@@ -22,8 +19,7 @@ public class PrincessScript : MonoBehaviour
 				{
 					GetComponent<DummyScript>().GetGameplayManager().StopDance();
                     GetComponent<SpriteRenderer>().sprite = GetComponent<DummyScript>().princessDeathSprite;
-					MusicManager.Instance.PlaySound(princessCrash);
-					MusicManager.Instance.PlaySound(recordScratch);
+					PrincessDeathSounds();
 				}
 			}
 		}
@@ -42,7 +38,9 @@ public class PrincessScript : MonoBehaviour
 
 	private void PrincessDeathSounds()
 	{
-		MusicManager.Instance.PlaySound(princessCrash);
-		MusicManager.Instance.PlaySound(recordScratch);
+		if(TryGetComponent<DummyScript>(out DummyScript dummyScript))
+		{
+			dummyScript.PlayPrincessDeath();
+		}
 	}
 }
