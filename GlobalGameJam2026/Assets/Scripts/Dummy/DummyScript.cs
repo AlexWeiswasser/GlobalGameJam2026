@@ -199,7 +199,8 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		{
 			if (GetComponent<PrincessScript>().Slay(gridManager, transform.position + addition))
 			{
-				return;
+				transform.position += addition;
+                return;
 			}
 		}
 
@@ -208,11 +209,12 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 
 	public void SetPosition(Vector3 pos, bool finalMove = false)
 	{
-		if (GetMask() == 3 && finalMove)
+        if (GetMask() == 3 && finalMove)
 		{
 			if (GetComponent<PrincessScript>().Slay(gridManager, pos))
 			{
-				return;
+                transform.position = pos;
+                return;
 			}
 		}
 
