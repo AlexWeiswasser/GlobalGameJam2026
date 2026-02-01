@@ -2543,12 +2543,44 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 957068186935599571, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
+      propertyPath: size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 957068186935599571, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
+      propertyPath: size.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 957068186935599571, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
       propertyPath: gridObject
       value: 
       objectReference: {fileID: 1919153790}
     - target: {fileID: 4039922260390550822, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
+      propertyPath: dummyArray.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
+      propertyPath: dummyArray.Array.data[0].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
+      propertyPath: dummyArray.Array.data[1].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
+      propertyPath: dummyArray.Array.data[2].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
+      propertyPath: dummyArray.Array.data[1].position.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
+      propertyPath: dummyArray.Array.data[2].position.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7677893055342231989, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
       propertyPath: m_LocalPosition.x
