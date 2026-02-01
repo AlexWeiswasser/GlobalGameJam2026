@@ -305,7 +305,7 @@ PrefabInstance:
     - target: {fileID: 6488935492017149282, guid: 010cb1510bebb3146b762fb7b8fdd3c7, type: 3}
       propertyPath: _levelData
       value: 
-      objectReference: {fileID: 11400000, guid: 608cb8735becf0f4b8a42d24bae1cad6, type: 2}
+      objectReference: {fileID: 11400000, guid: 812cafc7748007245b549548d920cbe3, type: 2}
     - target: {fileID: 6488935492017149282, guid: 010cb1510bebb3146b762fb7b8fdd3c7, type: 3}
       propertyPath: _sceneLoaderScript
       value: 
@@ -1042,7 +1042,7 @@ PrefabInstance:
     - target: {fileID: 6488935492017149282, guid: 010cb1510bebb3146b762fb7b8fdd3c7, type: 3}
       propertyPath: _levelData
       value: 
-      objectReference: {fileID: 11400000, guid: 608cb8735becf0f4b8a42d24bae1cad6, type: 2}
+      objectReference: {fileID: 11400000, guid: 1a38f1c8267e22c439946e8fb0313c28, type: 2}
     - target: {fileID: 6488935492017149282, guid: 010cb1510bebb3146b762fb7b8fdd3c7, type: 3}
       propertyPath: _sceneLoaderScript
       value: 

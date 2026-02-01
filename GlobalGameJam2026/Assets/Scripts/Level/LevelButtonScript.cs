@@ -49,7 +49,16 @@ public class LevelButtonScript : MonoBehaviour
 
             if (isUnlocked)
             {
-                StartCoroutine(RevealThatThing());
+                if (LevelManager.Instance.revealedLevels.Contains(_levelData.levelID))
+                {
+                    _image.color = new Color(1f, 1f, 1f);
+                    transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.black;
+                    _button.onClick.AddListener(LoadThatScene);
+                }
+                else
+                {
+                    StartCoroutine(RevealThatThing());
+                }
             }
             else
             {
@@ -74,5 +83,7 @@ public class LevelButtonScript : MonoBehaviour
         GameObject ring = Instantiate(_ringPrefab, transform.parent);
         ring.GetComponent<RectTransform>().anchoredPosition = this.GetComponent<RectTransform>().anchoredPosition;
         _button.onClick.AddListener(LoadThatScene);
+        if (!LevelManager.Instance.revealedLevels.Contains(_levelData.levelID))
+            LevelManager.Instance.revealedLevels.Add(_levelData.levelID);
     }
 }
