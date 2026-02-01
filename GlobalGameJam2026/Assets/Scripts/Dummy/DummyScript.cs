@@ -42,6 +42,12 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		}
 	}
 
+	public void PlayBump()
+	{
+		int rand = Random.Range(0, dummySounds.Length);
+		MusicManager.Instance.PlaySound(dummySounds[rand]);
+	}
+
 	public bool IsValidMaskTarget()
 	{
 		return !locked && (_maskValue == 0);
