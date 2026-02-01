@@ -66,7 +66,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 	public void PlayPrincessDeath()
 	{
 		MusicManager.Instance.PlaySound(princessOof);
-		MusicManager.Instance.PlaySound(recordScratch);
+		//MusicManager.Instance.PlaySound(recordScratch);
 	}
 
 	public bool IsValidMaskTarget()
@@ -190,7 +190,6 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 	{
 		int ySize = gridManager.GetHeight();
 		int dummyHeight = (int)(transform.position.y + 3); // 3 for offset
-		Debug.Log(dummyHeight);
 		GetComponent<SpriteRenderer>().sortingOrder = (ySize - dummyHeight);
 
 		if(GetMask() == 1)

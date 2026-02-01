@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonSound : MonoBehaviour
+public class ButtonSound : MonoBehaviour, IPointerEnterHandler
 {
     [SerializeField] private AudioClip ButtonHover;
     [SerializeField] private AudioClip ButtonPress;
@@ -14,7 +14,6 @@ public class ButtonSound : MonoBehaviour
     
     public void OnPointerEnter(PointerEventData eventData)
     {
-        MusicManager.Instance.PlaySound(ButtonHover);
-
+		MusicManager.Instance.PlaySound(ButtonHover);
     }
 }

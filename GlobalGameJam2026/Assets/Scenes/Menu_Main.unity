@@ -482,6 +482,7 @@ GameObject:
   - component: {fileID: 1394851767}
   - component: {fileID: 1394851766}
   - component: {fileID: 1394851765}
+  - component: {fileID: 1394851768}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -565,6 +566,18 @@ MonoBehaviour:
           m_StringArgument: Menu_LevelSelect
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1394851768}
+        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
+        m_MethodName: PlayPressSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1394851766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,6 +616,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394851763}
   m_CullTransparentMesh: 1
+--- !u!114 &1394851768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394851763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 852833dd4c8b7094dafc1922696aff80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
+  ButtonHover: {fileID: 8300000, guid: c25f119221eb69d409b2d685820b534d, type: 3}
+  ButtonPress: {fileID: 8300000, guid: d0726d3d5300ab8438521c6c304d0982, type: 3}
 --- !u!1 &1398211582
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,6 +779,7 @@ GameObject:
   - component: {fileID: 1570352184}
   - component: {fileID: 1570352183}
   - component: {fileID: 1570352182}
+  - component: {fileID: 1570352185}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -835,6 +863,18 @@ MonoBehaviour:
           m_StringArgument: Menu_LevelSelect
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1570352185}
+        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
+        m_MethodName: PlayPressSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1570352183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -873,6 +913,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570352180}
   m_CullTransparentMesh: 1
+--- !u!114 &1570352185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570352180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 852833dd4c8b7094dafc1922696aff80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
+  ButtonHover: {fileID: 8300000, guid: c25f119221eb69d409b2d685820b534d, type: 3}
+  ButtonPress: {fileID: 8300000, guid: d0726d3d5300ab8438521c6c304d0982, type: 3}
 --- !u!1 &1693233004
 GameObject:
   m_ObjectHideFlags: 0
