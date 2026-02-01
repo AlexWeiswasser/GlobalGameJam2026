@@ -219,7 +219,11 @@ PrefabInstance:
       propertyPath: size.x
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 6
+=======
+      value: 3
+>>>>>>> Stashed changes
 =======
       value: 3
 >>>>>>> Stashed changes
