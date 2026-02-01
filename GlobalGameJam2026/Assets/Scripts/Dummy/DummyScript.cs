@@ -105,8 +105,8 @@ public class DummyScript : MonoBehaviour, IMoveableFace
                 GetComponent<SpriteRenderer>().sortingOrder = 3;
                 break;
 			case 2: // Table
-				gameObject.GetComponent<SpriteRenderer>().color = Color.black;
-				break;
+                    //gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+                break;
 			case 3: // Princess
                 GetComponent<SpriteRenderer>().sortingOrder = 4;
                 gameObject.AddComponent<PrincessScript>();
@@ -114,15 +114,15 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 				break;
 			case 4: // Flip
 				gameObject.AddComponent<FlipScript>();
-				gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+				//gameObject.GetComponent<SpriteRenderer>().color = Color.red;
 				break;
 			case 5: // Hori
 				gameObject.AddComponent<HoriScript>();
-				gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+				//gameObject.GetComponent<SpriteRenderer>().color = Color.green;
 				break;
 			case 6: // Vert
 				gameObject.AddComponent<VertScript>();
-				gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+				//gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
 				break;
 			case 7: // Nintey
 				gameObject.AddComponent<NinteyScript>();
@@ -142,6 +142,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		{
 			AddToOrder();
 		}
+        gameplayManager.ChangeSpriteOfAnimation(0, this.gameObject, true);
         gameplayManager.UpdateAllOrderIndicators();
     }
 
