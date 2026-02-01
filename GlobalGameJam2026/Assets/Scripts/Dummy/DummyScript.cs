@@ -31,6 +31,8 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 
         gameplayManager = game;
 
+		FixSortOrder();
+
 		if (type > 0)
 		{
 			locked = true;
@@ -155,12 +157,6 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 				break;
 
 		}
-		if (type >= 2 && type != 3)
-		{
-			int ySize = gridManager.GetHeight(); // Add three for offset
-			int dummyHeight = (int)(transform.position.y + 3); // 3 for offset
-			GetComponent<SpriteRenderer>().sortingOrder = ((-ySize) + dummyHeight);
-		}
 		if (type > 3)
 		{
 			AddToOrder();
@@ -168,6 +164,23 @@ public class DummyScript : MonoBehaviour, IMoveableFace
         gameplayManager.ChangeSpriteOfAnimation(0, this.gameObject, true);
         gameplayManager.UpdateAllOrderIndicators();
     }
+
+	private void FixSortOrder()
+	{
+		int ySize = gridManager.GetHeight();
+		int dummyHeight = (int)(transform.position.y + 3); // 3 for offset
+		Debug.Log(dummyHeight);
+		GetComponent<SpriteRenderer>().sortingOrder = (ySize - dummyHeight);
+
+		if(GetMask() == 1)
+		{
+			GetComponent<SpriteRenderer>().sortingOrder = 3;
+		}
+		else if(GetMask() == 3)
+		{
+			GetComponent<SpriteRenderer>().sortingOrder = 4;
+		}
+	}
 
 	public int GetMask()
 	{
@@ -254,6 +267,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		}
 
 		transform.position += addition;
+		FixSortOrder();
 	}
 
 	public void SetPosition(Vector3 pos, bool finalMove = false)
@@ -269,6 +283,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		}
 
 		transform.position = pos;
+		FixSortOrder();
 	}
 
 	public void UpdateOrderIndicator()
