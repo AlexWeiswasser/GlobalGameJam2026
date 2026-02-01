@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelButtonScript
   _levelData: {fileID: 0}
   _sceneLoaderScript: {fileID: 0}
+  _ringPrefab: {fileID: 562125552562408547, guid: ad9f88b57ef85864395b2a06ba6fd273, type: 3}
 --- !u!1 &5652445600579418787
 GameObject:
   m_ObjectHideFlags: 0

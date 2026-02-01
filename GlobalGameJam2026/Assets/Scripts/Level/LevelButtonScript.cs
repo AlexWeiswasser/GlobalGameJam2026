@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,6 +8,7 @@ public class LevelButtonScript : MonoBehaviour
 {
     [SerializeField] private LevelData _levelData;
     [SerializeField] private SceneLoaderScript _sceneLoaderScript;
+    [SerializeField] private GameObject _ringPrefab;
     private Image _image;
     private Button _button;
     void Start()
@@ -20,7 +22,10 @@ public class LevelButtonScript : MonoBehaviour
         }
         else
         {
+            _image.color = new Color(0f, 0f, 0f);
+            transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0f, 0f, 0f);
             bool isUnlocked = false;
+
             if (_levelData.requiredLevelCompletions != 0)
             {
                 int levelsCompleted = 0;
@@ -44,9 +49,7 @@ public class LevelButtonScript : MonoBehaviour
 
             if (isUnlocked)
             {
-                _image.color = new Color(1f, 1f, 1f);
-                transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.black;
-                _button.onClick.AddListener(LoadThatScene);
+                StartCoroutine(RevealThatThing());
             }
             else
             {
@@ -61,5 +64,15 @@ public class LevelButtonScript : MonoBehaviour
         LevelManager.Instance.levelWeAreLoading = _levelData.sceneName;
         LevelManager.Instance.currentLevelID = _levelData.levelID;
         _sceneLoaderScript.LoadScene("Menu_Inbetween");
+    }
+
+    IEnumerator RevealThatThing()
+    {
+        yield return new WaitForSeconds(2);
+        _image.color = new Color(1f, 1f, 1f);
+        transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.black;
+        GameObject ring = Instantiate(_ringPrefab, transform.parent);
+        ring.GetComponent<RectTransform>().anchoredPosition = this.GetComponent<RectTransform>().anchoredPosition;
+        _button.onClick.AddListener(LoadThatScene);
     }
 }
