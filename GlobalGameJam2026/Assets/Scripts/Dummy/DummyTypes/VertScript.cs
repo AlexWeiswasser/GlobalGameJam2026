@@ -25,9 +25,18 @@ public class VertScript : MonoBehaviour, IDummyFace
 			if (firstFace != null)
 			{
 				firstFace.RemoveGridPos();
+				//Vector2 direction = transform.position = firstFace.GetPosition();
+				//if (direction.x > 0)
+				//{
+				//	GetComponent<SpriteRenderer>().flipX = true;
+				//}
+				//else
+				//{
+				//	GetComponent<SpriteRenderer>().flipX = false;
+				//}
 			}
 
-			if (up)
+            if (up)
 			{
 				Vector2 newLocation = transform.position + new Vector3(0, 1);
 				if (!CanMoveSelf(newLocation, grid))
@@ -45,8 +54,20 @@ public class VertScript : MonoBehaviour, IDummyFace
 			}
 		}
 		else if (actionNum == 2)
-		{ 
-			if (up)
+		{
+			if (firstFace != null)
+			{
+				//Vector2 direction = transform.position = firstFace.GetPosition();
+				//if (direction.x > 0)
+				//{
+				//	GetComponent<SpriteRenderer>().flipX = true;
+				//}
+				//else
+				//{
+				//	GetComponent<SpriteRenderer>().flipX = false;
+				//}
+			}
+            if (up)
 			{
 				Vector2 newLocation = transform.position + new Vector3(0, 1);
 				if (CanMoveSelf(newLocation, grid))
@@ -79,6 +100,16 @@ public class VertScript : MonoBehaviour, IDummyFace
 				}
 				else
 				{
+					//Vector2 direction = transform.position = firstFace.GetPosition();
+					//if (direction.x > 0)
+					//{
+					//	GetComponent<SpriteRenderer>().flipX = true;
+					//}
+					//else
+					//{
+					//	GetComponent<SpriteRenderer>().flipX = false;
+					//}
+
 					if (up)
 					{
 						Vector2 newLocation = firstFace.GetPosition() + new Vector3(0, 1);

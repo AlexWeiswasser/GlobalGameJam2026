@@ -223,7 +223,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.3}
-    oldSize: {x: 0.44333333, y: 1.2316667}
+    oldSize: {x: 0.40923077, y: 1.1369231}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -278,6 +278,9 @@ MonoBehaviour:
   - {fileID: -1932727977, guid: a2189c8da53b6cb4d994fb5a79279569, type: 3}
   - {fileID: 1901149868, guid: a2189c8da53b6cb4d994fb5a79279569, type: 3}
   princessDeathSprite: {fileID: -8886395223986233862, guid: aee07945ebdf89f45a04ee9c75478cdc, type: 3}
+  dummySounds: []
+  princessCrash: {fileID: 0}
+  recordScratch: {fileID: 0}
 --- !u!1 &8062482446469599826
 GameObject:
   m_ObjectHideFlags: 0
