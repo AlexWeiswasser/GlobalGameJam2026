@@ -12,7 +12,11 @@ public class MusicManager : MonoBehaviour
     // MUSIC AND THE LIKE
     [SerializeField] private AudioClip[] _Music;
     private AudioSource[] sources;
+    private AudioSource[] _sfxSources;
+    private int currentAudioSourceIndex = 0;
 
+    //SOUNDS
+    [SerializeField] private AudioClip _HappyMusicEnd;
 
     /*
      * 0 - happy intro
@@ -44,9 +48,22 @@ public class MusicManager : MonoBehaviour
         /*AudioMixerGroup musicGroup = null;
         var groups = mixer.FindMatchingGroups("Music");
         if (groups.Length > 0) musicGroup = groups[0];*/
-
+        
+        //***** SOUND *****
         sources = new AudioSource[12];
-        for (int i = 0; i < sources.Length; i++)
+        _sfxSources = new AudioSource[20];
+        for (int i = 0; i < _sfxSources.Length; i++)
+        {
+            _sfxSources[i] = this.gameObject.AddComponent<AudioSource>();
+            _sfxSources[i].playOnAwake = false;
+            //_sfxSources[i].outputAudioMixerGroup = sfxGroup; //Bring back when there is a mixer
+        }
+        _sfxSources[0].clip = _HappyMusicEnd;
+        //******** MUSIC ********
+        sources[0] = this.gameObject.AddComponent<AudioSource>();
+        sources[0].playOnAwake = false;
+        sources[0].loop = false;
+        for (int i = 1; i < sources.Length; i++)
         {
             sources[i] = this.gameObject.AddComponent<AudioSource>();
             sources[i].playOnAwake = false;
@@ -61,13 +78,13 @@ public class MusicManager : MonoBehaviour
         {
             sources[i].volume = 0f;
         }
-        sources[0].volume = 1f;
         sources[0].Play();
+        PlayIntro();
     }
     public void PlayWaltz()
     {
         sources[0].Stop();
-
+        StopAllCoroutines();
         for (int i = 1; i < sources.Length; i++)
         {
             sources[i].volume = 0f;
@@ -79,6 +96,15 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    IEnumerator IntroLength()
+    {
+        yield return new WaitWhile(() => sources[0].isPlaying);
+        Debug.Log("Play the sound");
+        _sfxSources[0].Play();
+        PlaySound(_HappyMusicEnd);
+        StartCoroutine(IntroLength());
+    }
+
     public void PlayIntro()
     {
         for(int i = 1; i < sources.Length; i++)
@@ -88,6 +114,7 @@ public class MusicManager : MonoBehaviour
         }
         sources[0].volume = 1f;
         sources[0].Play();
+        StartCoroutine(IntroLength());
     }
     public void AddMusic(int maskNumber) //Call this when a mask is dragged onto a dummy
     {
@@ -114,6 +141,14 @@ public class MusicManager : MonoBehaviour
         {
             sources[i].volume = 0f;
         }
+    }
+
+    public void PlaySound(AudioClip Sound)
+    {
+        if (currentAudioSourceIndex >= 20)
+            currentAudioSourceIndex = 0;
+        currentAudioSourceIndex++;
+        _sfxSources[currentAudioSourceIndex].clip = Sound;
     }
 
     #region Volume Controls
