@@ -5147,7 +5147,7 @@ GameObject:
   - component: {fileID: 1432077636}
   - component: {fileID: 1432077635}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Princess
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
