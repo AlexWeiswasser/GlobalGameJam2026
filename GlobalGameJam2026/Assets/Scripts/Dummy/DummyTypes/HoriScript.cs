@@ -84,7 +84,7 @@ public class HoriScript : MonoBehaviour, IDummyFace
 						Vector2 newLocation = firstFace.GetPosition() + new Vector3(1, 0);
 						if (CanMoveObject(newLocation, grid))
 						{
-							firstFace.SetPosition(newLocation);
+							firstFace.SetPosition(newLocation, true);
 							firstFace.AddPosToGrid();
 						}
 						else
@@ -97,7 +97,7 @@ public class HoriScript : MonoBehaviour, IDummyFace
 						Vector2 newLocation = firstFace.GetPosition() + new Vector3(-1, 0);
 						if (CanMoveObject(newLocation, grid))
 						{
-							firstFace.SetPosition(newLocation);
+							firstFace.SetPosition(newLocation, true);
 							firstFace.AddPosToGrid();
 						}
 						else

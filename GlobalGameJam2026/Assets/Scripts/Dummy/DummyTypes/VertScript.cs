@@ -84,7 +84,7 @@ public class VertScript : MonoBehaviour, IDummyFace
 						Vector2 newLocation = firstFace.GetPosition() + new Vector3(0, 1);
 						if (CanMoveObject(newLocation, grid))
 						{
-							firstFace.SetPosition(newLocation);
+							firstFace.SetPosition(newLocation, true);
 							firstFace.AddPosToGrid();
 						}
 						else
@@ -97,7 +97,7 @@ public class VertScript : MonoBehaviour, IDummyFace
 						Vector2 newLocation = firstFace.GetPosition() + new Vector3(0, -1);
 						if (CanMoveObject(newLocation, grid))
 						{
-							firstFace.SetPosition(newLocation);
+							firstFace.SetPosition(newLocation, true);
 							firstFace.AddPosToGrid();
 						}
 						else
