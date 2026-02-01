@@ -72,6 +72,10 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 					if (TryGetComponent<PullScript>(out PullScript pScript))
 						Destroy(pScript);
 					break;
+				case 9: // xFlip
+					if (TryGetComponent<xFlipScript>(out xFlipScript xScript))
+						Destroy(xScript);
+					break;
 			}
 
 			// Turn puppet back to no mask
@@ -117,6 +121,11 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 				gameObject.AddComponent<PullScript>();
 				gameObject.GetComponent<SpriteRenderer>().color = Color.deepPink;
 				break;
+			case 9: // xFlip
+				gameObject.AddComponent<xFlipScript>();
+				gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+				break;
+
 		}
 		if (type > 3)
 		{

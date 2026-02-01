@@ -67,6 +67,22 @@ public class GridManager : MonoBehaviour
 		return moveableFace;
 	}
 
+	public IMoveableFace CheckX(Vector2 pos)
+	{
+		IMoveableFace moveableFace = null;
+
+		GameObject[] temps = new GameObject[4];
+
+		temps[0] = CheckPosition(pos + new Vector2(1, 1));
+		temps[1] = CheckPosition(pos + new Vector2(1, -1));
+		temps[2] = CheckPosition(pos + new Vector2(-1, 1));
+		temps[3] = CheckPosition(pos + new Vector2(-1, -1));
+
+		moveableFace = WhosOnFirst(temps);
+
+		return moveableFace;
+	}
+
 	public IMoveableFace CheckCrossInf(Vector2 pos)
 	{
 		IMoveableFace moveableFace = null;

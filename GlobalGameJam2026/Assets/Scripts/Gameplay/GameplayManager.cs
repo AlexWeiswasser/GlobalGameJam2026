@@ -43,6 +43,7 @@ public class GameplayManager : MonoBehaviour
 		Vert,
 		Nintey,
 		Pull,
+		xFlip
 	}
 
 	[Serializable]
