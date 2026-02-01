@@ -128,6 +128,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 583689383068996670, guid: a73bd7ad6a7f59149a3dc4c1ddb23a6a, type: 3}
+      propertyPath: allowedTurns
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 583689383068996670, guid: a73bd7ad6a7f59149a3dc4c1ddb23a6a, type: 3}
       propertyPath: dummyArray.Array.size
       value: 5
       objectReference: {fileID: 0}

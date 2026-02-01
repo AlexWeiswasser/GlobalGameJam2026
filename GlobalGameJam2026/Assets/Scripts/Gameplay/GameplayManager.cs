@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameplayManager : MonoBehaviour
@@ -62,6 +63,7 @@ public class GameplayManager : MonoBehaviour
 	}
 
 	// Timer stuff
+	[SerializeField] private TextMeshProUGUI turnsText;
 	[SerializeField] private int allowedTurns;
 	private int turnsTaken = 0;
 
@@ -81,6 +83,8 @@ public class GameplayManager : MonoBehaviour
 
 	private void Start()
 	{
+		turnsText.text = $"Turns left: {allowedTurns - turnsTaken}";
+
 		SpawnMasks();
 		CreateDummies();
 
@@ -133,6 +137,8 @@ public class GameplayManager : MonoBehaviour
 
 	private IEnumerator DoTurn()
 	{
+		turnsText.text = $"Turns left: {allowedTurns - turnsTaken}";
+
 		// Animation One
 		ActivateDummies(1);
 		yield return new WaitForSeconds(segmentTime);
