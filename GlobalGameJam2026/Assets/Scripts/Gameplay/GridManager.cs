@@ -18,10 +18,12 @@ public class GridManager : MonoBehaviour
 
 	private void Awake()
 	{
-		float additionToCamHeight = ((size.y - 4) * .5f);
-		Vector3 newCamHeight = scaleCam.transform.position;
-		newCamHeight.y += additionToCamHeight;
-		scaleCam.transform.position = newCamHeight;
+        float additionToCamHorizontal = ((size.x - 4) * .1f);
+        float additionToCamHeight = ((size.y - 4) * .5f);
+		Vector3 newCamPos = scaleCam.transform.position;
+		newCamPos.x += additionToCamHorizontal;
+		newCamPos.y += additionToCamHeight;
+		scaleCam.transform.position = newCamPos;
 
 		gridArray = new GameObject[(int)size.x, (int)size.y];
 		gridObject.ChangeGridSize((int)size.x, (int)size.y);
