@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6168277383492217386}
   - component: {fileID: 5739740958932532928}
   - component: {fileID: 6488935492017149282}
+  - component: {fileID: 757722591616807695}
   m_Layer: 5
   m_Name: LevelButton
   m_TagString: Untagged
@@ -137,6 +138,20 @@ MonoBehaviour:
   _levelData: {fileID: 0}
   _sceneLoaderScript: {fileID: 0}
   _ringPrefab: {fileID: 562125552562408547, guid: ad9f88b57ef85864395b2a06ba6fd273, type: 3}
+--- !u!114 &757722591616807695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64490104124469383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 852833dd4c8b7094dafc1922696aff80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
+  ButtonHover: {fileID: 8300000, guid: d0726d3d5300ab8438521c6c304d0982, type: 3}
+  ButtonPress: {fileID: 8300000, guid: c25f119221eb69d409b2d685820b534d, type: 3}
 --- !u!1 &5652445600579418787
 GameObject:
   m_ObjectHideFlags: 0
