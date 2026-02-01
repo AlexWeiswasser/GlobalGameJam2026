@@ -15,6 +15,11 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 	[SerializeField] private Sprite[] _orderIndicatorSprites;
 	public Sprite princessDeathSprite;
 
+	// Sounds
+	[SerializeField] private AudioClip[] dummySounds;
+	[SerializeField] private AudioClip princessCrash;
+	[SerializeField] private AudioClip recordScratch;
+	
 	public void Init(Vector2 pos, GridManager grid, GameplayManager game, int type = 0)
 	{
 		Vector3 posVector = pos;

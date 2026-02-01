@@ -1018,6 +1018,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 886b87ee28918744bbc69b2c4f55efb4, type: 3}
   - {fileID: 8300000, guid: 696e08dab2584e741abecf01386b988d, type: 3}
   - {fileID: 8300000, guid: c5700f4b7bba19e42a7c357f703c6a38, type: 3}
+  _HappyMusicEnd: {fileID: 8300000, guid: 1522ba7fb74e3fe4fb376e7c86ba50df, type: 3}
 --- !u!4 &1722387886
 Transform:
   m_ObjectHideFlags: 0
