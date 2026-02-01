@@ -147,7 +147,9 @@ public class GameplayManager : MonoBehaviour
 				if(newMask.TryGetComponent<RectTransform>(out RectTransform rTrans))
 				{
 					newMask.transform.SetParent(canvas.transform, false);
-					//rTrans.position = maskPositions[currentMaskSpot];
+					rTrans.position = maskPositions[currentMaskSpot];
+					Vector3 adjustment = new Vector2(Screen.width / 2, Screen.height / 2);
+					rTrans.position += adjustment;
 				}
 				currentMaskSpot++;
 			}
