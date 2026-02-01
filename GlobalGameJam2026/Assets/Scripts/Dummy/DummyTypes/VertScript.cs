@@ -51,9 +51,22 @@ public class VertScript : MonoBehaviour, IDummyFace
 				Vector2 newLocation = transform.position + new Vector3(0, 1);
 				if (CanMoveSelf(newLocation, grid))
 				{
+					GameObject possibleCollision = grid.CheckPosition(newLocation);
+
 					myFace.RemoveGridPos();
 					transform.position = newLocation;
 					myFace.AddPosToGrid();
+
+					if (possibleCollision != null)
+					{
+						if (possibleCollision.TryGetComponent<IMoveableFace>(out IMoveableFace moveableFace))
+						{
+							if (moveableFace.GetMask() == 3)
+							{
+								moveableFace.SetPosition(newLocation, true);
+							}
+						}
+					}
 				}
 			}
 			else
@@ -61,9 +74,22 @@ public class VertScript : MonoBehaviour, IDummyFace
 				Vector2 newLocation = transform.position + new Vector3(0, -1);
 				if (CanMoveSelf(newLocation, grid))
 				{
+					GameObject possibleCollision = grid.CheckPosition(newLocation);
+
 					myFace.RemoveGridPos();
 					transform.position = newLocation;
 					myFace.AddPosToGrid();
+
+					if (possibleCollision != null)
+					{
+						if (possibleCollision.TryGetComponent<IMoveableFace>(out IMoveableFace moveableFace))
+						{
+							if (moveableFace.GetMask() == 3)
+							{
+								moveableFace.SetPosition(newLocation, true);
+							}
+						}
+					}
 				}
 			}
 		}
