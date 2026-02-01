@@ -1760,11 +1760,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
       propertyPath: dummyArray.Array.data[1].position.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
       propertyPath: dummyArray.Array.data[2].position.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7677893055342231989, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
       propertyPath: m_LocalPosition.x

@@ -158,6 +158,11 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		}
 	}
 
+	public bool GetLocked()
+	{
+		return locked;
+	}
+
 	public void RemoveGridPos()
 	{
 		gridManager.ClearPos((Vector2)transform.position);
@@ -190,6 +195,10 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 
 	public void SetToStart(Vector3 pos)
 	{
+		if (locked)
+		{
+			transform.GetChild(1).gameObject.SetActive(true);
+		}
 		RemoveGridPos();
 		transform.position = pos;
 		AddPosToGrid();
