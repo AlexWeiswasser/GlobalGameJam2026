@@ -133,7 +133,7 @@ public class VertScript : MonoBehaviour, IDummyFace
 		{
 			if (possibleCollision.TryGetComponent<IMoveableFace>(out IMoveableFace moveableFace))
 			{
-				if (moveableFace.GetMask() != 2)
+				if (moveableFace.GetMask() != 3)
 				{
 					return false;
 				}
