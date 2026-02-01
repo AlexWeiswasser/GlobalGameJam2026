@@ -97,7 +97,6 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                 _previousDummy.SetMask(0);
             }
             _previousDummy = null;
-            Debug.Log("Drag Unsuccessful");
             GetComponent<RectTransform>().anchoredPosition = _startPosition;
             GetComponent<RectTransform>().sizeDelta = _imageSize;
             transform.localScale = _imageScale;

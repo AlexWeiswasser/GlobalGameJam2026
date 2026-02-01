@@ -392,7 +392,6 @@ public class GameplayManager : MonoBehaviour
 	public void ChangeMasksPlaced(int amount)
 	{
 		_masksPlaced += amount;
-		Debug.Log("Masks Placed: " + _masksPlaced);
 	}
 
 	public int GetMasksPlaced()
