@@ -255,7 +255,6 @@ public class GameplayManager : MonoBehaviour
 		{
             dummy.GetComponent<SpriteRenderer>().sprite = danceSprites.sprites[dummy.GetComponent<DummyScript>().GetMask()].sprite[index];
         }
-		Debug.Log(dummy.GetComponent<DummyScript>().GetMask());
 	}
 
 	public void WinLevel()
