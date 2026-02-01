@@ -431,7 +431,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -750, y: 50}
+  m_AnchoredPosition: {x: -692, y: 50}
   m_SizeDelta: {x: 525, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &548316065069943699
@@ -505,8 +505,8 @@ RectTransform:
   m_Children:
   - {fileID: 391770669386034839}
   - {fileID: 5989145214730297773}
-  - {fileID: 6572924368878694484}
   - {fileID: 5284671173838692911}
+  - {fileID: 6572924368878694484}
   m_Father: {fileID: 7748472770338342189}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1806,7 +1806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7932273231312027860, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -750
+      value: -692
       objectReference: {fileID: 0}
     - target: {fileID: 7932273231312027860, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1890,6 +1890,22 @@ PrefabInstance:
     - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
       propertyPath: dummyArray.Array.data[2].type
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
+      propertyPath: maskPositions.Array.data[0].x
+      value: -805
+      objectReference: {fileID: 0}
+    - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
+      propertyPath: maskPositions.Array.data[1].x
+      value: -580
+      objectReference: {fileID: 0}
+    - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
+      propertyPath: maskPositions.Array.data[2].x
+      value: -805
+      objectReference: {fileID: 0}
+    - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
+      propertyPath: maskPositions.Array.data[3].x
+      value: -580
       objectReference: {fileID: 0}
     - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
       propertyPath: dummyArray.Array.data[1].position.y
@@ -2129,7 +2145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7932273231312027860, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -750
+      value: -692
       objectReference: {fileID: 0}
     - target: {fileID: 7932273231312027860, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
       propertyPath: m_AnchoredPosition.y
