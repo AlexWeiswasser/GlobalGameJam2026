@@ -4462,8 +4462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852833dd4c8b7094dafc1922696aff80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
-  ButtonHover: {fileID: 8300000, guid: c25f119221eb69d409b2d685820b534d, type: 3}
-  ButtonPress: {fileID: 8300000, guid: d0726d3d5300ab8438521c6c304d0982, type: 3}
+  ButtonHover: {fileID: 8300000, guid: d0726d3d5300ab8438521c6c304d0982, type: 3}
+  ButtonPress: {fileID: 8300000, guid: c25f119221eb69d409b2d685820b534d, type: 3}
 --- !u!1 &994552517
 GameObject:
   m_ObjectHideFlags: 0
