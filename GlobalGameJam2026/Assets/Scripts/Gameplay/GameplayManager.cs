@@ -22,14 +22,14 @@ public class GameplayManager : MonoBehaviour
 	[SerializeField] private MaskChoice[] maskChoices;
 	[SerializeField] private Vector2[] maskPositions;
 	[SerializeField] private GameObject[] maskPrefabs;
-	[SerializeField] private GameObject winCanvas;
 
 	// Dummy Order
 	private List<GameObject> orderList = new List<GameObject>();
 	private int currentDummy = 0;
 
 	// Other Caching
-	private Canvas canvas;
+	[SerializeField] private Canvas canvas;
+	[SerializeField] private GameObject winCanvas;
 
 	// Script Caching
 	GridManager gridManager;
@@ -74,8 +74,6 @@ public class GameplayManager : MonoBehaviour
 
 	private void Start()
 	{
-		canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-
 		SpawnMasks();
 		CreateDummies();
 
@@ -165,6 +163,8 @@ public class GameplayManager : MonoBehaviour
 	private void CreateDummies()
 	{
 		gridManager = GetComponent<GridManager>();
+		gridManager.SetOffset(new Vector2(xOffset, yOffset)); 
+
 		dummies = new GameObject[dummyArray.Length];
 
 		for (int i = 0; i < dummyArray.Length; i++)

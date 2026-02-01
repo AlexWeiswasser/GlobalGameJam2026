@@ -16,10 +16,15 @@ public class GridManager : MonoBehaviour
 
 	private void Awake()
 	{
-
 		gridArray = new GameObject[(int)size.x, (int)size.y];
 		gridObject.ChangeGridSize((int)size.x, (int)size.y);
 	}
+
+	public void SetOffset(Vector2 adjustment)
+	{
+		offset = adjustment;
+	}
+
 
 	public bool CheckForWall(Vector2 pos)
 	{

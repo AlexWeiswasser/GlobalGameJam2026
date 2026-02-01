@@ -1706,6 +1706,10 @@ PrefabInstance:
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 5314916338418907032}
+    - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
       propertyPath: winCanvas
       value: 
       objectReference: {fileID: 1306576437198084956}
@@ -1727,11 +1731,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
       propertyPath: dummyArray.Array.data[1].position.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6430721024068384130, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
       propertyPath: dummyArray.Array.data[2].position.y
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7677893055342231989, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
       propertyPath: m_LocalPosition.x
