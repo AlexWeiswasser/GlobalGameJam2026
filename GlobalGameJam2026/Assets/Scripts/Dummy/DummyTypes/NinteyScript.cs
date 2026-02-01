@@ -6,10 +6,10 @@ public class NinteyScript : MonoBehaviour, IDummyFace
 	private IMoveableFace firstFace = null;
 	private Vector3[] directions = new Vector3[]
 	{
-		new Vector3(-1, 0, 0),
-		new Vector3(0, 1, 0),
 		new Vector3(1, 0, 0),
-		new Vector3(0, -1, 0)
+		new Vector3(0, -1, 0),
+		new Vector3(-1, 0, 0),
+		new Vector3(0, 1, 0)
 	};
 	private int arrayDirection;
 
@@ -52,6 +52,7 @@ public class NinteyScript : MonoBehaviour, IDummyFace
 					}
 					else
 					{
+						firstFace.AddPosToGrid();
 						firstFace = null;
 					}
 				}

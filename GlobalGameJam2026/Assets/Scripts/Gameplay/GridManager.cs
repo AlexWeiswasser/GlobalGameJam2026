@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
 
@@ -66,6 +67,55 @@ public class GridManager : MonoBehaviour
 		return moveableFace;
 	}
 
+	public IMoveableFace CheckX(Vector2 pos)
+	{
+		IMoveableFace moveableFace = null;
+
+		GameObject[] temps = new GameObject[4];
+
+		temps[0] = CheckPosition(pos + new Vector2(1, 1));
+		temps[1] = CheckPosition(pos + new Vector2(1, -1));
+		temps[2] = CheckPosition(pos + new Vector2(-1, 1));
+		temps[3] = CheckPosition(pos + new Vector2(-1, -1));
+
+		moveableFace = WhosOnFirst(temps);
+
+		return moveableFace;
+	}
+
+	public IMoveableFace CheckCrossInf(Vector2 pos)
+	{
+		IMoveableFace moveableFace = null;
+
+		List<GameObject> temps = new List<GameObject>();
+
+		GetAll(pos, new Vector2(1, 0), temps);
+		GetAll(pos, new Vector2(0, 1), temps);
+		GetAll(pos, new Vector2(-1, 0), temps);
+		GetAll(pos, new Vector2(0, -1), temps);
+
+		moveableFace = WhosOnFirst(temps);
+
+		return moveableFace;
+	}
+
+	private void GetAll(Vector2 beginningPos, Vector2 direction, List<GameObject> possibleCollisions)
+	{
+		Vector2 pos = beginningPos + direction + direction;
+		bool reachedEnd = false;
+
+		while (!reachedEnd)
+		{
+			if (CheckForWall(pos)) reachedEnd = true;
+			GameObject possibleCollision = CheckPosition(pos);
+			if(possibleCollision != null)
+			{
+				possibleCollisions.Add(possibleCollision);
+			}
+			pos += direction;
+		}
+	}
+
 	public IMoveableFace CheckVert(Vector2 pos)
 	{
 		IMoveableFace moveableFace = null;
@@ -99,6 +149,34 @@ public class GridManager : MonoBehaviour
 		IMoveableFace moveableFace = null;
 
 		for(int i = 0; i < possibleObjects.Length; i++)
+		{
+			if (possibleObjects[i] != null)
+			{
+				if (possibleObjects[i].TryGetComponent<IMoveableFace>(out IMoveableFace tempFace))
+				{
+					if (moveableFace == null)
+					{
+						moveableFace = tempFace;
+					}
+					else
+					{
+						if (tempFace.GetOrder() < moveableFace.GetOrder())
+						{
+							moveableFace = tempFace;
+						}
+					}
+				}
+			}
+		}
+
+		return moveableFace;
+	}
+
+	private IMoveableFace WhosOnFirst(List<GameObject> possibleObjects)
+	{
+		IMoveableFace moveableFace = null;
+
+		for (int i = 0; i < possibleObjects.Count; i++)
 		{
 			if (possibleObjects[i] != null)
 			{

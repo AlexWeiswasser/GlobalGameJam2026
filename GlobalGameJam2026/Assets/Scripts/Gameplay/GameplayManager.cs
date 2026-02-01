@@ -43,8 +43,7 @@ public class GameplayManager : MonoBehaviour
 		Vert,
 		Nintey,
 		Pull,
-		Push,
-		Clock // Don't try this one yet
+		xFlip
 	}
 
 	[Serializable]
@@ -70,7 +69,6 @@ public class GameplayManager : MonoBehaviour
 	private void StartNewTurn()
 	{
 		_measureCount++;
-		//ShowOrderList();
 		StartCoroutine(DoTurn());
 	}
 
@@ -185,14 +183,6 @@ public class GameplayManager : MonoBehaviour
 	private void ChangeSpriteOfAnimation(int index, GameObject dummy)
 	{
 		dummy.GetComponent<SpriteRenderer>().sprite = sprites.sprites[dummy.GetComponent<DummyScript>().GetMask()].sprite[index];
-	}
-
-	private void ShowOrderList()
-	{
-		for (int i = 0; i < orderList.Count; i++)
-		{
-			Debug.Log($"Number {i} in the order list is {orderList[i].name}");
-		}
 	}
 
 	public int ReturnOrder(GameObject orderObject)
