@@ -1778,7 +1778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   completedLevels: 
-  revealedLevels: 
+  revealedLevels: 00000000
   levelWeAreLoading: 
   currentLevelID: 0
 --- !u!1001 &1906174922
