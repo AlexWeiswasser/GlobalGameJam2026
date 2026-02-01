@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a27cd793b2fb9c4a9436bafb0b87128, type: 3}
   m_Name: Level_E
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
-  levelID: 4
-  sceneName: Level_4
-  requiredLevelCompletions: 1
-  requiredLevelIDs: 03000000
+  levelID: 6
+  sceneName: Level_6
+  requiredLevelCompletions: 3
+  requiredLevelIDs: 030000000400000005000000
