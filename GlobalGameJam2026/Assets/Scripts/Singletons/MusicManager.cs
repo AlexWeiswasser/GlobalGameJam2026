@@ -60,10 +60,7 @@ public class MusicManager : MonoBehaviour
         }
         _sfxSources[0].clip = _HappyMusicEnd;
         //******** MUSIC ********
-        sources[0] = this.gameObject.AddComponent<AudioSource>();
-        sources[0].playOnAwake = false;
-        sources[0].loop = false;
-        for (int i = 1; i < sources.Length; i++)
+        for (int i = 0; i < sources.Length; i++)
         {
             sources[i] = this.gameObject.AddComponent<AudioSource>();
             sources[i].playOnAwake = false;
@@ -96,15 +93,6 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    IEnumerator IntroLength()
-    {
-        yield return new WaitWhile(() => sources[0].isPlaying);
-        Debug.Log("Play the sound");
-        _sfxSources[0].Play();
-        PlaySound(_HappyMusicEnd);
-        StartCoroutine(IntroLength());
-    }
-
     public void PlayIntro()
     {
         for(int i = 1; i < sources.Length; i++)
@@ -114,7 +102,6 @@ public class MusicManager : MonoBehaviour
         }
         sources[0].volume = 1f;
         sources[0].Play();
-        StartCoroutine(IntroLength());
     }
     public void AddMusic(int maskNumber) //Call this when a mask is dragged onto a dummy
     {

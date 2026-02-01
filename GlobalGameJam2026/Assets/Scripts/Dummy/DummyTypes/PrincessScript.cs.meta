@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: 5bc6a6f354e5bd74998097cb9a93fd48
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - princessCrash: {fileID: 8300000, guid: afe66accca8525e4381f56de1771a978, type: 3}
+  - recordScratch: {fileID: 8300000, guid: 9a33521fcd61e1941b33e12bd1499df8, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
