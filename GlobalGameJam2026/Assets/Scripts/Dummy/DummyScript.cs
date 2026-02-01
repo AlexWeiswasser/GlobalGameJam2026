@@ -166,15 +166,15 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 				break;
 			case 7: // Nintey
 				gameObject.AddComponent<NinteyScript>();
-				gameObject.GetComponent<SpriteRenderer>().color = Color.orange;
+				//gameObject.GetComponent<SpriteRenderer>().color = Color.orange;
 				break;
 			case 8: // Pull
 				gameObject.AddComponent<PullScript>();
-				gameObject.GetComponent<SpriteRenderer>().color = Color.deepPink;
+				//gameObject.GetComponent<SpriteRenderer>().color = Color.deepPink;
 				break;
 			case 9: // xFlip
 				gameObject.AddComponent<xFlipScript>();
-				gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+				//gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
 				break;
 
 		}
