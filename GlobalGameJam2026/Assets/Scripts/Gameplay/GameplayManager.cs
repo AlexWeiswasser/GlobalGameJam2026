@@ -116,6 +116,7 @@ public class GameplayManager : MonoBehaviour
 			}
 
             ChangeSpriteOfAnimation(0, dummies[i], true);
+			dummies[i].transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = Color.white;
         }
 
 		_measureCount = 0;

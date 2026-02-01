@@ -29,7 +29,7 @@ public class LevelButtonScript : MonoBehaviour
             if (_levelData.requiredLevelCompletions != 0)
             {
                 int levelsCompleted = 0;
-                for (int i = 0; i < _levelData.requiredLevelCompletions; i++)
+                for (int i = 0; i < _levelData.requiredLevelIDs.Length; i++)
                 {
                     if (LevelManager.Instance.IsLevelCompleted(_levelData.requiredLevelIDs[i]))
                     {
