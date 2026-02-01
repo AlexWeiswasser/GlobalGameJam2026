@@ -189,7 +189,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 	private void FixSortOrder()
 	{
 		int dummyHeight = (int)(transform.position.y + 3); // 3 for offset
-		GetComponent<SpriteRenderer>().sortingOrder = (-7 + dummyHeight);
+		GetComponent<SpriteRenderer>().sortingOrder = (0 - dummyHeight);
 
 		if(GetMask() == 1)
 		{
