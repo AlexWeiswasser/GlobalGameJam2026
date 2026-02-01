@@ -17,7 +17,9 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 
 	// Sounds
 	[SerializeField] private AudioClip[] dummySounds;
-	
+	[SerializeField] private AudioClip princessOof;
+	[SerializeField] private AudioClip recordScratch;
+
 	public void Init(Vector2 pos, GridManager grid, GameplayManager game, int type = 0)
 	{
 		Vector3 posVector = pos;
@@ -49,6 +51,12 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 			int rand = Random.Range(0, dummySounds.Length);
 			MusicManager.Instance.PlaySound(dummySounds[rand]);
 		}
+	}
+
+	public void PlayPrincessDeath()
+	{
+		MusicManager.Instance.PlaySound(princessOof);
+		MusicManager.Instance.PlaySound(recordScratch);
 	}
 
 	public bool IsValidMaskTarget()
@@ -149,8 +157,9 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		}
 		if (type >= 2 && type != 3)
 		{
-			int ySize = gridManager.GetHeight();
-
+			int ySize = gridManager.GetHeight(); // Add three for offset
+			int dummyHeight = (int)(transform.position.y + 3); // 3 for offset
+			GetComponent<SpriteRenderer>().sortingOrder = ((-ySize) + dummyHeight);
 		}
 		if (type > 3)
 		{
