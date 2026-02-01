@@ -17,9 +17,18 @@ public class LineScript : MonoBehaviour
             _lineParts.Add(transform.GetChild(i).gameObject);
         }
 
-        if (LevelManager.Instance.IsLevelCompleted(_levelICameFrom.levelID))
+        bool anyLevelCompleted = false;
+        for (int i = 0; i < _levelIGoTo.requiredLevelIDs.Length; i++)
         {
-            if (LevelManager.Instance.IsLevelCompleted(_levelIGoTo.levelID))
+            if (LevelManager.Instance.completedLevels.Contains(_levelIGoTo.requiredLevelIDs[i]))
+            {
+                anyLevelCompleted = true;
+            }
+        }
+
+        if (anyLevelCompleted)
+        {
+            if (LevelManager.Instance.IsLevelCompleted(_levelIGoTo.levelID) || LevelManager.Instance.revealedLevels.Contains(_levelIGoTo.levelID))
             {
                 foreach (GameObject part in _lineParts)
                 {
@@ -48,10 +57,19 @@ public class LineScript : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         float timeToWait = 1f / _lineParts.Count;
-        int i = 0;
+        int linePart = 0;
+        int levelsCompleted = 0;
+        for (int i = 0; i < _levelIGoTo.requiredLevelIDs.Length; i++)
+        {
+            if (LevelManager.Instance.completedLevels.Contains(_levelIGoTo.requiredLevelIDs[i]))
+            {
+                levelsCompleted++;
+            }
+        }
+
         foreach (GameObject part in _lineParts)
         {
-            if(i <= _levelIGoTo.requiredLevelCompletions)
+            if((linePart < levelsCompleted) || levelsCompleted >= _levelIGoTo.requiredLevelCompletions)
             {
                 part.SetActive(true);
             }
@@ -59,7 +77,7 @@ public class LineScript : MonoBehaviour
             {
                 part.SetActive(false);
             }
-            i++;
+            linePart++;
             yield return new WaitForSeconds(timeToWait);
         }
     }

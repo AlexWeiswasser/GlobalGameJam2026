@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
     public List<int> completedLevels = new List<int>();
+    public List<int> revealedLevels = new List<int>();
     [HideInInspector] public string levelWeAreLoading;
     [HideInInspector] public int currentLevelID;
     private void Awake()
