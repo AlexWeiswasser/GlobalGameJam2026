@@ -32,8 +32,6 @@ public class GridManager : MonoBehaviour
 	{
 		pos += CorrectiveOffset;
 
-		Debug.Log(pos);
-
 		if (pos.x >= size.x || pos.y >= size.y || pos.x < 0 || pos.y < 0)
 		{
 			return true;

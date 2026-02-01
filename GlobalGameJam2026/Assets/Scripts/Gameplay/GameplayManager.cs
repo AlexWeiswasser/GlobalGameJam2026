@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameplayManager : MonoBehaviour
 {
 	// Gameplay Stats
-	private float turnSpeed = 1.5f;
+	private float turnSpeed = 1f;
 	private float segmentTime = 0;
 
 	// Grid Offset
@@ -61,6 +61,10 @@ public class GameplayManager : MonoBehaviour
 		xFlip
 	}
 
+	// Timer stuff
+	[SerializeField] private int allowedTurns;
+	private int turnsTaken = 0;
+
 	[Serializable]
 	private struct Dummy
 	{
@@ -106,6 +110,7 @@ public class GameplayManager : MonoBehaviour
 		}
 
 		_measureCount = 0;
+		turnsTaken = 0;
 		currentDummy = 0;
 	}
 
@@ -122,6 +127,7 @@ public class GameplayManager : MonoBehaviour
 	private void StartNewTurn()
 	{
 		_measureCount++;
+		turnsTaken++;
 		danceCo = StartCoroutine(DoTurn());
 	}
 
