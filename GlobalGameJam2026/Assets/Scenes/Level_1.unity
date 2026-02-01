@@ -218,7 +218,11 @@ PrefabInstance:
     - target: {fileID: 6660573864836874351, guid: a73bd7ad6a7f59149a3dc4c1ddb23a6a, type: 3}
       propertyPath: size.x
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 6
+=======
+      value: 3
+>>>>>>> Stashed changes
 =======
       value: 3
 >>>>>>> Stashed changes
