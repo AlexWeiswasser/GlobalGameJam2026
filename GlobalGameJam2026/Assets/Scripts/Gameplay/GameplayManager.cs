@@ -163,8 +163,6 @@ public class GameplayManager : MonoBehaviour
 	private void CreateDummies()
 	{
 		gridManager = GetComponent<GridManager>();
-		gridManager.SetOffset(new Vector2(xOffset, yOffset)); 
-
 		dummies = new GameObject[dummyArray.Length];
 
 		for (int i = 0; i < dummyArray.Length; i++)

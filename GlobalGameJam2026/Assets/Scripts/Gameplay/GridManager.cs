@@ -12,7 +12,7 @@ public class GridManager : MonoBehaviour
     private GameObject[,] gridArray;
 
 	// Grid Offset
-	private Vector2 offset = new Vector2(3, 3);
+	private Vector2 CorrectiveOffset = new Vector2(3, 3);
 
 	private void Awake()
 	{
@@ -20,22 +20,21 @@ public class GridManager : MonoBehaviour
 		gridObject.ChangeGridSize((int)size.x, (int)size.y);
 	}
 
-	public void SetOffset(Vector2 adjustment)
-	{
-		offset = adjustment;
-	}
-
-
 	public bool CheckForWall(Vector2 pos)
 	{
-		pos += offset;
+		pos += CorrectiveOffset;
 
-		if (pos.x >= size.x || pos.y >= size.y || pos.x < 0 || pos.y < 0) return true;
+		Debug.Log(pos);
+
+		if (pos.x >= size.x || pos.y >= size.y || pos.x < 0 || pos.y < 0)
+		{
+			return true;
+		}
 		return false;
 	}
 	public GameObject CheckPosition(Vector2 pos)
     {
-		pos += offset;
+		pos += CorrectiveOffset;
 
 		if (pos.x >= size.x || pos.y >= size.y || pos.x < 0 || pos.y < 0) return null;
         return gridArray[(int)pos.x, (int)pos.y];
@@ -43,7 +42,7 @@ public class GridManager : MonoBehaviour
 
     public void ClearPos(Vector2 pos)
     {
-		pos += offset;
+		pos += CorrectiveOffset;
 
 		if (pos.x >= size.x || pos.y >= size.y || pos.x < 0 || pos.y < 0) return;
 		gridArray[(int)pos.x, (int)pos.y] = null;
@@ -51,7 +50,7 @@ public class GridManager : MonoBehaviour
 
 	public void AddToGrid(GameObject addition)
 	{
-		Vector2 pos = (Vector2)addition.transform.position + offset;
+		Vector2 pos = (Vector2)addition.transform.position + CorrectiveOffset;
 
 		if (pos.x >= size.x || pos.y >= size.y || pos.x < 0 || pos.y < 0) return;
 		gridArray[(int)pos.x, (int)pos.y] = addition;
