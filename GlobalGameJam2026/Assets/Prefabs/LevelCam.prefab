@@ -166,7 +166,22 @@ MonoBehaviour:
   - {fileID: 969595816519057497, guid: 170cfce20acc2744497921599fc959be, type: 3}
   - {fileID: 8329842108156501539, guid: d9ec212feaa2aa3429f34dc1cd089b07, type: 3}
   - {fileID: 4524816511794402093, guid: fa0d6fa1d894768488b6b30d996d4a77, type: 3}
-  sprites: {fileID: 11400000, guid: 35ec38235b064644484952180901e623, type: 2}
+  danceSprites: {fileID: 11400000, guid: 35ec38235b064644484952180901e623, type: 2}
+  idleSprites: {fileID: 11400000, guid: 3cde415f226758e46b5182e746fdc6af, type: 2}
+  princessDanceSprites:
+  - {fileID: 8053177618943144951, guid: 7561e0741c1b3ea4995db610d8f3f422, type: 3}
+  - {fileID: 8053177618943144951, guid: 7561e0741c1b3ea4995db610d8f3f422, type: 3}
+  - {fileID: 6365033578369589530, guid: 7561e0741c1b3ea4995db610d8f3f422, type: 3}
+  - {fileID: 4350626190467156469, guid: 7561e0741c1b3ea4995db610d8f3f422, type: 3}
+  - {fileID: 4350626190467156469, guid: 7561e0741c1b3ea4995db610d8f3f422, type: 3}
+  - {fileID: 6365033578369589530, guid: 7561e0741c1b3ea4995db610d8f3f422, type: 3}
+  princeDanceSprites:
+  - {fileID: 1439480680240698666, guid: 7830a6dbc4f70904fadcc00818b1974f, type: 3}
+  - {fileID: 1439480680240698666, guid: 7830a6dbc4f70904fadcc00818b1974f, type: 3}
+  - {fileID: 1633193224666186786, guid: 7830a6dbc4f70904fadcc00818b1974f, type: 3}
+  - {fileID: 201296789753593541, guid: 7830a6dbc4f70904fadcc00818b1974f, type: 3}
+  - {fileID: 201296789753593541, guid: 7830a6dbc4f70904fadcc00818b1974f, type: 3}
+  - {fileID: 1633193224666186786, guid: 7830a6dbc4f70904fadcc00818b1974f, type: 3}
 --- !u!114 &957068186935599571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,4 +195,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   size: {x: 0, y: 0}
-  gridObject: {fileID: 0}
