@@ -123,6 +123,7 @@ public class GameplayManager : MonoBehaviour
 		currentDummy = 0;
 
         turnsText.text = $"Turns left: {allowedTurns - turnsTaken}";
+		turnsText.color = Color.white;
     }
 
 	public void BeginDance()
@@ -147,6 +148,12 @@ public class GameplayManager : MonoBehaviour
 	{
 		_measureCount++;
 		turnsTaken++;
+		if (turnsTaken > allowedTurns)
+		{
+            turnsText.color = Color.red;
+            StopDance();
+			return;
+		}
 		danceCo = StartCoroutine(DoTurn());
 	}
 
