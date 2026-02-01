@@ -133,6 +133,7 @@ public class GameplayManager : MonoBehaviour
 			canvas.transform.GetChild(6).gameObject.SetActive(true);
 			return;
 		}
+		// Music Start Here
 		canvas.transform.GetChild(0).gameObject.SetActive(true);
         canvas.transform.GetChild(1).gameObject.SetActive(false);
         canvas.transform.GetChild(6).gameObject.SetActive(false);
@@ -326,6 +327,7 @@ public class GameplayManager : MonoBehaviour
         if (danceCo != null) StopCoroutine(danceCo);
         danceCo = null;
         canvas.transform.GetChild(5).gameObject.SetActive(true);
+		// Music Stops Here
     }
 
 	public void WinDance()
