@@ -99,13 +99,13 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		{
 			case 1: // Prince
                     //gameObject.GetComponent<SpriteRenderer>().color = Color.lightBlue;
-                GetComponent<SpriteRenderer>().sortingOrder = 1;
+                GetComponent<SpriteRenderer>().sortingOrder = 3;
                 break;
 			case 2: // Table
 				gameObject.GetComponent<SpriteRenderer>().color = Color.black;
 				break;
 			case 3: // Princess
-                GetComponent<SpriteRenderer>().sortingOrder = 2;
+                GetComponent<SpriteRenderer>().sortingOrder = 4;
                 gameObject.AddComponent<PrincessScript>();
 				//gameObject.GetComponent<SpriteRenderer>().color = Color.lightPink;
 				break;
@@ -251,5 +251,23 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 			return;
 		}
 		transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _orderIndicatorSprites[GetOrder() + 1];
+		switch (GetOrder())
+		{
+			case 0:
+				transform.GetChild(0).localPosition = new Vector2(-0.3f, 0.5f);
+				break;
+            case 1:
+                transform.GetChild(0).localPosition = new Vector2(0.3f, 0.5f);
+                break;
+            case 2:
+                transform.GetChild(0).localPosition = new Vector2(-0.3f, -0.1f);
+                break;
+            case 3:
+                transform.GetChild(0).localPosition = new Vector2(0.3f, -0.1f);
+                break;
+			default:
+                transform.GetChild(0).localPosition = new Vector2(-0.3f, 0.5f);
+                break;
+        }
 	}
 }
