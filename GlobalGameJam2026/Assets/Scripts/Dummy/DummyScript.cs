@@ -142,13 +142,13 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		{
 			case 1: // Prince
                     //gameObject.GetComponent<SpriteRenderer>().color = Color.lightBlue;
-                GetComponent<SpriteRenderer>().sortingOrder = 3;
+                GetComponent<SpriteRenderer>().sortingOrder = 99;
                 break;
 			case 2: // Table
                     //gameObject.GetComponent<SpriteRenderer>().color = Color.black;
                 break;
 			case 3: // Princess
-                GetComponent<SpriteRenderer>().sortingOrder = 4;
+                GetComponent<SpriteRenderer>().sortingOrder = 100;
                 gameObject.AddComponent<PrincessScript>();
 				//gameObject.GetComponent<SpriteRenderer>().color = Color.lightPink;
 				break;
@@ -188,17 +188,16 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 
 	private void FixSortOrder()
 	{
-		int ySize = gridManager.GetHeight();
 		int dummyHeight = (int)(transform.position.y + 3); // 3 for offset
-		GetComponent<SpriteRenderer>().sortingOrder = (ySize - dummyHeight);
+		GetComponent<SpriteRenderer>().sortingOrder = (-7 + dummyHeight);
 
 		if(GetMask() == 1)
 		{
-			GetComponent<SpriteRenderer>().sortingOrder = 3;
+			GetComponent<SpriteRenderer>().sortingOrder = 99;
 		}
 		else if(GetMask() == 3)
 		{
-			GetComponent<SpriteRenderer>().sortingOrder = 4;
+			GetComponent<SpriteRenderer>().sortingOrder = 100;
 		}
 	}
 
