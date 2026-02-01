@@ -77,6 +77,48 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CompletedLevels/Level_19.unity
     guid: 313816f659d5f8c45b0438d62ba7c6df
+  - enabled: 1
+    path: Assets/Scenes/CompletedLevels/Level_20.unity
+    guid: e8a14375e9036284db65f7c12925903e
+  - enabled: 1
+    path: Assets/Scenes/CompletedLevels/Level_21.unity
+    guid: 1e36ad6943fbeaa43876d581e71bbe6e
+  - enabled: 1
+    path: Assets/Scenes/CompletedLevels/Level_22.unity
+    guid: c6dd8f90ccb39774c8ef1b0c27b6f77c
+  - enabled: 1
+    path: Assets/Scenes/CompletedLevels/Level_23.unity
+    guid: 366c54c53a391e742943fdb9c76a26a6
+  - enabled: 1
+    path: Assets/Scenes/CompletedLevels/Level_24.unity
+    guid: c57f5a01ab094bd40a69ae707677e5c0
+  - enabled: 1
+    path: Assets/Scenes/CompletedLevels/Level_25.unity
+    guid: c4ab915d702073043ac0a9260a0462ff
+  - enabled: 1
+    path: Assets/Scenes/CompletedLevels/Level_26.unity
+    guid: 831d97f2009ef054faf60a63802134ab
+  - enabled: 1
+    path: Assets/Scenes/CompletedLevels/Level_27.unity
+    guid: 439024f13a211de46a305118b6cfbbcc
+  - enabled: 1
+    path: Assets/Scenes/CompletedLevels/Level_28.unity
+    guid: 88943626ae8101a4a8a268c9fc3486be
+  - enabled: 1
+    path: Assets/Scenes/CompletedLevels/Level_29.unity
+    guid: 9e123f56da669c540bf2c03be722f8f8
+  - enabled: 1
+    path: Assets/Scenes/CompletedLevels/Level_30.unity
+    guid: 2994d3f09c2d8b441a0fcca13ec02b87
+  - enabled: 1
+    path: Assets/Scenes/CompletedLevels/Level_31.unity
+    guid: 670ac2ea677a20c42b62346ae67c1270
+  - enabled: 1
+    path: Assets/Scenes/CompletedLevels/Level_32.unity
+    guid: 70da584ccfee70647bdb462fba8b1fa9
+  - enabled: 1
+    path: Assets/Scenes/Menu_WinScene.unity
+    guid: aa24c6932db94dc4e86ba57f52c62842
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

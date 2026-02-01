@@ -277,7 +277,7 @@ MonoBehaviour:
   - {fileID: -454170521, guid: a2189c8da53b6cb4d994fb5a79279569, type: 3}
   - {fileID: -1932727977, guid: a2189c8da53b6cb4d994fb5a79279569, type: 3}
   - {fileID: 1901149868, guid: a2189c8da53b6cb4d994fb5a79279569, type: 3}
-  princessDeathSprite: {fileID: -8886395223986233862, guid: aee07945ebdf89f45a04ee9c75478cdc, type: 3}
+  princessDeathSprite: {fileID: -6737202369333774528, guid: 39f9d57e38f62b647b13d30958cffcca, type: 3}
   dummySounds:
   - {fileID: 8300000, guid: c1e9d2773163c32419bb901eb7bc710f, type: 3}
   - {fileID: 8300000, guid: f4f6af7015db82047a1d831c914c92d1, type: 3}
