@@ -41,8 +41,9 @@ public class GameplayManager : MonoBehaviour
 	// Dummy Sprites
 	[SerializeField] private DummySprites danceSprites;
 	[SerializeField] private DummySprites idleSprites;
-
-	public enum DummyTypes
+	[SerializeField] private Sprite[] princessDanceSprites;
+    [SerializeField] private Sprite[] princeDanceSprites;
+    public enum DummyTypes
 	{
 		None,
 		Prince,
@@ -109,7 +110,11 @@ public class GameplayManager : MonoBehaviour
 	public void BeginDance()
 	{
 		_isDancing = true;
-		StartNewTurn();
+        for (int i = 0; i < dummies.Length; i++)
+        {
+			dummies[i].transform.GetChild(1).gameObject.SetActive(false);
+        }
+        StartNewTurn();
 	}
 
 	private void StartNewTurn()
@@ -255,8 +260,65 @@ public class GameplayManager : MonoBehaviour
 
 	public void WinLevel()
 	{
+		if (danceCo != null) StopCoroutine(danceCo);
+		_measureCount = 0;
+        for (int i = 0; i < dummies.Length; i++)
+        {
+            if (dummies[i].GetComponent<DummyScript>().GetMask() == 3)
+            {
+				dummies[i].transform.position = new Vector2(dummies[i].transform.position.x + 0.25f, dummies[i].transform.position.y);
+            }
+            if (dummies[i].GetComponent<DummyScript>().GetMask() == 1)
+            {
+                dummies[i].transform.position = new Vector2(dummies[i].transform.position.x - 0.25f, dummies[i].transform.position.y);
+            }
+        }
+        WinDance();
+		StartCoroutine(EndLevelRoutine());
+    }
 
-	}
+	public void WinDance()
+	{
+        StartCoroutine(WinLevelDanceRoutine());
+    }
+
+	IEnumerator WinLevelDanceRoutine()
+	{
+		GameObject princess = null;
+		GameObject prince = null;
+		for (int i = 0; i < dummies.Length; i++)
+		{
+			if (dummies[i].GetComponent<DummyScript>().GetMask() == 3)
+			{
+				princess = dummies[i];
+			}
+            if (dummies[i].GetComponent<DummyScript>().GetMask() == 1)
+            {
+                prince = dummies[i];
+            }
+        }
+
+		princess.GetComponent<SpriteRenderer>().sprite = princessDanceSprites[0 + (3 * ((_measureCount + 1) % 2))];
+        prince.GetComponent<SpriteRenderer>().sprite = princeDanceSprites[0 + (3 * ((_measureCount + 1) % 2))];
+        yield return new WaitForSeconds(segmentTime);
+
+        princess.GetComponent<SpriteRenderer>().sprite = princessDanceSprites[1 + (3 * ((_measureCount + 1) % 2))];
+        prince.GetComponent<SpriteRenderer>().sprite = princeDanceSprites[1 + (3 * ((_measureCount + 1) % 2))];
+        yield return new WaitForSeconds(segmentTime);
+
+        princess.GetComponent<SpriteRenderer>().sprite = princessDanceSprites[2 + (3 * ((_measureCount + 1) % 2))];
+        prince.GetComponent<SpriteRenderer>().sprite = princeDanceSprites[2 + (3 * ((_measureCount + 1) % 2))];
+        yield return new WaitForSeconds(segmentTime);
+
+        _measureCount++;
+        WinDance();
+    }
+
+	IEnumerator EndLevelRoutine()
+	{
+		yield return new WaitForSeconds(segmentTime * 6);
+        GameObject.Find("WinCanvas").GetComponent<Animator>().SetTrigger("Win");
+    }
 
 	public int ReturnOrder(GameObject orderObject)
 	{

@@ -52,6 +52,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 				case 2: // Table
 					break;
 				case 3: // Princess
+					GetComponent<SpriteRenderer>().sortingOrder = 0;
 					break;
 				case 4: // Flip
 					if(TryGetComponent<FlipScript>(out FlipScript flipScript))			
@@ -93,14 +94,15 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		switch (type)
 		{
 			case 1: // Prince
-				gameObject.GetComponent<SpriteRenderer>().color = Color.lightBlue;
+				//gameObject.GetComponent<SpriteRenderer>().color = Color.lightBlue;
 				break;
 			case 2: // Table
 				gameObject.GetComponent<SpriteRenderer>().color = Color.black;
 				break;
 			case 3: // Princess
-				gameObject.AddComponent<PrincessScript>();
-				gameObject.GetComponent<SpriteRenderer>().color = Color.lightPink;
+                GetComponent<SpriteRenderer>().sortingOrder = 1;
+                gameObject.AddComponent<PrincessScript>();
+				//gameObject.GetComponent<SpriteRenderer>().color = Color.lightPink;
 				break;
 			case 4: // Flip
 				gameObject.AddComponent<FlipScript>();
@@ -200,6 +202,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 			if (GetComponent<PrincessScript>().Slay(gridManager, transform.position + addition))
 			{
 				transform.position += addition;
+				gameplayManager.WinLevel();
                 return;
 			}
 		}
@@ -214,6 +217,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 			if (GetComponent<PrincessScript>().Slay(gridManager, pos))
 			{
                 transform.position = pos;
+                gameplayManager.WinLevel();
                 return;
 			}
 		}

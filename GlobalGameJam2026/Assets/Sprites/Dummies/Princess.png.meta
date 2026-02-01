@@ -159,8 +159,8 @@ TextureImporter:
       name: Princess_2
       rect:
         serializedVersion: 2
-        x: 1179
-        y: 60
+        x: 1170
+        y: 57
         width: 451
         height: 636
       alignment: 9
@@ -181,7 +181,7 @@ TextureImporter:
       name: Princess_3
       rect:
         serializedVersion: 2
-        x: 1724
+        x: 1727
         y: 103
         width: 425
         height: 622
