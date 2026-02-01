@@ -100,7 +100,9 @@ public class GameplayManager : MonoBehaviour
 			danceCo = null;
 		}
 
-		for(int i = 0; i < dummies.Length; i++)
+		canvas.transform.GetChild(5).gameObject.SetActive(false);
+
+        for (int i = 0; i < dummies.Length; i++)
 		{
 			Vector2 offsetPosition = new Vector2(dummyArray[i].position.x + xOffset, dummyArray[i].position.y + yOffset);
 			if (dummies[i].TryGetComponent<IDummyFace>(out IDummyFace dummyFace))
@@ -111,7 +113,9 @@ public class GameplayManager : MonoBehaviour
 			{
 				dummyScript.SetToStart(offsetPosition);
 			}
-		}
+
+            ChangeSpriteOfAnimation(0, dummies[i], true);
+        }
 
 		_measureCount = 0;
 		turnsTaken = 0;
@@ -230,6 +234,8 @@ public class GameplayManager : MonoBehaviour
 			}
 		}
 
+		if (danceCo == null) return;
+
 		for (int i = 0; i < dummies.Length; i++)
 		{
             ChangeSpriteOfAnimation((currentAction - 1) + (3 * ((_measureCount + 1) % 2)), dummies[i], false);
@@ -293,6 +299,13 @@ public class GameplayManager : MonoBehaviour
         canvas.transform.GetChild(2).gameObject.SetActive(false);
         WinDance();
 		StartCoroutine(EndLevelRoutine());
+    }
+
+	public void StopDance()
+	{
+        if (danceCo != null) StopCoroutine(danceCo);
+        danceCo = null;
+        canvas.transform.GetChild(5).gameObject.SetActive(true);
     }
 
 	public void WinDance()

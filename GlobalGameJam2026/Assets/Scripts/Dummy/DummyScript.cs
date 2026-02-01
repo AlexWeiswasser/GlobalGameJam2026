@@ -13,6 +13,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 
 	// Sprites
 	[SerializeField] private Sprite[] _orderIndicatorSprites;
+	public Sprite princessDeathSprite;
 
 	public void Init(Vector2 pos, GridManager grid, GameplayManager game, int type = 0)
 	{
@@ -163,6 +164,11 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 	public bool GetLocked()
 	{
 		return locked;
+	}
+
+	public GameplayManager GetGameplayManager()
+	{
+		return gameplayManager;
 	}
 
 	public void RemoveGridPos()

@@ -13,12 +13,13 @@ public class PrincessScript : MonoBehaviour
 				{
 					if (LevelManager.Instance != null)
 						LevelManager.Instance.CompletedLevel(LevelManager.Instance.currentLevelID);
-				}
+                    return true;
+                }
 				else
 				{
-					Debug.Log("You DIEEE!!!!");
+					GetComponent<DummyScript>().GetGameplayManager().StopDance();
+                    GetComponent<SpriteRenderer>().sprite = GetComponent<DummyScript>().princessDeathSprite;
 				}
-				return true;
 			}
 		}
 		return false; 

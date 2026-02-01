@@ -187,6 +187,7 @@ MonoBehaviour:
   - {fileID: -454170521, guid: a2189c8da53b6cb4d994fb5a79279569, type: 3}
   - {fileID: -1932727977, guid: a2189c8da53b6cb4d994fb5a79279569, type: 3}
   - {fileID: 1901149868, guid: a2189c8da53b6cb4d994fb5a79279569, type: 3}
+  princessDeathSprite: {fileID: -8886395223986233862, guid: aee07945ebdf89f45a04ee9c75478cdc, type: 3}
 --- !u!1 &8062482446469599826
 GameObject:
   m_ObjectHideFlags: 0

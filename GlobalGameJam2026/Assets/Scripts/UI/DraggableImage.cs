@@ -84,7 +84,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             transform.localScale = new Vector2(1,1);
             GetComponent<Image>().color = color;
             color = _icon.color;
-            color.a = 1;
+            color.a = 0;
             _icon.color = color;
             dummyScript.SetMask(maskNumber);
         }
