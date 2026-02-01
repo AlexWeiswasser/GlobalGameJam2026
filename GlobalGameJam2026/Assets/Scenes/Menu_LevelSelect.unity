@@ -1777,7 +1777,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7ed0e1b8bbe594da8b627163a01095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  completedLevels: 00000000
+  completedLevels: 
+  revealedLevels: 
   levelWeAreLoading: 
   currentLevelID: 0
 --- !u!1001 &1906174922
