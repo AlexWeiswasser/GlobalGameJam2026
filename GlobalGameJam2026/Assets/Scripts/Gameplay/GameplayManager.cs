@@ -120,7 +120,9 @@ public class GameplayManager : MonoBehaviour
 		_measureCount = 0;
 		turnsTaken = 0;
 		currentDummy = 0;
-	}
+
+        turnsText.text = $"Turns left: {allowedTurns - turnsTaken}";
+    }
 
 	public void BeginDance()
 	{
