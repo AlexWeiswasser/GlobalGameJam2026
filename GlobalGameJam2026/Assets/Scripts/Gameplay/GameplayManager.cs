@@ -22,6 +22,7 @@ public class GameplayManager : MonoBehaviour
 	[SerializeField] private MaskChoice[] maskChoices;
 	[SerializeField] private Vector2[] maskPositions;
 	[SerializeField] private GameObject[] maskPrefabs;
+	[SerializeField] private GameObject winCanvas;
 
 	// Dummy Order
 	private List<GameObject> orderList = new List<GameObject>();
@@ -318,7 +319,7 @@ public class GameplayManager : MonoBehaviour
 	IEnumerator EndLevelRoutine()
 	{
 		yield return new WaitForSeconds(segmentTime * 6);
-        GameObject.Find("WinCanvas").GetComponent<Animator>().SetTrigger("Win");
+        winCanvas.GetComponent<Animator>().SetTrigger("Win");
     }
 
 	public int ReturnOrder(GameObject orderObject)
