@@ -57,4 +57,9 @@ public class SceneLoaderScript : MonoBehaviour
         yield return new WaitForSeconds(ANIMATION_TIME);
         _isLocked = false;
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

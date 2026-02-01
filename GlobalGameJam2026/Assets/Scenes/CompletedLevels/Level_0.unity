@@ -129,7 +129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 583689383068996670, guid: a73bd7ad6a7f59149a3dc4c1ddb23a6a, type: 3}
       propertyPath: allowedTurns
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 583689383068996670, guid: a73bd7ad6a7f59149a3dc4c1ddb23a6a, type: 3}
       propertyPath: dummyArray.Array.size
@@ -145,11 +145,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 583689383068996670, guid: a73bd7ad6a7f59149a3dc4c1ddb23a6a, type: 3}
       propertyPath: dummyArray.Array.data[1].type
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 583689383068996670, guid: a73bd7ad6a7f59149a3dc4c1ddb23a6a, type: 3}
       propertyPath: dummyArray.Array.data[2].type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 583689383068996670, guid: a73bd7ad6a7f59149a3dc4c1ddb23a6a, type: 3}
       propertyPath: maskChoices.Array.data[0].type
@@ -165,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 583689383068996670, guid: a73bd7ad6a7f59149a3dc4c1ddb23a6a, type: 3}
       propertyPath: dummyArray.Array.data[1].position.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 583689383068996670, guid: a73bd7ad6a7f59149a3dc4c1ddb23a6a, type: 3}
       propertyPath: dummyArray.Array.data[1].position.y
@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 583689383068996670, guid: a73bd7ad6a7f59149a3dc4c1ddb23a6a, type: 3}
       propertyPath: dummyArray.Array.data[2].position.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 583689383068996670, guid: a73bd7ad6a7f59149a3dc4c1ddb23a6a, type: 3}
       propertyPath: dummyArray.Array.data[2].position.y

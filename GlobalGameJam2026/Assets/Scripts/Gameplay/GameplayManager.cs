@@ -23,6 +23,7 @@ public class GameplayManager : MonoBehaviour
 	[SerializeField] private MaskChoice[] maskChoices;
 	[SerializeField] private Vector2[] maskPositions;
 	[SerializeField] private GameObject[] maskPrefabs;
+	private int _masksPlaced = 0;
 
 	// Dummy Order
 	private List<GameObject> orderList = new List<GameObject>();
@@ -100,7 +101,9 @@ public class GameplayManager : MonoBehaviour
 			danceCo = null;
 		}
 
-		for(int i = 0; i < dummies.Length; i++)
+		canvas.transform.GetChild(5).gameObject.SetActive(false);
+
+        for (int i = 0; i < dummies.Length; i++)
 		{
 			Vector2 offsetPosition = new Vector2(dummyArray[i].position.x + xOffset, dummyArray[i].position.y + yOffset);
 			if (dummies[i].TryGetComponent<IDummyFace>(out IDummyFace dummyFace))
@@ -111,16 +114,29 @@ public class GameplayManager : MonoBehaviour
 			{
 				dummyScript.SetToStart(offsetPosition);
 			}
-		}
+
+            ChangeSpriteOfAnimation(0, dummies[i], true);
+        }
 
 		_measureCount = 0;
 		turnsTaken = 0;
 		currentDummy = 0;
-	}
+
+        turnsText.text = $"Turns left: {allowedTurns - turnsTaken}";
+		turnsText.color = Color.white;
+    }
 
 	public void BeginDance()
 	{
-		_isDancing = true;
+		if (_masksPlaced < GetMaskChoiceNumber())
+		{
+			canvas.transform.GetChild(6).gameObject.SetActive(true);
+			return;
+		}
+		canvas.transform.GetChild(0).gameObject.SetActive(true);
+        canvas.transform.GetChild(1).gameObject.SetActive(false);
+        canvas.transform.GetChild(6).gameObject.SetActive(false);
+        _isDancing = true;
         for (int i = 0; i < dummies.Length; i++)
         {
 			dummies[i].transform.GetChild(1).gameObject.SetActive(false);
@@ -132,6 +148,12 @@ public class GameplayManager : MonoBehaviour
 	{
 		_measureCount++;
 		turnsTaken++;
+		if (turnsTaken > allowedTurns)
+		{
+            turnsText.color = Color.red;
+            StopDance();
+			return;
+		}
 		danceCo = StartCoroutine(DoTurn());
 	}
 
@@ -218,17 +240,21 @@ public class GameplayManager : MonoBehaviour
 			if (orderList[currentDummy].TryGetComponent<IDummyFace>(out IDummyFace dummyInterface))
 			{
 				dummyInterface.DummyAction(currentAction, gridManager);
-			}
+				orderList[currentDummy].transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = Color.yellow;
+            }
 
 			if (currentAction == 3)
 			{
-				currentDummy++;
+                orderList[currentDummy].transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = Color.white;
+                currentDummy++;
 				if (currentDummy >= orderList.Count)
 				{
 					currentDummy = 0;
 				}
 			}
 		}
+
+		if (danceCo == null) return;
 
 		for (int i = 0; i < dummies.Length; i++)
 		{
@@ -295,6 +321,13 @@ public class GameplayManager : MonoBehaviour
 		StartCoroutine(EndLevelRoutine());
     }
 
+	public void StopDance()
+	{
+        if (danceCo != null) StopCoroutine(danceCo);
+        danceCo = null;
+        canvas.transform.GetChild(5).gameObject.SetActive(true);
+    }
+
 	public void WinDance()
 	{
         StartCoroutine(WinLevelDanceRoutine());
@@ -346,5 +379,25 @@ public class GameplayManager : MonoBehaviour
 	public bool IsDancing()
 	{
 		return _isDancing;
+	}
+
+	public int GetMaskChoiceNumber()
+	{
+		int amount = 0;
+		for (int i = 0; i < maskChoices.Length; i++)
+		{
+			amount += maskChoices[i].amount;
+		}
+		return amount;
+	}
+
+	public void ChangeMasksPlaced(int amount)
+	{
+		_masksPlaced += amount;
+	}
+
+	public int GetMasksPlaced()
+	{
+		return _masksPlaced;
 	}
 }

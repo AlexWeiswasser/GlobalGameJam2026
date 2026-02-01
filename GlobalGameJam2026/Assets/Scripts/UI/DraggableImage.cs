@@ -40,6 +40,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         if (_previousDummy != null)
         {
             _previousDummy.SetMask(0);
+            _gameplayManager.ChangeMasksPlaced(-1);
         }
     }
 
@@ -71,6 +72,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         }
         if (successful)
         {
+            _gameplayManager.ChangeMasksPlaced(1);
             hit.collider.gameObject.TryGetComponent<DummyScript>(out DummyScript dummyScript);
             if (_previousDummy != null)
             {
@@ -84,7 +86,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             transform.localScale = new Vector2(1,1);
             GetComponent<Image>().color = color;
             color = _icon.color;
-            color.a = 1;
+            color.a = 0;
             _icon.color = color;
             dummyScript.SetMask(maskNumber);
         }
@@ -95,7 +97,6 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                 _previousDummy.SetMask(0);
             }
             _previousDummy = null;
-            Debug.Log("Drag Unsuccessful");
             GetComponent<RectTransform>().anchoredPosition = _startPosition;
             GetComponent<RectTransform>().sizeDelta = _imageSize;
             transform.localScale = _imageScale;
