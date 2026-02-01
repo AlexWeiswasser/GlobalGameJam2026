@@ -261,7 +261,7 @@ public class GameplayManager : MonoBehaviour
 	public void WinLevel()
 	{
 		if (danceCo != null) StopCoroutine(danceCo);
-		_measureCount = 0;
+		_measureCount = 1;
         for (int i = 0; i < dummies.Length; i++)
         {
             if (dummies[i].GetComponent<DummyScript>().GetMask() == 3)
@@ -273,6 +273,9 @@ public class GameplayManager : MonoBehaviour
                 dummies[i].transform.position = new Vector2(dummies[i].transform.position.x - 0.25f, dummies[i].transform.position.y);
             }
         }
+		canvas.transform.GetChild(0).gameObject.SetActive(false);
+        canvas.transform.GetChild(1).gameObject.SetActive(false);
+        canvas.transform.GetChild(2).gameObject.SetActive(false);
         WinDance();
 		StartCoroutine(EndLevelRoutine());
     }
