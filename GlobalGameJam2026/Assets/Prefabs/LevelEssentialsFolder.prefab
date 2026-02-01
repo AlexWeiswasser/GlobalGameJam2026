@@ -476,7 +476,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -100
-  m_Sprite: {fileID: 3294024263086995903, guid: d74260f39a4b06b49914807588c90308, type: 3}
+  m_Sprite: {fileID: -8461794515414732030, guid: 29d0248267aa59b41bf736fb41c142cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1577,12 +1577,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 5184116260629006603}
     m_Modifications:
     - target: {fileID: 2591588271864529945, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591588271864529945, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5903823389141867800}
     - target: {fileID: 2591588271864529945, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591588271864529945, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneLoaderScript, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2591588271864529945, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -2081,12 +2089,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 5184116260629006603}
     m_Modifications:
     - target: {fileID: 2591588271864529945, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591588271864529945, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5903823389141867800}
     - target: {fileID: 2591588271864529945, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591588271864529945, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneLoaderScript, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2591588271864529945, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument

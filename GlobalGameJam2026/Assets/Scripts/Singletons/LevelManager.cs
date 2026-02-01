@@ -1,6 +1,8 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class LevelManager : MonoBehaviour
     public List<int> revealedLevels = new List<int>();
     [HideInInspector] public string levelWeAreLoading;
     [HideInInspector] public int currentLevelID;
+    public int pageWeAreOn;
+    [SerializeField] private GameObject _worldMap;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -19,6 +23,7 @@ public class LevelManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
+            pageWeAreOn = 0;
         }
     }
 
