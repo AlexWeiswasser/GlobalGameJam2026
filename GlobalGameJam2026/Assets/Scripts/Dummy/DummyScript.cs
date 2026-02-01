@@ -19,6 +19,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 	[SerializeField] private AudioClip[] dummySounds;
 	[SerializeField] private AudioClip princessOof;
 	[SerializeField] private AudioClip recordScratch;
+	[SerializeField] private AudioClip princeReached;
 
 	public void Init(Vector2 pos, GridManager grid, GameplayManager game, int type = 0)
 	{
@@ -53,6 +54,11 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 			int rand = Random.Range(0, dummySounds.Length);
 			MusicManager.Instance.PlaySound(dummySounds[rand]);
 		}
+	}
+
+	public void PlayWinSound()
+	{
+		MusicManager.Instance.PlaySound(princeReached);
 	}
 
 	public void PlayPrincessDeath()

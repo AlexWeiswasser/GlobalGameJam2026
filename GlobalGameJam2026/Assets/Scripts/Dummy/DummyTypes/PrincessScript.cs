@@ -11,8 +11,14 @@ public class PrincessScript : MonoBehaviour
 			{
 				if (moveFace.GetMask() == 1)
 				{
+					if (TryGetComponent<DummyScript>(out DummyScript dummyScript))
+					{
+						dummyScript.PlayWinSound();
+					}
 					if (LevelManager.Instance != null)
+					{
 						LevelManager.Instance.CompletedLevel(LevelManager.Instance.currentLevelID);
+					}
                     return true;
                 }
 				else
