@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LevelButtonScript : MonoBehaviour
 {
-    [SerializeField] private LevelData _levelData;
+    [SerializeField] public LevelData _levelData;
     [SerializeField] private SceneLoaderScript _sceneLoaderScript;
     [SerializeField] private GameObject _ringPrefab;
     private Image _image;
@@ -66,6 +66,11 @@ public class LevelButtonScript : MonoBehaviour
                 transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0f, 0f, 0f);
             }
         }
+    }
+
+    public LevelData GetLevelData()
+    {
+        return _levelData;
     }
 
     private void LoadThatScene()
