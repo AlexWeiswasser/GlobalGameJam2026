@@ -39,7 +39,8 @@ public class GameplayManager : MonoBehaviour
 	private Coroutine danceCo = null;
 
 	// Dummy Sprites
-	[SerializeField] private DummySprites sprites;
+	[SerializeField] private DummySprites danceSprites;
+	[SerializeField] private DummySprites idleSprites;
 
 	public enum DummyTypes
 	{
@@ -164,11 +165,14 @@ public class GameplayManager : MonoBehaviour
 
 			dummies[i] = Instantiate(dummyPrefab, transform.position, Quaternion.identity);
 			dummies[i].name = "Dummy" + i;
+			
 			if (dummies[i].TryGetComponent<DummyScript>(out DummyScript dummyScript))
 			{
 				dummyScript.Init(offsetPosition, gridManager, this, (int)dummyArray[i].type);
 			}
-		}
+
+            ChangeSpriteOfAnimation(0, dummies[i], true);
+        }
 	}
 
 	// Unused because SetMask adds to order
@@ -207,16 +211,8 @@ public class GameplayManager : MonoBehaviour
 
 		for (int i = 0; i < dummies.Length; i++)
 		{
-			if (dummies[i].GetComponent<DummyScript>().GetMask() == 0)
-			{
-                ChangeSpriteOfAnimation((currentAction - 1) + (3 * ((_measureCount + 1) % 2)), dummies[i]);
-            }
+            ChangeSpriteOfAnimation((currentAction - 1) + (3 * ((_measureCount + 1) % 2)), dummies[i], false);
 		}
-
-		for (int i = 0; i < orderList.Count;i++)
-		{
-            ChangeSpriteOfAnimation((currentAction - 1) + (3 * ((_measureCount + 1) % 2)), orderList[i]);
-        }
 	}
 
 	public void AddToOrderList(GameObject addition)
@@ -244,9 +240,22 @@ public class GameplayManager : MonoBehaviour
 		return orderList.Contains(dummy);
 	}
 
-	private void ChangeSpriteOfAnimation(int index, GameObject dummy)
+	private void ChangeSpriteOfAnimation(int index, GameObject dummy, bool idle)
 	{
-		dummy.GetComponent<SpriteRenderer>().sprite = sprites.sprites[dummy.GetComponent<DummyScript>().GetMask()].sprite[index];
+		if (idle)
+		{
+            dummy.GetComponent<SpriteRenderer>().sprite = idleSprites.sprites[dummy.GetComponent<DummyScript>().GetMask()].sprite[index];
+        }
+		else
+		{
+            dummy.GetComponent<SpriteRenderer>().sprite = danceSprites.sprites[dummy.GetComponent<DummyScript>().GetMask()].sprite[index];
+        }
+		Debug.Log(dummy.GetComponent<DummyScript>().GetMask());
+	}
+
+	public void WinLevel()
+	{
+
 	}
 
 	public int ReturnOrder(GameObject orderObject)

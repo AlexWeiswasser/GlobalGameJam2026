@@ -1790,6 +1790,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: A_LevelButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3548288922978218077, guid: 010cb1510bebb3146b762fb7b8fdd3c7, type: 3}
+      propertyPath: m_text
+      value: A
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548288922978218077, guid: 010cb1510bebb3146b762fb7b8fdd3c7, type: 3}
+      propertyPath: m_fontSize
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548288922978218077, guid: 010cb1510bebb3146b762fb7b8fdd3c7, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 3875778198418771646, guid: 010cb1510bebb3146b762fb7b8fdd3c7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

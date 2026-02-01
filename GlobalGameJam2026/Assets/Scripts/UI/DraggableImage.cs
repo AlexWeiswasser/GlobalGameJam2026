@@ -23,6 +23,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         if (_gameplayManager.IsDancing()) return;
         // Return Image Size to Normal
+        transform.SetAsLastSibling();
         GetComponent<RectTransform>().sizeDelta = _imageSize;
         Color color = GetComponent<Image>().color;
         color.a = 1;
@@ -59,11 +60,9 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                     successful = true;
                 }
             }
-            Debug.Log("Hit 2D object: " + hit.collider.name);
         }
         if (successful)
         {
-            Debug.Log("Drag Successful");
             hit.collider.gameObject.TryGetComponent<DummyScript>(out DummyScript dummyScript);
             if (_previousDummy != null)
             {

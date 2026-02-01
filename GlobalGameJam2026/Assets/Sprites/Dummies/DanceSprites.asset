@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ef3e27a32a8fd84b8c3b6ec4c736a8a, type: 3}
-  m_Name: DummySprites
+  m_Name: DanceSprites
   m_EditorClassIdentifier: Assembly-CSharp::DummySprites
   sprites:
   - sprite:
@@ -35,12 +35,12 @@ MonoBehaviour:
     - {fileID: 5484748673420233633, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
     - {fileID: 5484748673420233633, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
   - sprite:
-    - {fileID: -335088288387712857, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
-    - {fileID: 5484748673420233633, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
-    - {fileID: 5484748673420233633, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
-    - {fileID: -581935794911065451, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
-    - {fileID: 5484748673420233633, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
-    - {fileID: 5484748673420233633, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
+    - {fileID: 1902788136624674735, guid: 7561e0741c1b3ea4995db610d8f3f422, type: 3}
+    - {fileID: 1991205611930870894, guid: 7561e0741c1b3ea4995db610d8f3f422, type: 3}
+    - {fileID: 1902788136624674735, guid: 7561e0741c1b3ea4995db610d8f3f422, type: 3}
+    - {fileID: 1991205611930870894, guid: 7561e0741c1b3ea4995db610d8f3f422, type: 3}
+    - {fileID: 1902788136624674735, guid: 7561e0741c1b3ea4995db610d8f3f422, type: 3}
+    - {fileID: 1991205611930870894, guid: 7561e0741c1b3ea4995db610d8f3f422, type: 3}
   - sprite:
     - {fileID: -335088288387712857, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
     - {fileID: 5484748673420233633, guid: 791423e067b1e844f86d4ebc135395b8, type: 3}
