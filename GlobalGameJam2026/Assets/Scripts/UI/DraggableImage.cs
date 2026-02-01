@@ -12,6 +12,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [SerializeField] private int maskNumber;
     private DummyScript _previousDummy;
     private Camera _zoomedCamera;
+    private Image _icon;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         _startPosition = GetComponent<RectTransform>().anchoredPosition;
         _imageSize = GetComponent<RectTransform>().sizeDelta;
         _imageScale = transform.localScale;
+        _icon = transform.GetChild(0).GetComponent<Image>();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -30,7 +32,11 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         Color color = GetComponent<Image>().color;
         color.a = 1;
         GetComponent<Image>().color = color;
+        color = _icon.color;
+        color.a = 1;
+        _icon.color = color;
         transform.localScale = _imageScale;
+        
         if (_previousDummy != null)
         {
             _previousDummy.SetMask(0);
@@ -77,6 +83,9 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             color.a = 0;
             transform.localScale = new Vector2(1,1);
             GetComponent<Image>().color = color;
+            color = _icon.color;
+            color.a = 1;
+            _icon.color = color;
             dummyScript.SetMask(maskNumber);
         }
         else
