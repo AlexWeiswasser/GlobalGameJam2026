@@ -133,8 +133,14 @@ public class GameplayManager : MonoBehaviour
 			canvas.transform.GetChild(6).gameObject.SetActive(true);
 			return;
 		}
-		// Music Start Here
 		canvas.transform.GetChild(0).gameObject.SetActive(true);
+		MusicManager.Instance.PlayWaltz();
+		foreach (MaskChoice mask in maskChoices)
+		{
+            MusicManager.Instance.AddMusic((int)mask.type - 3);
+        }
+
+        canvas.transform.GetChild(0).gameObject.SetActive(true);
         canvas.transform.GetChild(1).gameObject.SetActive(false);
         canvas.transform.GetChild(6).gameObject.SetActive(false);
         _isDancing = true;
