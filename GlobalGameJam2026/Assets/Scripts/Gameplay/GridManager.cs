@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
 
@@ -7,6 +8,7 @@ public class GridManager : MonoBehaviour
 	// Grid Size
 	[SerializeField] private Vector2 size;
 	[SerializeField] private GridSizeChanger gridObject;
+	[SerializeField] private Camera scaleCam;
 
 	// The grid itself
     private GameObject[,] gridArray;
@@ -16,6 +18,11 @@ public class GridManager : MonoBehaviour
 
 	private void Awake()
 	{
+		float additionToCamHeight = ((size.y - 4) * .5f);
+		Vector3 newCamHeight = scaleCam.transform.position;
+		newCamHeight.y += additionToCamHeight;
+		scaleCam.transform.position = newCamHeight;
+
 		gridArray = new GameObject[(int)size.x, (int)size.y];
 		gridObject.ChangeGridSize((int)size.x, (int)size.y);
 	}

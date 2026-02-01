@@ -1856,6 +1856,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 957068186935599571, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
+      propertyPath: scaleCam
+      value: 
+      objectReference: {fileID: 5390723275905931652}
+    - target: {fileID: 957068186935599571, guid: 13ec4255c03f7d04db44f79c3f7cdf5b, type: 3}
       propertyPath: gridObject
       value: 
       objectReference: {fileID: 8974216218310058189}

@@ -30,7 +30,10 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 		{
 			locked = true;
 
-			transform.GetChild(1).gameObject.SetActive(true);
+			if (type > 3)
+			{
+				transform.GetChild(1).gameObject.SetActive(true);
+			}
 
 			SetMask(type);
 		}
