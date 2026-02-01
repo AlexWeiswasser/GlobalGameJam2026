@@ -197,7 +197,7 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 
 	public void SetToStart(Vector3 pos)
 	{
-		if (locked)
+		if (locked && GetMask() > 3)
 		{
 			transform.GetChild(1).gameObject.SetActive(true);
 		}

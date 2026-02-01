@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6d9a33a8af1d844bad323ba1d6eed87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableImage
-  maskNumber: 9
+  maskNumber: 7
 --- !u!1 &2014634385969277345
 GameObject:
   m_ObjectHideFlags: 0
