@@ -40,6 +40,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         if (_previousDummy != null)
         {
             _previousDummy.SetMask(0);
+            _gameplayManager.ChangeMasksPlaced(-1);
         }
     }
 
@@ -71,6 +72,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         }
         if (successful)
         {
+            _gameplayManager.ChangeMasksPlaced(1);
             hit.collider.gameObject.TryGetComponent<DummyScript>(out DummyScript dummyScript);
             if (_previousDummy != null)
             {

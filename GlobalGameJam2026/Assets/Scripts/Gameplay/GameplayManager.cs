@@ -23,6 +23,7 @@ public class GameplayManager : MonoBehaviour
 	[SerializeField] private MaskChoice[] maskChoices;
 	[SerializeField] private Vector2[] maskPositions;
 	[SerializeField] private GameObject[] maskPrefabs;
+	private int _masksPlaced = 0;
 
 	// Dummy Order
 	private List<GameObject> orderList = new List<GameObject>();
@@ -126,7 +127,15 @@ public class GameplayManager : MonoBehaviour
 
 	public void BeginDance()
 	{
-		_isDancing = true;
+		if (_masksPlaced < GetMaskChoiceNumber())
+		{
+			canvas.transform.GetChild(6).gameObject.SetActive(true);
+			return;
+		}
+		canvas.transform.GetChild(0).gameObject.SetActive(true);
+        canvas.transform.GetChild(1).gameObject.SetActive(false);
+        canvas.transform.GetChild(6).gameObject.SetActive(false);
+        _isDancing = true;
         for (int i = 0; i < dummies.Length; i++)
         {
 			dummies[i].transform.GetChild(1).gameObject.SetActive(false);
@@ -361,5 +370,26 @@ public class GameplayManager : MonoBehaviour
 	public bool IsDancing()
 	{
 		return _isDancing;
+	}
+
+	public int GetMaskChoiceNumber()
+	{
+		int amount = 0;
+		for (int i = 0; i < maskChoices.Length; i++)
+		{
+			amount += maskChoices[i].amount;
+		}
+		return amount;
+	}
+
+	public void ChangeMasksPlaced(int amount)
+	{
+		_masksPlaced += amount;
+		Debug.Log("Masks Placed: " + _masksPlaced);
+	}
+
+	public int GetMasksPlaced()
+	{
+		return _masksPlaced;
 	}
 }
