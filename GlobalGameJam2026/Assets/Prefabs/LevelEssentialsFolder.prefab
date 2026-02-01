@@ -1534,6 +1534,10 @@ PrefabInstance:
       value: BackToPlanButton
       objectReference: {fileID: 0}
     - target: {fileID: 4239698549337026544, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 36089a1c50c427c44a8e3536a012ceca, type: 3}
+    - target: {fileID: 4239698549337026544, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
       propertyPath: m_Color.b
       value: 0.80535847
       objectReference: {fileID: 0}
@@ -1833,6 +1837,10 @@ PrefabInstance:
       value: Button
       objectReference: {fileID: 0}
     - target: {fileID: 4239698549337026544, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 36089a1c50c427c44a8e3536a012ceca, type: 3}
+    - target: {fileID: 4239698549337026544, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
       propertyPath: m_Color.b
       value: 0.7584905
       objectReference: {fileID: 0}
@@ -1990,6 +1998,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenuButton
       objectReference: {fileID: 0}
+    - target: {fileID: 4239698549337026544, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 36089a1c50c427c44a8e3536a012ceca, type: 3}
     - target: {fileID: 4239698549337026544, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
       propertyPath: m_Color.b
       value: 0.8039216
@@ -2196,6 +2208,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BeginButton
       objectReference: {fileID: 0}
+    - target: {fileID: 4239698549337026544, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 36089a1c50c427c44a8e3536a012ceca, type: 3}
     - target: {fileID: 4239698549337026544, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
       propertyPath: m_Color.b
       value: 0.8039216
@@ -2538,6 +2554,10 @@ PrefabInstance:
       value: ResetButton
       objectReference: {fileID: 0}
     - target: {fileID: 4239698549337026544, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 36089a1c50c427c44a8e3536a012ceca, type: 3}
+    - target: {fileID: 4239698549337026544, guid: 467be179b7e9bcc409ad282feae07fc7, type: 3}
       propertyPath: m_Color.b
       value: 0.8039216
       objectReference: {fileID: 0}
@@ -2666,6 +2686,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2877937279197824632, guid: b527ab96a33aab142a885c0c390e83f9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 36089a1c50c427c44a8e3536a012ceca, type: 3}
     - target: {fileID: 4526460837736869265, guid: b527ab96a33aab142a885c0c390e83f9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2682,6 +2706,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: LoadScene
       objectReference: {fileID: 0}
+    - target: {fileID: 5937424309563097100, guid: b527ab96a33aab142a885c0c390e83f9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 36089a1c50c427c44a8e3536a012ceca, type: 3}
     - target: {fileID: 7618961421036438971, guid: b527ab96a33aab142a885c0c390e83f9, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2762,6 +2790,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8966095460886366850, guid: b527ab96a33aab142a885c0c390e83f9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 36089a1c50c427c44a8e3536a012ceca, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
