@@ -97,6 +97,15 @@ public class MusicManager : MonoBehaviour
         sources[maskNumber].volume = 0f;
     }
 
+    public void StopWaltz()
+    {
+        for (int i = 1; i < sources.Length; i++)
+        {
+            sources[i].Stop();
+        }
+        //add record scratch sound effect here later
+    }
+
     public void ResetMusic()
     {
         for (int i = 0; i < 7; i++)

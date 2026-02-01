@@ -124,6 +124,8 @@ public class GameplayManager : MonoBehaviour
 
         turnsText.text = $"Turns left: {allowedTurns - turnsTaken}";
 		turnsText.color = Color.white;
+
+		MusicManager.Instance.PlayIntro();
     }
 
 	public void BeginDance()
@@ -333,7 +335,7 @@ public class GameplayManager : MonoBehaviour
         if (danceCo != null) StopCoroutine(danceCo);
         danceCo = null;
         canvas.transform.GetChild(5).gameObject.SetActive(true);
-		// Music Stops Here
+		MusicManager.Instance.StopWaltz();
     }
 
 	public void WinDance()
