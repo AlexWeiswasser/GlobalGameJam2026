@@ -33,7 +33,7 @@ EditorBuildSettings:
     path: Assets/Scenes/CompletedLevels/Level_5.unity
     guid: 71ff7fefca814d34cbe28ee4b3901ce4
   - enabled: 1
-    path: Assets/Scenes/Level_6.unity
+    path: Assets/Scenes/CompletedLevels/Level_6.unity
     guid: 38bca898d88f8fb4299103e8fe7066f2
   - enabled: 1
     path: Assets/Scenes/CompletedLevels/Level_0.unity
