@@ -89,6 +89,10 @@ public class VertScript : MonoBehaviour, IDummyFace
 						}
 						else
 						{
+							if (TryGetComponent<DummyScript>(out DummyScript dummyScript))
+							{
+								dummyScript.PlayBump();
+							}
 							firstFace.AddPosToGrid();
 						}
 					}
@@ -102,6 +106,10 @@ public class VertScript : MonoBehaviour, IDummyFace
 						}
 						else
 						{
+							if (TryGetComponent<DummyScript>(out DummyScript dummyScript))
+							{
+								dummyScript.PlayBump();
+							}
 							firstFace.AddPosToGrid();
 						}
 					}

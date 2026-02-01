@@ -44,8 +44,11 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 
 	public void PlayBump()
 	{
-		int rand = Random.Range(0, dummySounds.Length);
-		MusicManager.Instance.PlaySound(dummySounds[rand]);
+		if (dummySounds.Length > 0)
+		{
+			int rand = Random.Range(0, dummySounds.Length);
+			MusicManager.Instance.PlaySound(dummySounds[rand]);
+		}
 	}
 
 	public bool IsValidMaskTarget()
@@ -142,6 +145,11 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 				gameObject.AddComponent<xFlipScript>();
 				gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
 				break;
+
+		}
+		if (type >= 2 && type != 3)
+		{
+			int ySize = gridManager.GetHeight();
 
 		}
 		if (type > 3)

@@ -28,6 +28,11 @@ public class GridManager : MonoBehaviour
 		gridObject.ChangeGridSize((int)size.x, (int)size.y);
 	}
 
+	public int GetHeight()
+	{
+		return (int)size.y;
+	}
+
 	public bool CheckForWall(Vector2 pos)
 	{
 		pos += CorrectiveOffset;

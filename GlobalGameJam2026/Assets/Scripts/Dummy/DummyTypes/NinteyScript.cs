@@ -52,6 +52,10 @@ public class NinteyScript : MonoBehaviour, IDummyFace
 					}
 					else
 					{
+						if (TryGetComponent<DummyScript>(out DummyScript dummyScript))
+						{
+							dummyScript.PlayBump();
+						}
 						firstFace.AddPosToGrid();
 						firstFace = null;
 					}

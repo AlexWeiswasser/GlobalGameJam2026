@@ -36,6 +36,10 @@ public class xFlipScript : MonoBehaviour, IDummyFace
 					}
 					else
 					{
+						if (TryGetComponent<DummyScript>(out DummyScript dummyScript))
+						{
+							dummyScript.PlayBump();
+						}
 						firstFace.AddPosToGrid();
 						firstFace = null;
 						vectorOfTransform = Vector2.zero;
