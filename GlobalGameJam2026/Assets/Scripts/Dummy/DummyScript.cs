@@ -17,8 +17,6 @@ public class DummyScript : MonoBehaviour, IMoveableFace
 
 	// Sounds
 	[SerializeField] private AudioClip[] dummySounds;
-	[SerializeField] private AudioClip princessCrash;
-	[SerializeField] private AudioClip recordScratch;
 	
 	public void Init(Vector2 pos, GridManager grid, GameplayManager game, int type = 0)
 	{

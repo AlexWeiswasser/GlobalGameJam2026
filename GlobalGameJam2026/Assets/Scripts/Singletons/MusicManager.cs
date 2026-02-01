@@ -143,12 +143,18 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    public void PlaySound(AudioClip Sound)
+    public void PlaySound(AudioClip Sound, float volume = 1, float pitchRandomness = .1f)
     {
-        if (currentAudioSourceIndex >= 20)
+		currentAudioSourceIndex++;
+		if (currentAudioSourceIndex >= 20)
             currentAudioSourceIndex = 0;
-        currentAudioSourceIndex++;
-        _sfxSources[currentAudioSourceIndex].clip = Sound;
+
+        float randomMin = 1 - pitchRandomness;
+        float randomMax = 1 + pitchRandomness;
+        float pitch = Random.Range(randomMin, randomMax);
+        _sfxSources[currentAudioSourceIndex].pitch = pitch;
+
+        _sfxSources[currentAudioSourceIndex].PlayOneShot(Sound, volume);
     }
 
     #region Volume Controls
