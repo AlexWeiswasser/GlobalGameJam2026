@@ -39,7 +39,7 @@ public class SceneLoaderScript : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        if(SceneManager.GetActiveScene().name.Substring(0,4) == "Level")
+        if(SceneManager.GetActiveScene().name.Substring(0,5) == "Level")
         {
             MusicManager.Instance.PlayIntro();
         }

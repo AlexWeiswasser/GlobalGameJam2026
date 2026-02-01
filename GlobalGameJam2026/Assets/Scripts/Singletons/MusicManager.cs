@@ -67,6 +67,7 @@ public class MusicManager : MonoBehaviour
     public void PlayWaltz()
     {
         sources[0].Stop();
+
         for (int i = 1; i < sources.Length; i++)
         {
             sources[i].volume = 0f;
@@ -82,6 +83,7 @@ public class MusicManager : MonoBehaviour
     {
         for(int i = 1; i < sources.Length; i++)
         {
+            sources[i].volume = 0f;
             sources[i].Stop();
         }
         sources[0].volume = 1f;
