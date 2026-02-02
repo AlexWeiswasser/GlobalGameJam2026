@@ -68,6 +68,10 @@ public class LevelButtonScript : MonoBehaviour
         }
     }
 
+    public LevelData GetLevelData()
+    {
+        return _levelData;
+    }
     private void LoadThatScene()
     {
         LevelManager.Instance.levelWeAreLoading = _levelData.sceneName;
