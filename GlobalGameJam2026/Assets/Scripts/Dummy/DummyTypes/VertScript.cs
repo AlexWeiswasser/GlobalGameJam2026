@@ -115,6 +115,8 @@ public class VertScript : MonoBehaviour, IDummyFace
 						Vector2 newLocation = firstFace.GetPosition() + new Vector3(0, 1);
 						if (CanMoveObject(newLocation, grid))
 						{
+
+
 							firstFace.SetPosition(newLocation, true);
 							firstFace.AddPosToGrid();
 						}
@@ -159,7 +161,25 @@ public class VertScript : MonoBehaviour, IDummyFace
 	{
 		if (firstFace.GetMask() != 3) // If not princess, check the position square of what you're moving to
 		{
-			if (grid.CheckPosition(spaceToCheck) != null) return false;
+			GameObject possibleCollision = grid.CheckPosition(spaceToCheck);
+			if (possibleCollision != null)
+			{
+				if(possibleCollision.TryGetComponent<IMoveableFace>(out IMoveableFace moveFace))
+				{
+					if (moveFace.GetMask() != 3)
+					{
+						return false;
+					}
+					else
+					{
+						if(possibleCollision.TryGetComponent<PrincessScript>(out PrincessScript pScript))
+						{
+							pScript.KillPrincess();
+						}
+						return true;
+					}
+				}
+			}
 		}
 		return (!grid.CheckForWall(spaceToCheck));
 	}

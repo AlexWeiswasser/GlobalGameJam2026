@@ -32,6 +32,13 @@ public class PrincessScript : MonoBehaviour
 		return false; 
 	}
 
+	public void KillPrincess()
+	{
+		GetComponent<DummyScript>().GetGameplayManager().StopDance();
+		GetComponent<SpriteRenderer>().sprite = GetComponent<DummyScript>().princessDeathSprite;
+		PrincessDeathSounds();
+	}
+
 	public void SetBackToStart(Vector3 pos)
 	{
 		if (TryGetComponent<IMoveableFace>(out IMoveableFace moveFace))
